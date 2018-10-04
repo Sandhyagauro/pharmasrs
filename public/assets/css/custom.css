@@ -1,0 +1,246 @@
+/* Add here all your CSS customizations */
+.pac-container { z-index: 100000 !important; }
+.errors{
+    color: #de0000;}
+
+.slider-contact-form-wrapper .slider-contact-form {
+    background: rgba(30, 59, 118, 0.72);
+
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    padding: .30rem .30rem;
+}
+
+#header .header-nav-main nav > ul > li > a{
+    font-size: 15px;
+}
+
+
+#header .header-nav-main.header-nav-main-dark nav > ul > li.active > a{
+    color: #2388ed;
+}
+
+#footer .fab{
+    font-size: 22px;
+}
+
+.social-icons li{
+    margin: -1px 5px 0 3px;
+}
+
+.social-icons li a{
+    height: 40px;
+    width: 40px;
+    padding-top: 6px;
+    padding-left: 2px;
+}
+
+.section.section-background{
+    position: relative;
+}
+
+.section.section-background:before, .parallax-background:before{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.60);
+}
+
+.tparrows:before{
+    font-size: 34px;
+}
+
+.steps .item .item-title{
+    top: 75%;
+}
+
+.steps .item .item-title span{
+    top: -75px;
+}
+
+.steps .item .item-title:after{
+    display: none;
+}
+
+.steps .item.active .item-title{
+    color: #1c1f21;
+}
+
+#revolutionSlider img{
+    -webkit-filter: brightness(0.7); /* Safari 6.0 - 9.0 */
+    filter: brightness(0.7);
+}
+
+#revolutionSlider .tp-caption{
+    font-weight: 600 !important;
+}
+
+.header-column .btn-outline.btn-primary{
+    padding: 6px 20px;
+    margin-right: 20px;
+}
+
+#estimate_btn{
+    margin-right: 0;
+}
+
+.home-service{
+    margin-bottom: 40px;
+}
+
+.banner-title{
+    margin-bottom: 35px !important;
+}
+
+p.banner-para{
+    font-size: 16px;
+    color: #fff;
+    line-height: 24px;
+    font-weight: 300;
+    margin-bottom: 15px;
+    padding: 0 30px;
+}
+
+.banner-para .strong-bold{
+    font-weight: 600;
+    padding: 15px 0;
+}
+
+/*Services*/
+#export, #clean-source-code, #amazing-features{
+    position:relative;
+    cursor: pointer;
+}
+
+#export:before, #clean-source-code:before, #amazing-features:before{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(194, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    display: block;
+    content: " ";
+    z-index: 2;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    opacity: 0;
+}
+
+#export:hover:before, #clean-source-code:hover:before, #amazing-features:hover:before{
+    opacity: 1;
+}
+
+.on-hover{
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    top: 43%;
+    z-index: 2;
+    -webkit-transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s cubic-bezier(0, 0.86, 1, 1);
+    transition: all 0.5s cubic-bezier(0, 0.86, 1, 1);
+}
+
+.on-hover p{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+}
+
+#export:hover .on-hover, #clean-source-code:hover .on-hover, #amazing-features:hover .on-hover{
+    opacity: 1;
+}
+
+/*Login*/
+.onSignin .btn-primary{
+    border-color: #fff;
+    margin-top: 20px !important;
+}
+
+.onRegister .btn-primary{
+    display: block;
+    margin-top: 35px !important;
+    width: 100%;
+    border-color: #2388ed;
+    text-align: center;
+}
+
+.login-page{
+    margin-bottom: 100px;
+}
+
+.login-page-left{
+    padding: 0 45px 0 0;
+}
+
+.login-page-right{
+    padding: 0 0 0 45px !important;
+}
+
+
+/*Media Queries*/
+
+@media only screen and (max-width: 1199px) and (min-width: 992px){
+    #header .header-nav-main nav > ul > li > a{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 992px){
+    #header .header-nav-main nav > ul > li > a{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 991px){
+    #header .header-nav-main nav > ul li a:not(.btn){
+        color: #FFF;
+    }
+    #services{
+        margin-bottom: 0px;
+    }
+    .login-page-custom{
+        -ms-flex-pack: space-between !important;;
+        justify-content: space-between !important;
+    }
+    .login-page-custom .custom-wrap{
+        padding: 2rem !important;
+    }
+    .login-page-left{
+        padding: 0;
+    }
+    .login-page-right{
+        padding: 0 !important;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .on-hover p{
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .login-page{
+        margin-bottom: 40px;
+    }
+    .login-page-custom .custom-wrap{
+        padding: 3rem 2.5rem !important;
+        margin: 0 30px;
+    }
+}
+
+@media only screen and (max-width: 425px){
+    .login-page-custom .custom-wrap{
+        padding: 35px 30px !important;
+        margin: 0 35px;
+    }
+}
