@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>MailsNepal</title>
+    <title>Pharma SRS</title>
     <meta name="title" content="sdf">
     <meta name="description" content="sfsdf">
     <meta name="author" content="Pharma SRS">

@@ -1,7 +1,8 @@
 @extends('frontend/layout/layout')
 @section('content')
 <div role="main" class="main">
-<section class="page-header">
+
+<section class="page-header parallax page-header-text-light overlay overlay-color-primary overlay-show overlay-op-9 mb-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="{{url('img/medical/carousel/banner2.jpg')}}">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-8 text-left">
