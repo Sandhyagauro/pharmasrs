@@ -1,7 +1,7 @@
 @extends('frontend/layout/layout')
 @section('content')
 <div class="parallax py-5 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax
-     data-plugin-options="{'speed': 1.5, 'parallaxHeight': '115%'}" data-image-src="{{url('img/view9logo.png')}}">
+     data-plugin-options="{'speed': 1.5, 'parallaxHeight': '115%'}" data-image-src="{{url('img/contactusbanner.jpg')}}">
     <div class="spacer py-5 my-5"></div>
     <div class="spacer py-5 my-5"></div>
 </div>
@@ -15,14 +15,17 @@
                 </div>
                 <div class="overflow-hidden mb-2">
                     <h2 class="font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp"
-                        data-appear-animation-delay="800">sdfs</h2>
+                        data-appear-animation-delay="800">Contact Us</h2>
                 </div>
-                <div class="overflow-hidden mb-5">
+                <div class="overflow-hidden">
                     <p class="lead mb-0 appear-animation" data-appear-animation="maskUp"
-                       data-appear-animation-delay="1000">sdfsd</p>
-                </div>
+                       data-appear-animation-delay="1000">Contact Us Anytime, We are happy to help you.</p>
+                </div><br>
+
                 <p class="text-2 px-lg-5 appear-animation" data-appear-animation="fadeInUpShorter"
-                   data-appear-animation-delay="1200">sdf</p>
+                   data-appear-animation-delay="1200">Got some inquiry or message for us? Or just want to know status of your courier? Contact Us! We are more than happy to help you anytime.
+
+                </p>
             </div>
         </div>
 
@@ -166,14 +169,7 @@
                 </div>
             </div>
         </div>
-        <!--<div class="row mx-0 appear-animation" data-appear-animation="fadeInUpShorter">-->
-        <!--&lt;!&ndash; Go to the bottom of the page to change settings and map location. &ndash;&gt;-->
-        <!--<div id="googlemaps" class="google-map google-map-style-2 height-500">-->
-        <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.683087523665!2d85.33456395118695!3d27.696188182712252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb199851b4ff6f%3A0xf8d756f117f66bb0!2sBaneshwor+Party+Palace!5e0!3m2!1sen!2snp!4v1526548935977"-->
-        <!--height="100%" width="100%"></iframe>-->
-        <!--</div>-->
 
-        <!--</div>-->
     </div>
-</div>
+</div><br><br><br>
 @endsection

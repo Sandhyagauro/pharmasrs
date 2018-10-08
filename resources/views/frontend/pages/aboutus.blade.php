@@ -2,7 +2,7 @@
 @section('content')
 
 <section id="services" class="section section-background section-height-4 appear-animation" data-plugin-image-background
-         data-plugin-options="{'imageUrl': '{{url('img/view9logo.png')}}'}" data-appear-animation="fadeIn"
+         data-plugin-options="{'imageUrl': '{{url('img/aboutusbanner.jpg')}}'}" data-appear-animation="fadeIn"
          data-appear-animation-duration="1s">
     <div class="container">
         <div class="row text-center mb-4">
@@ -16,15 +16,15 @@
                     <!--</ul>-->
                     <!--</span>-->
                 </div>
-                <div class="overflow-hidden">
-                    <span class="d-block top-sub-title text-color-light appear-animation"
-                          data-appear-animation="maskUp">zxc</span>
-                </div>
+<!--                <div class="overflow-hidden">-->
+<!--                    <span class="d-block top-sub-title text-color-light appear-animation"-->
+<!--                          data-appear-animation="maskUp">zxc</span>-->
+<!--                </div>-->
                 <div class="overflow-hidden">
                     <h2 class="banner-title font-weight-bold text-color-light mb-0 appear-animation" data-appear-animation="maskUp"
-                        data-appear-animation-delay="200">sd</h2>
+                        data-appear-animation-delay="200">About Us</h2>
                     <p class="text-color-light-2 text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                       data-appear-animation-delay="400">sd </p>
+                       data-appear-animation-delay="400">You need options to choose for your courier service. Why not choose us today?  With mails Nepal, we provide you multiple options online to manage your logistics.In addition to service we provide, we value the relation we are building with you because its you who we serve and it matters the most to us. We are 100% positive that you will experience better courier service with the options we provide. </p>
                 </div>
             </div>
         </div>
@@ -37,10 +37,10 @@
     <div class="row">
         <div class="col-md-6">
             <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
-                <span class="top-sub-title text-color-primary">LOREM IPSUM DOLOR SIT</span>
+<!--                <span class="top-sub-title text-color-primary">LOREM IPSUM DOLOR SIT</span>-->
 
                 <h2 class="word-rotator letters type font-weight-bold text-5 mb-3">
-                    <span>EZY. It's easier than you</span>
+                    <span>PHARMA SRS</span>
 										<span class="word-rotator-words waiting">
 											<b class="is-visible">think.</b>
 											<b>believe.</b>
@@ -52,10 +52,7 @@
 
             <p class="mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc. Vivamus bibendum magna ex, et faucibus lacus venenatis eget. Suspendisse potenti. Curabitur euismod facilisis neque, eu malesuada diam finibus non. Nullam nec vehicula leo. Morbi porta ante eu feugiat mollis.</p>
 
-            <div class="d-block d-sm-inline-block text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
-                <a href="about-us-1.html" class="btn btn-outline btn-rounded btn-primary btn-v-3 mt-2 btn-h-4 font-weight-bold">MORE ABOUT US</a>
-                <span class="d-block mt-3">or<a class="text-underline ml-2" href="contact-us-5.html">CONTACT US</a></span>
-            </div>
+
         </div>
         <div class="col-10 col-md-6 col-lg-5 mx-auto ml-md-auto" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
             <div class="particles d-flex align-items-center pr-0 pr-lg-3 pr-xl-5">
@@ -126,13 +123,13 @@
                             <div class="col-sm-6">
                                 <div class="counter text-dark my-4 pb-1">
                                     <strong data-to="25000" data-append="+">25000+</strong>
-                                    <label class="font-weight-light">Happy Clients</label>
+                                    <label class="font-weight-light">Happy Customers</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="counter text-dark my-4 pb-1">
                                     <strong data-to="15">15</strong>
-                                    <label class="font-weight-light">Years in Business</label>
+                                    <label class="font-weight-light">Available Pharmacist</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -165,7 +162,7 @@
 
             <div class="col">
 
-                <h4>Our Team Members</h4>
+                <h4>Our Pharmacist Members</h4>
                 <hr class="mb-5">
 
                 <div class="owl-carousel owl-theme dots-style-1 nav-style-3" data-plugin-options="{'responsive': {'0': {'items': 1}, '576': {'items': 1}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 3}}, 'dots': true, 'nav': false, 'loop': false, 'navtext': [], 'margin': 30}">
@@ -174,7 +171,7 @@
                             <div class="testimonial testimonial-style-2">
                                 <div class="card card-style-2 card-style-3 bg-light-5 border-0 text-center mt-5">
                                     <div class="testimonial-author-image">
-                                        <img src="{{url('img/view9logo.png')}}" class="card-img-top border-light-5" alt="" />
+                                        <img src="{{url('img/avatars/3.jpg')}}" class="card-img-top border-light-5" alt="" />
                                     </div>
                                     <div class="card-body p-5">
                                         <blockquote class="font-tertiary font-style-italic text-3 m-0 p-0 mt-4">" sdsd "</blockquote>
@@ -195,7 +192,7 @@
                             <div class="testimonial testimonial-style-2">
                                 <div class="card card-style-2 card-style-3 bg-light-5 border-0 text-center mt-5">
                                     <div class="testimonial-author-image">
-                                        <img src="{{url('img/view9logo.png')}}" class="card-img-top border-light-5" alt="" />
+                                        <img src="{{url('img/avatars/6.jpg')}}" class="card-img-top border-light-5" alt="" />
                                     </div>
                                     <div class="card-body p-5">
                                         <blockquote class="font-tertiary font-style-italic text-3 m-0 p-0 mt-4">" sds "</blockquote>
@@ -211,12 +208,35 @@
                         </div>
                     </div>
 
+
                     <div>
                         <div class="text-center mb-4">
                             <div class="testimonial testimonial-style-2">
                                 <div class="card card-style-2 card-style-3 bg-light-5 border-0 text-center mt-5">
                                     <div class="testimonial-author-image">
-                                        <img src="{{url('img/view9logo.png')}}" class="card-img-top border-light-5" alt="" />
+                                        <img src="{{url('img/avatars/6.jpg')}}" class="card-img-top border-light-5" alt="" />
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <blockquote class="font-tertiary font-style-italic text-3 m-0 p-0 mt-4">" sds "</blockquote>
+                                        <div class="testimonial-author mt-4">
+														<span>
+															<strong class="text-3">sdsd</strong>
+															<span>sds</span>
+														</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="text-center mb-4">
+                            <div class="testimonial testimonial-style-2">
+                                <div class="card card-style-2 card-style-3 bg-light-5 border-0 text-center mt-5">
+                                    <div class="testimonial-author-image">
+                                        <img src="{{url('img/avatars/3.jpg')}}" class="card-img-top border-light-5" alt="" />
                                     </div>
                                     <div class="card-body p-5">
                                         <blockquote class="font-tertiary font-style-italic text-3 m-0 p-0 mt-4">" uhjbn "</blockquote>

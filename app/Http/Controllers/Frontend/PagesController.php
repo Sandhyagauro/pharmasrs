@@ -30,6 +30,8 @@ class PagesController extends Controller
                     break;
                 case 'contactus':
                     break;
+                case 'blog-detail':
+                    break;
 
             }
         }

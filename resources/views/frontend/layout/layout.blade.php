@@ -29,13 +29,15 @@
     <link rel="stylesheet" href="{{ url('assets/css/custom.css')}}">
 
 </head>
-<body data-target="#navSecondary" data-offset="150">
+<body>
+
+<div class="body">
 @include('frontend/layout/header')
 
 @yield('content')
 
 @include('frontend/layout/footer')
 <script src="{{ 'assets/js/all.js' }}"></script>
-
+</div>
 </body>
 </html>
