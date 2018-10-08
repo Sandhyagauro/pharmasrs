@@ -287,11 +287,11 @@
                 <article class="blog-post">
                     <header class="mb-2">
                         <div class="image-frame hover-effect-2">
-                            <a href="blog-single-post.html" class="d-block">
+                            <a href="{{url('/blog-detail')}}" class="d-block">
                                 <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid mb-3" alt="" />
                             </a>
                         </div>
-                        <h3 class="font-weight-bold text-4 mb-1"><a href="blog-single-post.html" class="text-color-dark">Diagnosis for a better life</a></h3>
+                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/blog-detail')}}" class="text-color-dark">Diagnosis for a better life</a></h3>
                         <i class="far fa-clock mt-1 text-color-primary"></i>
                         <time class="font-tertiary text-1" datetime="2018-01-17">Jan 17, 2018</time>
                     </header>
@@ -302,11 +302,11 @@
                 <article class="blog-post">
                     <header class="mb-2">
                         <div class="image-frame hover-effect-2">
-                            <a href="blog-single-post.html" class="d-block">
+                            <a href="{{url('/blog-detail')}}" class="d-block">
                                 <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid mb-3" alt="" />
                             </a>
                         </div>
-                        <h3 class="font-weight-bold text-4 mb-1"><a href="blog-single-post.html" class="text-color-dark">Medical Scientists</a></h3>
+                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/blog-detail')}}" class="text-color-dark">Medical Scientists</a></h3>
                         <i class="far fa-clock mt-1 text-color-primary"></i>
                         <time class="font-tertiary text-1" datetime="2018-01-17">Jan 17, 2018</time>
                     </header>
@@ -317,11 +317,11 @@
                 <article class="blog-post">
                     <header class="mb-2">
                         <div class="image-frame hover-effect-2">
-                            <a href="blog-single-post.html" class="d-block">
+                            <a href="{{url('/blog-detail')}}" class="d-block">
                                 <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid mb-3" alt="" />
                             </a>
                         </div>
-                        <h3 class="font-weight-bold text-4 mb-1"><a href="blog-single-post.html" class="text-color-dark">Team of Pharmacists</a></h3>
+                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/blog-detail')}}" class="text-color-dark">Team of Pharmacists</a></h3>
                         <i class="far fa-clock mt-1 text-color-primary"></i>
                         <time class="font-tertiary text-1" datetime="2018-01-17">Jan 17, 2018</time>
                     </header>

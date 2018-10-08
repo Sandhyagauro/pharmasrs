@@ -46,42 +46,42 @@
 
                     <article class="row align-items-center mb-3">
                         <div class="col-4 pr-0">
-                            <a href="blog-single-post.html">
+                            <a href="{{url('/blog-detail')}}">
                                 <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid hover-effect-2" alt="" />
                             </a>
                         </div>
                         <div class="col-8">
                             <span class="text-color-primary">Jan 17, 2018</span>
                             <h4 class="text-2 mb-0">
-                                <a href="blog-single-post.html" class="text-1">Lorem ipsum dolor...</a>
+                                <a href="{{url('/blog-detail')}}" class="text-1">Lorem ipsum dolor...</a>
                             </h4>
                         </div>
                     </article>
 
                     <article class="row align-items-center mb-3">
                         <div class="col-4 pr-0">
-                            <a href="blog-single-post.html">
+                            <a href="{{url('/blog-detail')}}">
                                 <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid hover-effect-2" alt="" />
                             </a>
                         </div>
                         <div class="col-8">
                             <span class="text-color-primary">Jan 16, 2018</span>
                             <h4 class="text-2 mb-0">
-                                <a href="blog-single-post.html" class="text-1">Lorem ipsum dolor...</a>
+                                <a href="{{url('/blog-detail')}}" class="text-1">Lorem ipsum dolor...</a>
                             </h4>
                         </div>
                     </article>
 
                     <article class="row align-items-center mb-3">
                         <div class="col-4 pr-0">
-                            <a href="blog-single-post.html">
+                            <a href="{{url('/blog-detail')}}">
                                 <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid hover-effect-2" alt="" />
                             </a>
                         </div>
                         <div class="col-8">
                             <span class="text-color-primary">Jan 15, 2018</span>
                             <h4 class="text-2 mb-0">
-                                <a href="blog-single-post.html" class="text-1">Lorem ipsum dolor...</a>
+                                <a href="{{url('/blog-detail')}}" class="text-1">Lorem ipsum dolor...</a>
                             </h4>
                         </div>
                     </article>
