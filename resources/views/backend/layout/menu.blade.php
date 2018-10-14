@@ -1,17 +1,17 @@
 <div class="sidebar">
     <nav class="sidebar-nav">
-<!--        <ul class="nav">-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="index.html">-->
-<!--                    <i class="nav-icon icon-speedometer"></i> Dashboard-->
-<!--                    <span class="badge badge-primary">NEW</span>-->
-<!--                </a>-->
-<!--            </li>-->
-<!--            <li class="nav-title">Theme</li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="colors.html">-->
-<!--                    <i class="nav-icon icon-drop"></i> Colors</a>-->
-<!--            </li>-->
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/dashboard')}}">
+                    <i class="nav-icon icon-speedometer"></i> Dashboard
+                    <span class="badge badge-primary">NEW</span>
+                </a>
+            </li>
+            <li class="nav-title">Content Management</li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/menu')}}">
+                    <i class="nav-icon icon-drop"></i> Menu Manager</a>
+            </li>
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="typography.html">-->
 <!--                    <i class="nav-icon icon-pencil"></i> Typography</a>-->
@@ -195,7 +195,7 @@
 <!--                    <strong>PRO</strong>-->
 <!--                </a>-->
 <!--            </li>-->
-<!--        </ul>-->
+        </ul>
     </nav>
     <button class="sidebar-minimizer brand-minimizer" type="button"></button>
 </div>
