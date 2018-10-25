@@ -16,7 +16,11 @@
 <!--                <a class="nav-link" href="typography.html">-->
 <!--                    <i class="nav-icon icon-pencil"></i> Typography</a>-->
 <!--            </li>-->
-<!--            <li class="nav-title">Components</li>-->
+            <li class="nav-title">ADMINISTRATOR</li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin/users')}}">
+                    <i class="nav-icon fa fa-users"></i> Users</a>
+            </li>
 <!--            <li class="nav-item nav-dropdown">-->
 <!--                <a class="nav-link nav-dropdown-toggle" href="#">-->
 <!--                    <i class="nav-icon icon-puzzle"></i> Base</a>-->
@@ -185,16 +189,16 @@
 <!--                    </li>-->
 <!--                </ul>-->
 <!--            </li>-->
-<!--            <li class="nav-item mt-auto">-->
-<!--                <a class="nav-link nav-link-success" href="https://coreui.io" target="_top">-->
-<!--                    <i class="nav-icon icon-cloud-download"></i> Download CoreUI</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link nav-link-danger" href="https://coreui.io/pro/" target="_top">-->
-<!--                    <i class="nav-icon icon-layers"></i> Try CoreUI-->
-<!--                    <strong>PRO</strong>-->
-<!--                </a>-->
-<!--            </li>-->
+            <li class="nav-item mt-auto">
+                <a class="nav-link nav-link-success" href="#" target="_top">
+                    <i class="nav-icon icon-cloud-download"></i>Download App </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-danger" href="#" target="_top">
+                    <i class="nav-icon icon-layers"></i>Visit
+                    <strong>Website</strong>
+                </a>
+            </li>
         </ul>
     </nav>
     <button class="sidebar-minimizer brand-minimizer" type="button"></button>

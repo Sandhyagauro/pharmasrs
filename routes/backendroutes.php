@@ -8,5 +8,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
     Route::post('menu/store',['as'=>'admin.menu.store','uses'=>'MenuController@store']);
     Route::post('menu/save',['as'=>'admin.menu.save','uses'=>'MenuController@save']);
 
+//    Route::resource('users','UserController');
+
 
 });

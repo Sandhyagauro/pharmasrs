@@ -59,21 +59,22 @@
                         <div class='dd-handle'></div>
                         <div class='dd-content'><span>{{$menu->title}}</span>
                             <div class='ns-actions'>
-<!--                                <a title='Publish Menu' id='{$item->id}' class='publish' href='#'><img id='publish-image-".$item->id."' alt='Publish' src='".url('/').'/assets/images/'.$imageName."'></a>-->
-<!--                                <a title='Edit Menu' class='edit-menu' href='".langRoute('admin.menu.edit', $item->id)."'><img alt='Edit' src='".url('/').'/assets/images/edit.png'."'></a>-->
-<!--                                <a class='delete-menu' href='".URL::route('admin.menu.delete', $item->id)."'><img alt='Delete' src='".url('/').'/assets/images/cross.png'."'></a><input type='hidden' value='1' name='menu_id'>-->
+                                @if($menu->is_published)
+                                <a title='Publish Menu' id='{$menu->id}' class='publish' href='#'><img id='publish-image-".$menu->id."' alt='Publish' src="../assets/images/publish_16x16.png"></a>
+                                @else
+                                <a title='Remove Publish Menu' id='{$menu->id}' class='publish' href='#'><img id='publish-image-".$menu->id."' alt='Publish' src="../assets/images/not_publish_16x16.png"></a>
+
+                                @endif
+                                <a title='Edit Menu' class='edit-menu' href=".route('admin.menu.edit', $menu->id)."><img alt='Edit' src="../assets/images/edit.png"></a>
+                                <a class='delete-menu' href="route('admin.menu.delete', $menu->id)"><img alt='Delete' src="../assets/images/cross.png"></a><input type='hidden' value='1' name='menu_id'>
                             </div>
                         </div>
                     </li>
                     @endforeach
-
-
                 </div>
-                @if($menus === null)
+                @if($menus == null)
                 <div class="alert alert-danger">No results found</div>
                 @endif
-
-
             </div>
         </div>
     </div>
