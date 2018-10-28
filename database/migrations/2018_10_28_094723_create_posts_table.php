@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCmsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cms', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->longText('content');
@@ -21,7 +21,8 @@ class CreateCmsTable extends Migration
             $table->string('type');
             $table->string('slug')->unique();
             $table->timestamps();
-        });    }
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -30,6 +31,6 @@ class CreateCmsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('posts');
     }
 }

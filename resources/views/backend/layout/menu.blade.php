@@ -12,6 +12,10 @@
                 <a class="nav-link" href="{{url('admin/menu')}}">
                     <i class="nav-icon icon-drop"></i> Menu Manager</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/banner')}}">
+                    <i class="nav-icon icon-drop"></i> Banner Manager</a>
+            </li>
 <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="typography.html">-->
 <!--                    <i class="nav-icon icon-pencil"></i> Typography</a>-->
@@ -20,6 +24,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/admin/users')}}">
                     <i class="nav-icon fa fa-users"></i> Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin/roles')}}">
+                    <i class="nav-icon fa fa-users"></i> Roles</a>
             </li>
 <!--            <li class="nav-item nav-dropdown">-->
 <!--                <a class="nav-link nav-dropdown-toggle" href="#">-->
