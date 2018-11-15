@@ -3,17 +3,27 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Models\Post;
-
-
+use App\PostHasImage;
+use Illuminate\Http\Request;
+use Session;
 class BannerController extends Controller
 {
+
+    protected $banner;
+
+    public function __construct()
+    {
+
+
+    }
 
 
     public function index()
     {
-        $banners = Post::where('type', '=', 'banner')->orderby('id', 'desc')->get();
-        return view('backend.admin.banner.index', compact('banners'));
+        $posts =Post::where('type', '=', 'banner')->orderby('id', 'desc')->get();
+        return view('backend.admin.banner.index', compact('posts'));
     }
 
     public function create()
@@ -24,10 +34,9 @@ class BannerController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
         $this->validate($request, [
             'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',]);
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',]);
         $image = new Image();
         $banner_pic = $request->file('image');
         $type = $banner_pic->getClientOriginalExtension();
@@ -45,6 +54,7 @@ class BannerController extends Controller
 
         }
         $image->save();
+
         $post = new Post();
         $post->title = $request->title;
         $post->content = $request->content;
@@ -53,12 +63,13 @@ class BannerController extends Controller
         $post->save();
 
 
-        $post_image_relations = new PostImagesRelations();
-        $post_image_relations->post_id = $post->id;
-        $post_image_relations->file_id = $image->id;
-        $post_image_relations->save();
-        Flash::message('Contents added successfully');
-        return Redirect('en/admin/banner');
+        $post_image = new PostHasImage();
+        $post_image->post_id = $post->id;
+        $post_image->file_id = $image->id;
+        $post_image->save();
+        Session::flash('message', 'Banner added Successfully');
+
+        return Redirect('admin/banner');
 
     }
 
@@ -73,27 +84,27 @@ class BannerController extends Controller
 
     public function edit($id)
     {
-        $banner = Post::find($id);
-        return view('backend.Admin.banner.edit', compact('banner'));
+        $post = Post::find($id);
+        return view('backend.admin.banner.edit', compact('post'));
     }
 
 
     public function update(Request $request, $id)
     {
-
         $this->validate($request, [
             'title' => 'required',
-//            'image' => 'required'
+
         ]);
-        $banner = Post::find($id);
-        $banner->title = $request->input('title');
-        $banner->content = $request->input('content');
-        $banner->save();
-        $banner->type = 'banner';
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->excerpt = $request->input('excerpt');
+        $post->save();
+        $post->type = 'banner';
 
         if ($request->image) {
-            $post_relation_id = PostImagesRelations::where('post_id', '=', $banner->id)->first();
-            $file = Image::find($post_relation_id->file_id);
+            $post_image_id = PostHasImage::where('post_id', '=', $post->id)->first();
+            $file = Image::find($post_image_id->file_id);
             $banner_pic = $request->file('image');
 
             $type = $banner_pic->getClientOriginalExtension();
@@ -114,20 +125,18 @@ class BannerController extends Controller
             }
             $file->save();
         }
-        Flash::message('Contents Updated Successfully');
-
-        return redirect('en/admin/banner');
+        Session::flash('message', 'Banner updated Successfully');
+        return redirect('admin/banner');
 
     }
 
 
     public function destroy($id)
     {
-        $banner=Post::find($id);
-        $banner->delete();
-        Flash::message('Content Deleted Successfully');
-
-        return redirect('en/admin/banner');
+        $post=Post::find($id);
+        $post->delete();
+        Session::flash('message', 'Banner Deleted Successfully');
+        return redirect('admin/banner');
 
     }
 

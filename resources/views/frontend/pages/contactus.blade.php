@@ -105,7 +105,8 @@
             <div class="col">
                 <div class="collapse pr-4" id="collapseForm">
 
-                    <form class="contact-form pt-5 mt-5" data-request="contactform::onSend" id="contact_form">
+                        <form class="contact-form pt-5 mt-5" action="{{route('contactinfo.store')}}" method="POST">
+                            {!! csrf_field(); !!}
 
                         <strong id="succesMsg" ></strong>
 
@@ -130,7 +131,7 @@
                                        placeholder="Address">
                             </div>
                             <div class="form-group col-lg-3">
-                                <input type="text" value="" data-msg-required="Please enter the mobile number."
+                                <input type="number" value="" data-msg-required="Please enter the mobile number."
                                        maxlength="100" class="form-control" name="mobile" id="mobile"
                                        placeholder="Mobile number">
                             </div>

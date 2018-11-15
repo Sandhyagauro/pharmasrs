@@ -131,18 +131,27 @@
         @yield('content')
 
     </main>
-    </div>
-    @include('backend/layout/footer')
+</div>
+@include('backend/layout/footer')
 
-    <!-- CoreUI and necessary plugins-->
-    <script src="{{url('node_modules/jquery/dist/jquery.min.js')}}"></script>
-    <script src="{{url('node_modules/popper.js/dist/umd/popper.min.js')}}"></script>
-    <script src="{{url('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('node_modules/pace-progress/pace.min.js')}}"></script>
-    <script src="{{url('node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{url('node_modules/@coreui/coreui/dist/js/coreui.min.js')}}"></script>
-    <!-- Plugins and scripts required by this view-->
-    <script src="{{url('node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js')}}"></script>
-    <script src="{{url('js/main.js')}}"></script>
+<!-- CoreUI and necessary plugins-->
+<script src="{{url('node_modules/jquery/dist/jquery.min.js')}}"></script>
+
+<script src="{{url('node_modules/popper.js/dist/umd/popper.min.js')}}"></script>
+<script src="{{url('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{url('node_modules/pace-progress/pace.min.js')}}"></script>
+<script src="{{url('node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>
+<script src="{{url('node_modules/@coreui/coreui/dist/js/coreui.min.js')}}"></script>
+<!-- Plugins and scripts required by this view-->
+<script
+    src="{{url('node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js')}}"></script>
+<script src="{{url('js/main.js')}}"></script>
+
+<script src="{{ url('assets/ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace('content');
+</script>
+
+
 </body>
 </html>

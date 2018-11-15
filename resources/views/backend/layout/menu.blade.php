@@ -13,10 +13,26 @@
                     <i class="nav-icon icon-drop"></i> Menu Manager</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/post')}}">
+                    <i class="nav-icon icon-drop"></i> Content Manager</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/banner')}}">
                     <i class="nav-icon icon-drop"></i> Banner Manager</a>
             </li>
-<!--            <li class="nav-item">-->
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/department')}}">
+                    <i class="nav-icon icon-drop"></i> Clinic Departments </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/news')}}">
+                    <i class="nav-icon icon-drop"></i> News and Articles </a>
+            </li> <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/contact')}}">
+                    <i class="nav-icon icon-drop"></i> Contact Informations </a>
+            </li>
+            <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="typography.html">-->
 <!--                    <i class="nav-icon icon-pencil"></i> Typography</a>-->
 <!--            </li>-->

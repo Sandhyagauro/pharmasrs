@@ -165,72 +165,21 @@
             </div>
         </div>
         <div class="row">
+            @foreach($departments as $department)
             <div class="col-md-6 col-lg-4 mb-4 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
                 <div class="card border-0">
                     <div class="card-body text-center p-2">
+                        @foreach($department->image as $image)
                         <div class="image-frame mb-4">
-                            <img src="{{url('img/medical/cardiology.jpg')}}" class="img-fluid rounded-circle" alt="">
+                            <img src="{{$image->file_data}}" class="img-fluid rounded-circle" alt="">
                         </div>
-                        <h3 class="font-weight-bold text-4">Cardiology</h3>
-                        <p class="px-sm-5 px-md-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. </p>
+                        @endforeach
+                        <h3 class="font-weight-bold text-4">{{$department->title}}</h3>
+                        <p class="px-sm-5 px-md-0">{!! html_entity_decode(str_limit($department->content,80)) !!} </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 mb-4 appear-animation" data-appear-animation="fadeInUpShorter">
-                <div class="card border-0">
-                    <div class="card-body text-center p-2">
-                        <div class="image-frame mb-4">
-                            <img src="{{url('img/medical/cardiology.jpg')}}" class="img-fluid rounded-circle" alt="">
-                        </div>
-                        <h3 class="font-weight-bold text-4">Gastroenterology</h3>
-                        <p class="px-sm-5 px-md-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
-                <div class="card border-0">
-                    <div class="card-body text-center p-2">
-                        <div class="image-frame mb-4">
-                            <img src="{{url('img/medical/cardiology.jpg')}}" class="img-fluid rounded-circle" alt="">
-                        </div>
-                        <h3 class="font-weight-bold text-4">Pulmonology</h3>
-                        <p class="px-sm-5 px-md-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                <div class="card border-0">
-                    <div class="card-body text-center p-2">
-                        <div class="image-frame mb-4">
-                            <img src="{{url('img/medical/cardiology.jpg')}}" class="img-fluid rounded-circle" alt="">
-                        </div>
-                        <h3 class="font-weight-bold text-4">Dental</h3>
-                        <p class="px-sm-5 px-md-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
-                <div class="card border-0">
-                    <div class="card-body text-center p-2">
-                        <div class="image-frame mb-4">
-                            <img src="{{url('img/medical/cardiology.jpg')}}" class="img-fluid rounded-circle" alt="">
-                        </div>
-                        <h3 class="font-weight-bold text-4">Gynecology</h3>
-                        <p class="px-sm-5 px-md-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
-                <div class="card border-0">
-                    <div class="card-body text-center p-2">
-                        <div class="image-frame mb-4">
-                            <img src="{{url('img/medical/cardiology.jpg')}}" class="img-fluid rounded-circle" alt="">
-                        </div>
-                        <h3 class="font-weight-bold text-4">Hepatology</h3>
-                        <p class="px-sm-5 px-md-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. </p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -283,52 +232,26 @@
             </div>
         </div>
         <div class="row mb-5">
+            @foreach($news as $news)
             <div class="col-md-4 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="800">
                 <article class="blog-post">
                     <header class="mb-2">
                         <div class="image-frame hover-effect-2">
                             <a href="{{url('/blog-detail')}}" class="d-block">
-                                <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid mb-3" alt="" />
+                                @foreach($news->image as $image)
+                                <img src="{{$image->file_data}}" class="img-fluid mb-3" alt="" />
+                                @endforeach
                             </a>
                         </div>
-                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/blog-detail')}}" class="text-color-dark">Diagnosis for a better life</a></h3>
+                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/blog-detail')}}" class="text-color-dark">{{$news->title}}</a></h3>
                         <i class="far fa-clock mt-1 text-color-primary"></i>
-                        <time class="font-tertiary text-1" datetime="2018-01-17">Jan 17, 2018</time>
+                        <time class="font-tertiary text-1" datetime="2018-01-17">{{$news->created_at->format('l j F Y') }}</time>
                     </header>
-                    <p>Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    <p>{!! html_entity_decode(str_limit($news->content,100)) !!}</p>
                 </article>
             </div>
-            <div class="col-md-4 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
-                <article class="blog-post">
-                    <header class="mb-2">
-                        <div class="image-frame hover-effect-2">
-                            <a href="{{url('/blog-detail')}}" class="d-block">
-                                <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid mb-3" alt="" />
-                            </a>
-                        </div>
-                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/blog-detail')}}" class="text-color-dark">Medical Scientists</a></h3>
-                        <i class="far fa-clock mt-1 text-color-primary"></i>
-                        <time class="font-tertiary text-1" datetime="2018-01-17">Jan 17, 2018</time>
-                    </header>
-                    <p>Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
-                </article>
-            </div>
-            <div class="col-md-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="800">
-                <article class="blog-post">
-                    <header class="mb-2">
-                        <div class="image-frame hover-effect-2">
-                            <a href="{{url('/blog-detail')}}" class="d-block">
-                                <img src="{{url('img/medical/blog/team.jpg')}}" class="img-fluid mb-3" alt="" />
-                            </a>
-                        </div>
-                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/blog-detail')}}" class="text-color-dark">Team of Pharmacists</a></h3>
-                        <i class="far fa-clock mt-1 text-color-primary"></i>
-                        <time class="font-tertiary text-1" datetime="2018-01-17">Jan 17, 2018</time>
-                    </header>
-                    <p>Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
-                </article>
-            </div>
-        </div>
+            @endforeach
+           </div>
         <div class="row text-center">
             <div class="col">
                 <a href="{{url('news-and-articles')}}" class="btn btn-outline btn-primary btn-h-4 btn-v-3 font-weight-semibold text-0">VIEW NEWS AND ARTICLES</a>

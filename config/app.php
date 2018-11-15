@@ -13,6 +13,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'PharmaSRS'),
+    'admin_email' => 'sandhya@view9.com.np',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,6 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+
 
         /*
          * Package Service Providers...

@@ -38,6 +38,7 @@
 
 @include('frontend/layout/footer')
 <script src="{{ 'assets/js/all.js' }}"></script>
+
 </div>
 </body>
 </html>
