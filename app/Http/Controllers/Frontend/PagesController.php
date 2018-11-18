@@ -40,6 +40,8 @@ class PagesController extends Controller
                 case 'aboutus':
                     break;
                 case 'news-and-articles':
+                    $this->view_data['news'] = Post::where('type','=','news')->limit(3)->orderBy('id','desc')->get();
+
                     break;
                 case 'contactus':
                     break;

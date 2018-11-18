@@ -37,7 +37,7 @@
                                                     <textarea   rows="5" name="content" class="form-control">{{$post->content}}</textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    Excerpt
+                                                    Created By
                                                     <input type="text" value="{{$post->excerpt}}" name="excerpt" class="form-control">
                                                 </div>
                                                 @foreach($post->image as $image)

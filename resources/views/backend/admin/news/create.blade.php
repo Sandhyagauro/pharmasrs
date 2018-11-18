@@ -37,7 +37,7 @@
                                                     <textarea  rows="5" name="content" class="form-control"></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    Excerpt
+                                                    Created By
                                                     <input type="text" name="excerpt" class="form-control">
 
                                                 </div>

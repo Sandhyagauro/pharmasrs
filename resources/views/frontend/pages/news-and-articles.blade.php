@@ -17,158 +17,30 @@
 <section class="section">
     <div class="container">
         <div class="row">
+            @foreach($news as $news)
 
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
                 <a href="{{url('/blog-detail')}}">
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{url('img/medical/blog/team.jpg')}}'}">
+                    @foreach($news->image as $image)
+                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{$image->file_data}}'}">
                         <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">Amazing Space</h3>
+                            <h3 class="font-weight-bold text-4 mb-1">{{$news->title}}</h3>
                             <p>
                                 <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-16">Jan 17, 2018</time>
+                                <time class="font-tertiary text-1" datetime="2018-01-16">{{$news->created_at->format('j F Y')}}</time>
                             </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>{!! html_entity_decode(str_limit($news->content,20)) !!}</p>
                             <p class="text-color-dark font-weight-semibold mb-0">
-                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />
-                                by Bob Doe
+<!--                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />-->
+                                {{$news->excerpt}}
                             </p>
                         </div>
                     </div>
+                    @endforeach
                 </a>
             </div>
+            @endforeach
 
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
-                <a href="{{url('/blog-detail')}}">
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{url('img/medical/blog/team.jpg')}}'}">
-                        <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">Getting Ready</h3>
-                            <p>
-                                <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-15">Jan 16, 2018</time>
-                            </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p class="text-color-dark font-weight-semibold mb-0">
-                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />
-                                by John Doe
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
-                <a href="{{url('/blog-detail')}}">
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{url('img/medical/blog/team.jpg')}}'}">
-                        <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">Cool Hobbies</h3>
-                            <p>
-                                <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-14">Jan 15, 2018</time>
-                            </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p class="text-color-dark font-weight-semibold mb-0">
-                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />
-                                by Jessica Doe
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
-                <a href="{{url('/blog-detail')}}">
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{url('img/medical/blog/team.jpg')}}'}">
-                        <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">Work Machines</h3>
-                            <p>
-                                <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-13">Jan 14, 2018</time>
-                            </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p class="text-color-dark font-weight-semibold mb-0">
-                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />
-                                by Alice Doe
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
-                <a href="{{url('/blog-detail')}}">
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{url('img/medical/blog/team.jpg')}}'}">
-                        <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">Breaking the Rules</h3>
-                            <p>
-                                <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-12">Jan 12, 2018</time>
-                            </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p class="text-color-dark font-weight-semibold mb-0">
-                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />
-                                by Bob Doe
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
-                <a href="{{url('/blog-detail')}}">
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{url('img/medical/blog/team.jpg')}}'}">
-                        <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">Ways to Start</h3>
-                            <p>
-                                <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-11">Jan 11, 2018</time>
-                            </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p class="text-color-dark font-weight-semibold mb-0">
-                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />
-                                by Bob Doe
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
-                <a href="{{url('/blog-detail')}}">
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{url('img/medical/blog/team.jpg')}}'}">
-                        <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">Vintage Culture</h3>
-                            <p>
-                                <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-10">Jan 10, 2018</time>
-                            </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p class="text-color-dark font-weight-semibold mb-0">
-                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />
-                                by John Doe
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
-                <a href="{{url('/blog-detail')}}">
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{url('img/medical/blog/team.jpg')}}'}">
-                        <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">Meet Our CEO</h3>
-                            <p>
-                                <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-05">Jan 5, 2018</time>
-                            </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <p class="text-color-dark font-weight-semibold mb-0">
-                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />
-                                by Jessica Doe
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </div>
         <hr class="mt-5 mb-4">
         <div class="row align-items-center justify-content-between">
