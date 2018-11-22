@@ -1,8 +1,8 @@
 @extends('frontend/layout/layout')
 @section('content')
-
+@foreach($aboutBanner->image as $image)
 <section id="services" class="section section-background section-height-4 appear-animation" data-plugin-image-background
-         data-plugin-options="{'imageUrl': '{{url('img/aboutusbanner.jpg')}}'}" data-appear-animation="fadeIn"
+         data-plugin-options="{'imageUrl': '{{$image->file_data}}'}" data-appear-animation="fadeIn"
          data-appear-animation-duration="1s">
     <div class="container">
         <div class="row text-center mb-4">
@@ -22,9 +22,12 @@
 <!--                </div>-->
                 <div class="overflow-hidden">
                     <h2 class="banner-title font-weight-bold text-color-light mb-0 appear-animation" data-appear-animation="maskUp"
-                        data-appear-animation-delay="200">About Us</h2>
+                        data-appear-animation-delay="200">{{$aboutBanner->title}}</h2>
+
                     <p class="text-color-light-2 text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                       data-appear-animation-delay="400">You need options to choose for your courier service. Why not choose us today?  With mails Nepal, we provide you multiple options online to manage your logistics.In addition to service we provide, we value the relation we are building with you because its you who we serve and it matters the most to us. We are 100% positive that you will experience better courier service with the options we provide. </p>
+                       data-appear-animation-delay="400">
+                       {{ $aboutBanner->content }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -32,6 +35,7 @@
 
     </div>
 </section>
+@endforeach
 <section class="section section-height-4  more-about-us">
 <div class="container">
     <div class="row">
@@ -40,7 +44,7 @@
 <!--                <span class="top-sub-title text-color-primary">LOREM IPSUM DOLOR SIT</span>-->
 
                 <h2 class="word-rotator letters type font-weight-bold text-5 mb-3">
-                    <span>PHARMA SRS</span>
+                    <span>{{$aboutSection->title}}</span>
 										<span class="word-rotator-words waiting">
 											<b class="is-visible">think.</b>
 											<b>believe.</b>
@@ -48,9 +52,9 @@
 										</span>
                 </h2>
             </div>
-            <p class="lead mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc.</p>
+            <p class="lead mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">{{$aboutSection->excerpt}}</p>
 
-            <p class="mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc. Vivamus bibendum magna ex, et faucibus lacus venenatis eget. Suspendisse potenti. Curabitur euismod facilisis neque, eu malesuada diam finibus non. Nullam nec vehicula leo. Morbi porta ante eu feugiat mollis.</p>
+            <p class="mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">{!! html_entity_decode($aboutSection->content) !!}</p>
 
 
         </div>
@@ -122,26 +126,26 @@
                         <div class="row m-0">
                             <div class="col-sm-6">
                                 <div class="counter text-dark my-4 pb-1">
-                                    <strong data-to="25000" data-append="+">25000+</strong>
-                                    <label class="font-weight-light">Happy Customers</label>
+                                    <strong data-to="{{$happyCustomers->excerpt}}" data-append="+">{{$happyCustomers->excerpt}}</strong>
+                                    <label class="font-weight-light">{{$happyCustomers->title}}</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="counter text-dark my-4 pb-1">
-                                    <strong data-to="15">15</strong>
-                                    <label class="font-weight-light">Available Pharmacist</label>
+                                    <strong data-to="{{$availablePharmacist->excerpt}}">{{$availablePharmacist->excerpt}}</strong>
+                                    <label class="font-weight-light">{{$availablePharmacist->title}}</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="counter text-dark my-4 pt-1">
-                                    <strong data-to="352">352</strong>
-                                    <label class="font-weight-light">Answered Tickets</label>
+                                    <strong data-to="{{$developmentHours->excerpt}}">{{$developmentHours->excerpt}}</strong>
+                                    <label class="font-weight-light">{{$developmentHours->title}}</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="counter text-dark my-4 pt-1">
-                                    <strong data-to="178">178</strong>
-                                    <label class="font-weight-light">Development Hours</label>
+                                    <strong data-to="{{$ansTickets->excerpt}}">{{$ansTickets->excerpt}}</strong>
+                                    <label class="font-weight-light">{{$ansTickets->title}}</label>
                                 </div>
                             </div>
                         </div>

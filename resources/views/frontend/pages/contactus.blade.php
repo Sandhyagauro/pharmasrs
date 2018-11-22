@@ -1,10 +1,12 @@
 @extends('frontend/layout/layout')
 @section('content')
+@foreach($contactSection->image as $image)
 <div class="parallax py-5 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax
-     data-plugin-options="{'speed': 1.5, 'parallaxHeight': '115%'}" data-image-src="{{url('img/contactusbanner.jpg')}}">
+     data-plugin-options="{'speed': 1.5, 'parallaxHeight': '115%'}" data-image-src="{{$image->file_data}}">
     <div class="spacer py-5 my-5"></div>
     <div class="spacer py-5 my-5"></div>
 </div>
+@endforeach
 <section class="section section-content-pull-top-2 pull-top-level-3 z-index-1 py-lg-0 appear-animation"
          data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
     <div class="container pb-0">
@@ -15,15 +17,15 @@
                 </div>
                 <div class="overflow-hidden mb-2">
                     <h2 class="font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp"
-                        data-appear-animation-delay="800">Contact Us</h2>
+                        data-appear-animation-delay="800">{{$contactSection->title}}</h2>
                 </div>
                 <div class="overflow-hidden">
                     <p class="lead mb-0 appear-animation" data-appear-animation="maskUp"
-                       data-appear-animation-delay="1000">Contact Us Anytime, We are happy to help you.</p>
+                       data-appear-animation-delay="1000">{!! html_entity_decode($contactSection->content) !!}</p>
                 </div><br>
 
                 <p class="text-2 px-lg-5 appear-animation" data-appear-animation="fadeInUpShorter"
-                   data-appear-animation-delay="1200">Got some inquiry or message for us? Or just want to know status of your courier? Contact Us! We are more than happy to help you anytime.
+                   data-appear-animation-delay="1200">{{$contactSection->excerpt}}
 
                 </p>
             </div>

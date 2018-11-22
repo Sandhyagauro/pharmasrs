@@ -6,7 +6,7 @@
         <div class="card-body">
 
             <a href="{{route('department.create')}}" class="btn btn-success"><i class="fa fa-plus fa-md"
-                                                                          aria-hidden="true"></i> New</a>
+                                                                                aria-hidden="true"></i> New</a>
 
             @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
@@ -17,7 +17,7 @@
 
                     <th>S.No.</th>
                     <th>Title</th>
-                    <th >Content</th>
+                    <th>Content</th>
                     <th>Image</th>
                     <th>Slug</th>
                     <th>Actions</th>
@@ -28,22 +28,14 @@
                 @foreach($posts as $index=>$post)
                 <tr>
                     <td>{{++$index}}.</td>
-                    <td >
+                    <td>
                         {{$post->title}}
                     </td>
-                    <td >
+                    <td>
                         {{$post->content}}
                     </td>
 
-                    @if($post->image->count() > 0)
-                    @foreach($post->image as $image)
-                    <td>
-                        <img src="{{asset($image->file_data)}}" style="width: 80px; height: 80px;"/>
-                    </td>
-                    @endforeach
-                    @else
-                    <td>---</td>
-                    @endif
+                    <td><img src="{{asset($post->image)}}" style="height: 100px; width: 100px"></td>
 
                     <td>
                         {{$post->slug}}
@@ -59,7 +51,9 @@
                 </tr>
                 @endforeach
                 @else
-                <tr><td colspan="6">No Posts Found</td></tr>
+                <tr>
+                    <td colspan="6">No Posts Found</td>
+                </tr>
                 @endif
 
                 </tbody>

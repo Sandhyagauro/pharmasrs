@@ -51,10 +51,10 @@
                     <td style="width: 150px">
                         <a href="{{route('post.edit',$post->id)}}" class='btn btn-primary btn-sm'><i
                                 class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a href="{{route('post.destroy',$post->id)}}" class="btn btn-danger btn-sm">
-
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </a>
+<!--                        <a href="{{route('post.destroy',$post->id)}}" class="btn btn-danger btn-sm">-->
+<!---->
+<!--                            <i class="fa fa-trash-o" aria-hidden="true"></i>-->
+<!--                        </a>-->
                     </td>
 
 

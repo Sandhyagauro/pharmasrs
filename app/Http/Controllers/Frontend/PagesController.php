@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CategoryDepartment;
 use App\Models\ContactDetail;
+use App\Models\Menu;
+use App\Models\PackageList;
 use App\Models\Post;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
+use Laravel\Socialite\Facades\Socialite;
 use Session;
 
 class PagesController extends Controller
@@ -26,6 +30,7 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index($slug = null)
     {
 
@@ -34,27 +39,58 @@ class PagesController extends Controller
         if (file_exists($file_path)) {
             switch ($slug) {
                 case 'index':
-                    $this->view_data['news'] = Post::where('type','=','news')->limit(3)->orderBy('id','desc')->get();
-                    $this->view_data['departments'] = Post::where('type','=','department')->limit(6)->orderBy('id','desc')->get();
+
+                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+                    $this->view_data['banners'] = Post::where('type', '=', 'banner')->orderBy('id', 'desc')->get();
+                    $this->view_data['teams'] = Post::where('type', '=', 'team')->orderBy('id', 'desc')->get();
+                    $this->view_data['clinicDepartment'] = Post::where('slug', '=', 'clinic-departments')->first();
+                    $this->view_data['aboutSection'] = Post::where('slug', '=', 'about-pharma-srs')->first();
+                    $this->view_data['departments'] =CategoryDepartment::limit(6)->orderBy('id', 'desc')->get();
+                    $this->view_data['news'] = Post::where('type', '=', 'news')->limit(3)->orderBy('id', 'desc')->get();
                     break;
                 case 'aboutus':
+                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+                    $this->view_data['aboutBanner'] = Post::where('slug', '=', 'about-us')->first();
+                    $this->view_data['aboutSection'] = Post::where('slug', '=', 'about-pharma-srs')->first();
+                    $this->view_data['happyCustomers'] = Post::where('slug', '=', 'happy-customers')->first();
+                    $this->view_data['availablePharmacist'] = Post::where('slug', '=', 'available-pharmacist')->first();
+                    $this->view_data['developmentHours'] = Post::where('slug', '=', 'development-hours')->first();
+                    $this->view_data['ansTickets'] = Post::where('slug', '=', 'answered-tickets')->first();
                     break;
                 case 'news-and-articles':
-                    $this->view_data['news'] = Post::where('type','=','news')->limit(3)->orderBy('id','desc')->get();
-
+                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+                    $this->view_data['newsBanner'] = Post::where('slug', '=', 'news-and-articles')->first();
+                    $this->view_data['news'] = Post::where('type', '=', 'news')->limit(3)->orderBy('id', 'desc')->get();
                     break;
                 case 'contactus':
+                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+                    $this->view_data['contactSection'] = Post::where('slug', '=', 'contact-us')->first();
                     break;
                 case 'blog-detail':
+                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+                    break;
+                case 'consult-online':
+                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+                    $this->view_data['consultOnlineBanner'] = Post::where('slug', '=', 'consult-online')->first();
+                    $this->view_data['departments'] =CategoryDepartment::orderBy('id', 'desc')->get();
+                    break;
+                case 'consult':
+                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+                    $this->view_data['packages'] = PackageList::all();
+                    $this->view_data['departments'] =CategoryDepartment::orderBy('id', 'desc')->get();
+                    break;
+                case 'login-page':
+                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     break;
                 default:
                     break;
 
             }
-            return view('frontend.pages.' . $slug,$this->view_data);
+            return view('frontend.pages.' . $slug, $this->view_data);
         }
         // 3. No page exist (404)
-            return view('frontend.pages.404');
+        $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+        return view('frontend.pages.404',$this->view_data);
 
     }
 
@@ -150,4 +186,5 @@ class PagesController extends Controller
     {
         //
     }
+
 }

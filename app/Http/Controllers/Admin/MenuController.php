@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Session;
+use Input;
+use Response;
 
 class MenuController extends Controller
 {
@@ -19,7 +22,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all();
+        $menu = Menu::orderBy('order','asc')->get();
+        $menus=$this->menu->generateMenu($menu);
         return view('backend.admin.menu.index',compact('menus'));
     }
 
@@ -51,16 +55,13 @@ class MenuController extends Controller
         $menus->url = $request->url;
         $menus->order 	= Menu::max('order')+1;
         $menus->save();
-
-
-        return redirect()->back();
-
+        Session::flash('message', 'Menu added Successfully');
+        return redirect('admin/menu')->with('success', 'Content updated successfully');
     }
 
-    public function save(){
-
+    public function save()
+    {
         $this->menu->changeParentById($this->menu->parseJsonArray(json_decode(Input::get('json'), true)));
-
         return Response::json(array('result' => 'success'));
     }
     /**
@@ -82,8 +83,8 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $menu = Menu::find($id);
+        return view('backend.admin.menu.edit', compact('menu'));    }
 
     /**
      * Update the specified resource in storage.
@@ -94,7 +95,13 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $menu = Menu::find($id);
+        $menu->title = $request->menu_name;
+        $menu->url = $request->url;
+        $menu->save();
+        Session::flash('message', 'Menu updated Successfully');
+        return redirect('admin/menu');
     }
 
     /**
@@ -105,6 +112,10 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->delete();
+        Session::flash('message', 'Menu deleted Successfully');
+        return redirect('admin/menu');
+
     }
 }

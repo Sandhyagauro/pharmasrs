@@ -4,7 +4,7 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-body">
-            <a href="{{url('/users/create')}}" class="btn btn-success"><i class="fa fa-plus fa-md"
+            <a href="{{route('users.create')}}" class="btn btn-success"><i class="fa fa-plus fa-md"
                                                                           aria-hidden="true"></i> New</a>
 
             <table class="table table-responsive-sm table-hover table-outline mb-0">

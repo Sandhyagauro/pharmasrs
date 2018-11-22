@@ -20,6 +20,11 @@
                 <a class="nav-link" href="{{url('admin/banner')}}">
                     <i class="nav-icon icon-drop"></i> Banner Manager</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/team')}}">
+                    <i class="nav-icon icon-drop"></i> Team Manager</a>
+            </li>
+
 
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/department')}}">
@@ -36,6 +41,12 @@
 <!--                <a class="nav-link" href="typography.html">-->
 <!--                    <i class="nav-icon icon-pencil"></i> Typography</a>-->
 <!--            </li>-->
+            <li class="nav-title">ONLINE CONSULTATION</li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin/package')}}">
+                    <i class="nav-icon icon-pencil"></i> Package List</a>
+            </li>
+
             <li class="nav-title">ADMINISTRATOR</li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/admin/users')}}">

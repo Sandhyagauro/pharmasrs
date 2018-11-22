@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-8 text-left">
-                <h1 class="font-weight-bold">News And Articles</h1>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h1 class="font-weight-bold">{{$newsBanner->title}}</h1>
+                <p class="lead">{!! html_entity_decode($newsBanner->content) !!}</p>
             </div>
 
         </div>
@@ -18,7 +18,6 @@
     <div class="container">
         <div class="row">
             @foreach($news as $news)
-
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
                 <a href="{{url('/blog-detail')}}">
                     @foreach($news->image as $image)

@@ -37,9 +37,9 @@
                                             </div>
 
 
-                                            @foreach($post->image as $image)
-                                            <img src="{{ asset($image->file_data) }}" style="width: 150px; height: 150px" />
-                                            @endforeach
+
+                                            <img src="{{ asset($post->image) }}" style="width: 150px; height: 150px" />
+
                                             <div class="form-group">
                                                 <input type="file" name="image" class="form-control">
 

@@ -5,11 +5,14 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
     Route::get('/dashboard', array('as' => 'admin.dashboard', 'uses' => 'DashboardController@index'));
 
     Route::resource('menu','MenuController');
-    Route::post('menu/store',['as'=>'admin.menu.store','uses'=>'MenuController@store']);
     Route::post('menu/save',['as'=>'admin.menu.save','uses'=>'MenuController@save']);
+    Route::get('/menu/{id}/destroy',['as'=>'menu.destroy','uses'=>'MenuController@destroy']);
 
     Route::resource('/post','PostController');
     Route::get('/post/{id}/destroy',['as'=>'post.destroy','uses'=>'PostController@destroy']);
+
+    Route::resource('/team','TeamController');
+    Route::get('/team/{id}/destroy',['as'=>'team.destroy','uses'=>'TeamController@destroy']);
 
     Route::resource('/banner','BannerController');
     Route::get('/banner/{id}/destroy',['as'=>'banner.destroy','uses'=>'BannerController@destroy']);
@@ -23,6 +26,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
     Route::get('/contact','ContactController@index');
     Route::get('/contact/{id}/destroy',['as'=>'contact.destroy','uses'=>'ContactController@destroy']);
 
+    Route::resource('/package','PackageController');
+    Route::get('/package/{id}/destroy',['as'=>'package.destroy','uses'=>'PackageController@destroy']);
 
 
 

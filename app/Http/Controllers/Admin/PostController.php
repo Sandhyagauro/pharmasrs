@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Post;
@@ -8,6 +9,7 @@ use App\PostHasImage;
 use Illuminate\Http\Request;
 
 use Session;
+
 /**
  * Class PageController.
  *
@@ -20,7 +22,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::where('type','=','post')->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('type', '=', 'post')->orderBy('created_at', 'desc')->get();
         return view('backend.admin.post.index', compact('posts'));
 
 
@@ -80,10 +82,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = post::find($id);
-        $image = PostHasImage::select('post_has_images.file_id','images.file_data')->where('post_id','=',$id)
-   -> leftjoin('images','images.id','=','post_has_images.file_id')->first();
+        $image = PostHasImage::select('post_has_images.file_id', 'images.file_data')->where('post_id', '=', $id)
+            ->leftjoin('images', 'images.id', '=', 'post_has_images.file_id')->first();
 
-        return view('backend.admin.post.edit',compact('post','image'));
+        return view('backend.admin.post.edit', compact('post', 'image'));
 
     }
 
@@ -99,26 +101,52 @@ class PostController extends Controller
         $page->save();
 
         if (isset($request->image)) {
+
             $post_image_id = PostHasImage::where('post_id', '=', $page->id)->first();
-            $file = Image::find($post_image_id->file_id);
-            $post_pic = $request->file('image');
 
-            $type = $post_pic->getClientOriginalExtension();
-            $destination = 'uploads';
-            if (empty($post_pic)) {
-                return redirect()->back()->withInput();
-            } else if (!$post_pic->isValid()) {
-                return redirect()->back()->withInput();
-            } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
-                return redirect()->back()->withInput();
+            if (!empty($post_image_id)) {
+                $file = Image::find($post_image_id->file_id);
+                $post_pic = $request->file('image');
+
+                $type = $post_pic->getClientOriginalExtension();
+                $destination = 'uploads';
+                if (empty($post_pic)) {
+                    return redirect()->back()->withInput();
+                } else if (!$post_pic->isValid()) {
+                    return redirect()->back()->withInput();
+                } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                    return redirect()->back()->withInput();
+                } else {
+                    $fileName = rand(1, 999999) . '.' . $type;
+                    $file->file_data = $destination . "/" . $fileName;
+                    $post_pic->move($destination, $fileName);
+                }
+                $file->save();
             } else {
-                $fileName = rand(1, 999999) . '.' . $type;
-                $file->file_data = $destination . "/" . $fileName;
-                $post_pic->move($destination, $fileName);
+                $file = new Image();
+                $post_pic = $request->file('image');
+                $type = $post_pic->getClientOriginalExtension();
+                $destination = 'uploads';
+
+                if (empty($post_pic)) {
+                    return redirect()->back()->withInput();
+                } else if (!$post_pic->isValid()) {
+                    return redirect()->back()->withInput();
+                } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                    return redirect()->back()->withInput();
+                } else {
+                    $fileName = rand(1, 999999) . '.' . $type;
+                    $file->file_data = $destination . "/" . $fileName;
+                    $post_pic->move($destination, $fileName);
+                }
+
+                $file->save();
+
+                $post_file = new PostHasImage();
+                $post_file->post_id = $page->id;
+                $post_file->file_id = $file->id;
+                $post_file->save();
             }
-
-
-            $file->save();
 
         }
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\CategoryDepartment;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Post;
@@ -20,7 +21,7 @@ class DepartmentController extends Controller
     public function index()
     {
 
-        $posts = Post::where('type','=','department')->orderBy('created_at', 'desc')->get();
+        $posts = CategoryDepartment::all();
         return view('backend.admin.department.index', compact('posts'));
 
 
@@ -38,37 +39,31 @@ class DepartmentController extends Controller
             'title' => 'required',
         ]);
 
-        $post = new Post();
+        $post = new CategoryDepartment();
         $post->title = $request->title;
         $post->content = $request->content;
-        $post->type = 'department';
         $post->save();
-        if (isset($request->image)) {
-            $file = new Image();
-            $banner_pic = $request->file('image');
-            $type = $banner_pic->getClientOriginalExtension();
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $type = $image->getClientOriginalExtension();
             $destination = 'uploads';
-
-            if (empty($banner_pic)) {
+            if (empty($image)) {
                 return redirect()->back()->withInput();
-            } else if (!$banner_pic->isValid()) {
+            } else if (!$image->isValid()) {
                 return redirect()->back()->withInput();
             } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
                 return redirect()->back()->withInput();
             } else {
                 $fileName = rand(1, 999999) . '.' . $type;
-                $file->file_data = $destination . "/" . $fileName;
-                $banner_pic->move($destination, $fileName);
+                $post->image = $destination . "/" . $fileName;
+                $image->move($destination, $fileName);
+
             }
-
-            $file->save();
-
-            $post_file = new PostHasImage();
-            $post_file->post_id = $post->id;
-            $post_file->file_id = $file->id;
-            $post_file->save();
+            $post->save();
 
         }
+
+
 
         Session::flash('message', 'Clinic department added Successfully');
         return redirect('admin/department')->with('success', 'Content added successfully');
@@ -77,7 +72,7 @@ class DepartmentController extends Controller
 
     public function edit($id)
     {
-        $post = post::find($id);
+        $post = CategoryDepartment::find($id);
         return view('backend.admin.department.edit',compact('post'));
 
     }
@@ -87,34 +82,32 @@ class DepartmentController extends Controller
         $this->validate($request, [
             'title' => 'required',
         ]);
-        $page = post::find($id);
-        $page->title = $request->input('title');
-        $page->content = $request->input('content');
-        $page->save();
+        $post = CategoryDepartment::find($id);
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->save();
+        if ($request->image) {
 
-        if (isset($request->image)) {
-            $post_image_id = PostHasImage::where('post_id', '=', $page->id)->first();
-            $file = Image::find($post_image_id->file_id);
-            $post_pic = $request->file('image');
-
-            $type = $post_pic->getClientOriginalExtension();
+            $image = $request->file('image');
+            $type = $image->getClientOriginalExtension();
             $destination = 'uploads';
-            if (empty($post_pic)) {
+            if (empty($image)) {
                 return redirect()->back()->withInput();
-            } else if (!$post_pic->isValid()) {
+            } else if (!$image->isValid()) {
                 return redirect()->back()->withInput();
             } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
                 return redirect()->back()->withInput();
             } else {
                 $fileName = rand(1, 999999) . '.' . $type;
-                $file->file_data = $destination . "/" . $fileName;
-                $post_pic->move($destination, $fileName);
+                $post->image = $destination . "/" . $fileName;
+                $image->move($destination, $fileName);
+
             }
-
-
-            $file->save();
+            $post->save();
 
         }
+
+
 
         Session::flash('message', 'Clinic Department Updated Successfully');
         return redirect('admin/department');
@@ -123,7 +116,7 @@ class DepartmentController extends Controller
 
     public function destroy($id)
     {
-        $post = post::find($id);
+        $post = CategoryDepartment::find($id);
         $post->delete();
         Session::flash('message', 'Clinic Department  Deleted Successfully');
 

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -19,10 +18,10 @@
     <link rel="icon" type="image/png" href="#">
 
 
-
     <!-- Web Fonts  -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800"
-          rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800"
+        rel="stylesheet" type="text/css">
 
     <!--compiled css-->
     <link rel="stylesheet" href="{{ url('assets/css/all.css') }}">
@@ -32,13 +31,17 @@
 <body>
 
 <div class="body">
-@include('frontend/layout/header')
+    @include('frontend/layout/header')
 
-@yield('content')
+    @yield('content')
 
-@include('frontend/layout/footer')
-<script src="{{ 'assets/js/all.js' }}"></script>
-
+    @include('frontend/layout/footer')
+    <script src="{{ 'assets/js/all.js' }}"></script>
+    <script>
+        $("#date").datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+    </script>
 </div>
 </body>
 </html>

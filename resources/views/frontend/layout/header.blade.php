@@ -50,21 +50,13 @@
     <div class="header-nav-main header-nav-main-uppercase header-nav-main-effect-1 header-nav-main-sub-effect-1">
     <nav class="collapse">
     <ul class="nav flex-column flex-lg-row" id="mainNav">
+        @foreach($menus as $menu)
         <li class=" active ">
-            <a href="{{url('/aboutus')}}" >
-                About us
+            <a href="/{{$menu->url}}" >
+                {{$menu->title}}
             </a>
         </li>
-        <li class="  ">
-            <a href="{{url('/news-and-articles')}}" >
-                News and Articles
-            </a>
-        </li>
-        <li class="  ">
-            <a href="{{url('/contactus')}}" >
-                Contact Us
-            </a>
-        </li>
+        @endforeach
 
     </ul>
     </nav>

@@ -15,6 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
+    <meta name="_token" content="{!! csrf_token() !!}"/>
+
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>PHARMA SRS</title>
     <!-- Icons-->
@@ -136,7 +138,7 @@
 
 <!-- CoreUI and necessary plugins-->
 <script src="{{url('node_modules/jquery/dist/jquery.min.js')}}"></script>
-
+<script src="../assets/js/jquery.nestable.js"></script>
 <script src="{{url('node_modules/popper.js/dist/umd/popper.min.js')}}"></script>
 <script src="{{url('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <script src="{{url('node_modules/pace-progress/pace.min.js')}}"></script>
@@ -152,6 +154,48 @@
     CKEDITOR.replace('content');
 </script>
 
+<!--menu -->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var updateOutput = function (e) {
+            var list = e.length ? e : $(e.target),
+                output = list.data('output');
+            console.log($('.dd').nestable('serialize'));
+            if (window.JSON) {
+                var jsonData = window.JSON.stringify(list.nestable('serialize'));
+                console.log(window.JSON.stringify(list.nestable('serialize')));
+
+                //console.log(window.JSON.stringify(list.nestable('serialize')));
+
+                $.ajax({
+                    type: "POST",
+                    url: "{!! URL::route('admin.menu.save') !!}",
+                    data: {'json': jsonData,
+                        "_token": "{{ csrf_token() }}"},
+
+
+                    success: function (response) {
+
+                        //$("#msg").append('<div class="alert alert-success msg-save">Saved!</div>');
+                        $("#msg").append('<div class="msg-save" style="float:right; color:red;">Saving!</div>');
+                        $('.msg-save').delay(1000).fadeOut(500);
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+
+            } else {
+                alert('error');
+            }
+        };
+
+        $('#nestable').nestable({
+            group: 1
+        }).on('change', updateOutput);
+    });
+</script>
 
 </body>
 </html>
