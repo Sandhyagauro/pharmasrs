@@ -16,7 +16,13 @@
         </div>
         <div class="row pt-5">
             <div class="col-lg-12 appear-animation" data-appear-animation="fadeInRightShorter">
-                <form class="contact-form form-style-2" action="#" method="POST">
+
+                @if(Session::has('message'))
+                <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+                @endif
+
+                <form class="contact-form form-style-2" action="{{route('counsel.store')}}" method="POST">
+                    {!! csrf_field(); !!}
                     <!--                    <div class="contact-form-success alert alert-success d-none">-->
                     <!--                        <strong>Success!</strong> Your message has been sent to us.-->
                     <!--                    </div>-->
@@ -28,9 +34,11 @@
                         <div class="form-group col-md-12">
                             <div class="form-group">
                                 <label for="package">Select Package:</label>
-                                <select class="form-control" id="package">
+                                <select class="form-control" name="package_id">
                                     @foreach($packages as $package)
-                                    <option>Rs. {{$package->amount}} ( {{$package->duration}} Consultation)</option>
+                                    <option value="{{$package->id}}">Rs. {{$package->amount}} ( {{$package->duration}}
+                                        Consultation)
+                                    </option>
                                     @endforeach
 
                                 </select>
@@ -39,50 +47,94 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="department">Select Department:</label>
-                            <select class="form-control" id="department">
+                            <label>Select Category Department:</label>
+                            <select class="form-control" name="category_department_id">
                                 @foreach($departments as $department)
-                                <option>{{$department->title}}</option>
+                                <option value="{{$department->id}}">{{$department->title}}</option>
                                 @endforeach
-
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            Choose your preferred doctor (optional)
+                            <label for="department"> Choose your preferred Pharmacist</label><br>
+                            @foreach($pharmacists as $pharmacist)
+                            <section class="section section-height-1 bg-light-5 mt-2 mb-2">
+                                <h4 class="font-weight-semibold mb-0"><input type="radio" class="radio"
+                                                                             name="pharmacist_id"
+                                                                             value="{{$pharmacist->id}}"><label>{{$pharmacist->name}}</label>
+                                </h4>
+
+                                <p class="font-weight-light mb-0">{{$pharmacist->speciality}}</p>
+                            </section>
+                            @endforeach
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col">
-                            <label for="patient"> Choose Patient</label><br>
-                            <input type="radio" class="radio" name="self" value="self"><label for="y">Self</label>
-                            <input type="radio" class="radio" name="others" value="others"> <label
-                                for="y">Others</label>
+                            <label > Choose Patient</label>
+                            <select  name="patient" class="form-control"  id="choose_patient">
+                                <option value="self">Self</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="patient_section">
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>Patient Name</label>
+                                <input
+                                    class="form-control" name="patient_name" placeholder="Patient Name"
+                                    >
+                            </div>
+                            <div class="form-group col">
+                                <label>Patient Age</label>
+                                <input type="number"
+                                       class="form-control" name="patient_age" placeholder="Patient Age">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>Patient Gender</label>
+                                <select name="patient_gender" class="form-control">
+                                    <optgroup label="--Select Gender--">
+                                        <option value="">None</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Others</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group col">
+                                <label>Patient Relation</label>
+                                <input maxlength="5000" rows="5"
+                                       class="form-control" name="patient_relation" placeholder="Patient Relation">
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Patient Current Symptoms</label>
                             <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
-                                      class="form-control" name="message" id="message" placeholder="Your Current Symptoms"
-                                      required></textarea>
+                                      class="form-control" name="current_symptoms" placeholder="Your Current Symptoms"
+                                ></textarea>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Patient Previous Medical History</label>
                             <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
-                                      class="form-control" name="message" id="message" placeholder="Your Previous Medical History"
-                                      required></textarea>
+                                      class="form-control" name="medical_history"
+                                      placeholder="Your Previous Medical History"
+                                ></textarea>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col">
                             <label>Patient Query</label>
                             <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
-                                      class="form-control" name="message" id="message" placeholder="Your Queries"
-                                      required></textarea>
+                                      class="form-control" name="patient_query" placeholder="Your Queries"
+                                ></textarea>
                         </div>
                     </div>
                     <div class="form-row mt-2">
@@ -97,6 +149,17 @@
         </div>
     </div>
 </section>
-
-
+<script src="{{url('node_modules/jquery/dist/jquery.min.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.patient_section').hide();
+        $('#choose_patient').click(function () {
+            if ($('#choose_patient').val() == 'self') {
+                $('.patient_section').hide();
+            } else {
+                $('.patient_section').show();
+            }
+        });
+    })
+</script>
 @endsection

@@ -7,6 +7,7 @@ use App\Models\CategoryDepartment;
 use App\Models\ContactDetail;
 use App\Models\Menu;
 use App\Models\PackageList;
+use App\Models\PharmacistUser;
 use App\Models\Post;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Http\Request;
@@ -39,7 +40,6 @@ class PagesController extends Controller
         if (file_exists($file_path)) {
             switch ($slug) {
                 case 'index':
-
                     $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     $this->view_data['banners'] = Post::where('type', '=', 'banner')->orderBy('id', 'desc')->get();
                     $this->view_data['teams'] = Post::where('type', '=', 'team')->orderBy('id', 'desc')->get();
@@ -77,6 +77,7 @@ class PagesController extends Controller
                 case 'consult':
                     $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     $this->view_data['packages'] = PackageList::all();
+                    $this->view_data['pharmacists'] = PharmacistUser::all();
                     $this->view_data['departments'] =CategoryDepartment::orderBy('id', 'desc')->get();
                     break;
                 case 'login-page':

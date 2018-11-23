@@ -56,12 +56,13 @@ class AuthController extends Controller
             return $authUser;
         }
 
-        return User::create([
+         User::create([
             'name'     => $user->name,
             'email'    => $user->email,
             'provider' => $provider,
             'provider_id' => $user->id
         ]);
+        return redirect()->route('patient.dashboard');
     }
     /**
      * Show the form for creating a new resource.

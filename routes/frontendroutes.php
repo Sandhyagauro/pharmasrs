@@ -22,6 +22,8 @@ Route::resource('/patient','Frontend\PatientUserController');
 Route::post('/pharmacist/login',['as'=>'pharmacist.login','uses'=>'Frontend\PharmacistUserController@login']);
 Route::get('/pharmacist/dashboard',['as'=>'pharmacist.dashboard','uses'=>'Frontend\PharmacistUserController@dashboard']);
 Route::resource('/pharmacist','Frontend\PharmacistUserController');
+
+Route::resource('/counsel','Frontend\CounselingController');
 //Pages
 Route::match(['get','post'],'/{slug}','Frontend\PagesController@index')->where('slug','.*');
 
