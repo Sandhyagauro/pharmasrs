@@ -13,12 +13,13 @@ use Session;
 use Spatie\Permission\Models\Role;
 use Auth;
 
-class PatientUserController extends Controller
+class PatientUserController extends BaseController
 {
 
 
     public function __construct()
     {
+        parent::__construct();
 
     }
 

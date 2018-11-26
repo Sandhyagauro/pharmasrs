@@ -19,7 +19,7 @@
         <div class="row">
             @foreach($news as $news)
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
-                <a href="{{url('/blog-detail')}}">
+<!--                <a href="{{url('/blog-detail')}}">-->
                     @foreach($news->image as $image)
                     <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{$image->file_data}}'}">
                         <div class="card-body p-4">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     @endforeach
-                </a>
+<!--                </a>-->
             </div>
             @endforeach
 

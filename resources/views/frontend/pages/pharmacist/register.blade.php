@@ -32,6 +32,16 @@
                     <div class="bg-primary rounded p-5">
                         <h2 class="text-color-light font-weight-bold text-4 mb-4">Pharmacist Registration</h2>
 
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
                         <form  action="{{route('pharmacist.store')}}" method="post">
                             {!! csrf_field(); !!}
                             <div class="form-row">
@@ -73,7 +83,7 @@
                                     <label class="text-color-light-2" >QUALIFICATION</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="qualification"
-                                           required>
+                                           >
                                 </div>P
                             </div>
                             <div class="form-row">
@@ -88,7 +98,7 @@
                                     <label class="text-color-light-2" >WEBSITE</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="website"
-                                          required>
+                                          >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -96,14 +106,14 @@
                                     <label class="text-color-light-2" >SHOP NAME</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="shop_name"
-                                            required>
+                                            >
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label class="text-color-light-2" >SHOP ADDRESS</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="shop_address"
-                                           required>
+                                           >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -111,14 +121,14 @@
                                     <label class="text-color-light-2" >SHOP NUMBER</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="shop_number"
-                                           required>
+                                           >
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label class="text-color-light-2" >SPECIALIZATION</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="specialization"
-                                            required>
+                                            >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -126,14 +136,14 @@
                                     <label class="text-color-light-2" >EXPERIENCE</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="experience"
-                                           required>
+                                           >
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label class="text-color-light-2" >EDUCAITON</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="education"
-                                            required>
+                                            >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -141,13 +151,13 @@
                                     <label class="text-color-light-2" >RESEARCH JOURNALS</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="journals"
-                                           required>
+                                           >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="text-color-light-2" >AWARDS AND RECOGNITION</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="awards"
-                                           required>
+                                           >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -157,7 +167,7 @@
                                     <label class="text-color-light-2" >MEMBERSHIPS</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="memberships"
-                                          required>
+                                          >
                                 </div>
                             </div>
 

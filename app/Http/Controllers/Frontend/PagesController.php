@@ -9,6 +9,7 @@ use App\Models\Menu;
 use App\Models\PackageList;
 use App\Models\PharmacistUser;
 use App\Models\Post;
+use App\Models\SiteSetting;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Http\Request;
 
@@ -17,13 +18,13 @@ use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 use Session;
 
-class PagesController extends Controller
+class PagesController extends BaseController
 {
 
 
     public function __construct()
     {
-
+      parent::__construct();
     }
 
     /**
@@ -42,6 +43,7 @@ class PagesController extends Controller
                 case 'index':
                     $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     $this->view_data['banners'] = Post::where('type', '=', 'banner')->orderBy('id', 'desc')->get();
+                    $this->view_data['teamSection'] = Post::where('slug', '=', 'an-amazing-team')->first();
                     $this->view_data['teams'] = Post::where('type', '=', 'team')->orderBy('id', 'desc')->get();
                     $this->view_data['clinicDepartment'] = Post::where('slug', '=', 'clinic-departments')->first();
                     $this->view_data['aboutSection'] = Post::where('slug', '=', 'about-pharma-srs')->first();
@@ -55,6 +57,7 @@ class PagesController extends Controller
                     $this->view_data['happyCustomers'] = Post::where('slug', '=', 'happy-customers')->first();
                     $this->view_data['availablePharmacist'] = Post::where('slug', '=', 'available-pharmacist')->first();
                     $this->view_data['developmentHours'] = Post::where('slug', '=', 'development-hours')->first();
+                    $this->view_data['pharmacists'] = PharmacistUser::orderBy('id', 'asc')->get();
                     $this->view_data['ansTickets'] = Post::where('slug', '=', 'answered-tickets')->first();
                     break;
                 case 'news-and-articles':

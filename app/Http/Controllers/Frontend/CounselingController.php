@@ -6,6 +6,7 @@ use App\Models\CounselingInfo;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PackageList;
+use App\Models\PharmacistUser;
 use Illuminate\Http\Request;
 
 use DB;
@@ -64,11 +65,11 @@ class CounselingController extends Controller
             $info->pharmacist_id = $request->pharmacist_id;
             $info->package_id = $request->package_id;
 
-            $package_info = PackageList::where('id','=',$request->package_id)->first();
+            $package_info = PackageList::where('id', '=', $request->package_id)->first();
 
-            $info->package_amount =$package_info->amount;
-            $info->package_duration =$package_info->duration;
-            $info->patient =$request->patient;
+            $info->package_amount = $package_info->amount;
+            $info->package_duration = $package_info->duration;
+            $info->patient = $request->patient;
             $info->patient_name = $request->patient_name;
             $info->patient_age = $request->patient_age;
             $info->patient_gender = $request->patient_gender;
@@ -78,7 +79,7 @@ class CounselingController extends Controller
             $info->patient_query = $request->patient_query;
             $info->prescription = $request->prescription;
             $info->save();
-                DB::commit();
+            DB::commit();
 
             Session::flash('message', 'Form submitted Successfully');
             return redirect('consult');
@@ -86,6 +87,13 @@ class CounselingController extends Controller
             DB::rollback();
             dd($e->getMessage());
         }
+    }
+
+    public function getPharmacistList(Request $request)
+    {
+        $pharmacist_lists = PharmacistUser::where('category_department_id', '=', $request->category_department_id)->orderBy('id', 'desc')->get();
+        $pharmacist_list_html = view('frontend.pages.ajaxConsult',compact('pharmacist_lists'))->render();
+        return response()->json(['success' => true,'data' => ['pharmacist_list_html' => $pharmacist_list_html]], 200);
     }
 
     /**

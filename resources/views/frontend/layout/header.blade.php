@@ -8,11 +8,11 @@
                 <div class="header-column justify-content-start">
 									<span class="d-none d-sm-flex align-items-center">
 										<i class="lnr lnr-map-marker mr-1"></i>
-										1234 Street Name, City Name
+										{{$site->address}}
 									</span>
 									<span class="d-none d-sm-flex align-items-center ml-4">
 										<i class="lnr lnr-phone-handset mr-1"></i>
-										<a href="tel:+1234567890">123-456-7890</a>
+										<a href="tel:+1234567890">{{$site->phone}}</a>
 									</span>
                 </div>
                 <div class="header-column justify-content-end">
@@ -23,14 +23,12 @@
 <!--                    </ul>-->
                     <ul class="header-top-social-icons social-icons social-icons-transparent d-none d-md-block">
                         <li class="social-icons-facebook">
-                            <a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="http://{{$site->facebook_link}}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                         </li>
                         <li class="social-icons-twitter">
-                            <a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="http://{{$site->twitter_link}}" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
                         </li>
-                        <li class="social-icons-instagram">
-                            <a href="http://www.instagram.com/" target="_blank" title="Instragram"><i class="fab fa-instagram"></i></a>
-                        </li>
+
                     </ul>
                 </div>
             </div>

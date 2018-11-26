@@ -40,6 +40,7 @@ class CreatePharmacistUsersTable extends Migration
             $table->string('journals')->nullable()->default('');
             $table->string('awards')->nullable()->default('');
             $table->string('memberships')->nullable()->default('');
+            $table->string('image')->nullable();
 
             $table->timestamps();
         });

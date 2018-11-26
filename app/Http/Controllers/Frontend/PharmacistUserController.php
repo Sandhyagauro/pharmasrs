@@ -13,13 +13,14 @@ use DB;
 use App\User;
 use Spatie\Permission\Models\Role;
 use Auth;
-class PharmacistUserController extends Controller
+
+class PharmacistUserController extends BaseController
 {
 
 
     public function __construct()
     {
-
+        parent::__construct();
     }
 
     /**
@@ -54,6 +55,11 @@ class PharmacistUserController extends Controller
      */
     public function store(Request $request)
     {
+        $login_user = Auth::user();
+        $this->validate($request, [
+            'email' => 'unique:users,email,' . $login_user->id
+        ]);
+
 
         DB::beginTransaction();
         try {
@@ -107,26 +113,29 @@ class PharmacistUserController extends Controller
         }
 
     }
+
     public function login(Request $request)
     {
         $user = [
             'email' => $request->email,
             'password' => $request->password
         ];
-        if(Auth::attempt($user)){
+        if (Auth::attempt($user)) {
             return redirect('/pharmacist/dashboard');
-        }else{
-            Session::flash('message','Something went wrong');
+        } else {
+            Session::flash('message', 'Something went wrong');
             return redirect('/login-page');
 
         }
     }
+
     public function dashboard()
     {
         $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
         $this->view_data['user'] = Auth::user();
-        return view('frontend.pages.pharmacist.dashboard',$this->view_data);
+        return view('frontend.pages.pharmacist.dashboard', $this->view_data);
     }
+
     /**
      * Display the specified resource.
      *

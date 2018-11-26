@@ -20,7 +20,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="tel:+1234567890" class="text-color-light font-primary text-6 line-height-1">(123) 456-7890</a>
+                                    <a href="tel:+{{$site->phone}}" class="text-color-light font-primary text-6 line-height-1">{{$site->phone}}</a>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="#" class="btn btn-dark btn-rounded btn-v-4 btn-h-2 font-weight-semibold">DOCTORS TIMETABLE</a>
+                                    <a href="{{url('consult-online')}}" class="btn btn-dark btn-rounded btn-v-4 btn-h-2 font-weight-semibold">CONSULT ONLINE</a>
                                 </div>
                             </div>
                         </div>
@@ -56,25 +56,26 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 mb-4 mb-lg-0">
-                <a href="#">
-                    <img src="{{url('img/view9logo.png')}}" width="152" height="22" class="img-fluid mb-3" alt="" />
+
+                <a href="http://view9.us">
+                    <img src="#" width="152" height="22" class="img-fluid mb-3" alt="" />
                 </a>
-                <p>Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc.</p>
+                <p>{{html_entity_decode($footer1->content)}}</p>
             </div>
             <div class="col-lg-4 ml-auto mb-4 mb-lg-0">
                 <h2 class="font-weight-semibold text-1 mb-3">OUR LOCATION</h2>
                 <ul class="list list-unstyled">
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Address:</strong> 1234 Street Name, City Name, USA</li>
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Phone:</strong> <a href="tel:+1234567890">(123) 456-7890</a></li>
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Email:</strong> <a href="mailto:mail@example.com" class="link-underline-light">mail@example.com</a></li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Address:</strong>{{$site->address}}</li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Phone:</strong> <a href="tel:+{{$site->phone}}">{{$site->phone}}</a></li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Email:</strong> <a href="mailto:{{$site->email}}" class="link-underline-light">{{$site->email}}</a></li>
                 </ul>
             </div>
             <div class="col-lg-3">
                 <h2 class="font-weight-semibold text-1 mb-3">QUICK LINKS</h2>
                 <ul class="list list-unstyled">
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="#">About us</a></li>
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="#">Contact Us</a></li>
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="#">Hire Us</a></li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="{{url('/aboutus')}}">About us</a></li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="{{url('/contactus')}}">Contact Us</a></li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="{{url('/consult-online')}}">Consult Online</a></li>
                 </ul>
             </div>
         </div>
@@ -84,13 +85,12 @@
             <div class="row text-center text-md-left align-items-center">
                 <div class="col-md-7 col-lg-8 mb-3 mb-md-0">
                     <ul class="social-icons social-icons-3 social-icons-icon-dark">
-                        <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                        <li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                        <li class="social-icons-facebook"><a href="http://{{$site->facebook_link}}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="social-icons-twitter"><a href="http://{{$site->twitter_link}}" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-md-5 col-lg-4">
-                    <p class="text-md-right pb-0 mb-0">Copyrights © 2018. All Rights Reserved by Okler</p>
+                    <p class="text-md-right pb-0 mb-0">Copyrights © 2019. All Rights Reserved by Pharma SRS</p>
                 </div>
             </div>
         </div>

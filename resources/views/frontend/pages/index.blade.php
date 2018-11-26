@@ -112,9 +112,9 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="tel:+1234567890" class="text-color-light font-primary text-7">(123) 456-7890</a>
+                        <a href="tel:+{{$site->phone}}" class="text-color-light font-primary text-7">{{$site->phone}}</a>
 
-                        <p class="text-color-light mb-0 mt-2">Lorem ipsum dolor sit amet, consectetu</p>
+<!--                        <p class="text-color-light mb-0 mt-2">Lorem ipsum dolor sit amet, consectetu</p>-->
                     </div>
                 </div>
             </div>
@@ -135,11 +135,10 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#"
-                           class="btn btn-dark bg-dark-3 btn-rounded btn-v-4 btn-h-3 font-weight-semibold mb-3">DOCTORS
-                            TIMETABLE</a>
+                        <a href="{{url('consult-online')}}"
+                           class="btn btn-dark bg-dark-3 btn-rounded btn-v-4 btn-h-3 font-weight-semibold mb-3">Consult Online</a>
 
-                        <p class="text-color-light-3 mb-0">Lorem ipsum dolor sit amet, consectetu</p>
+<!--                        <p class="text-color-light-3 mb-0">Lorem ipsum dolor sit amet, consectetu</p>-->
                     </div>
                 </div>
             </div>
@@ -188,10 +187,10 @@
         <div class="row justify-content-center text-center mb-5">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="overflow-hidden mb-3">
-                    <h2 class="font-secondary text-5 mb-0 px-5 appear-animation" data-appear-animation="fadeInUpShorter">An amazing team is able to do amazing things, adipiscing elit lorem ipsum.</h2>
+                    <h2 class="font-secondary text-5 mb-0 px-5 appear-animation" data-appear-animation="fadeInUpShorter">{{$teamSection->title}}</h2>
                 </div>
                 <div class="overflow-hidden mb-3">
-                    <p class="lead mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc. Vivamus bibendum magna ex, et faucibus lacus venenatis eget.</p>
+                    <p class="lead mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{html_entity_decode($teamSection->content)}}</p>
                 </div>
             </div>
         </div>

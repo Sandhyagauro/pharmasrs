@@ -43,7 +43,7 @@
                             <h3 class="font-weight-bold text-4 mb-0">
                                 Address</h3>
                         </div>
-                        <span>Newroad, Kathmandu</span>
+                        <span>{{$site->address}}</span>
                     </div>
                 </div>
                 <br><br>
@@ -56,7 +56,7 @@
                             <h3 class="font-weight-bold text-4 mb-0">
                                 Phone number</h3>
                         </div>
-                        <span><a href="phone:9741458464">9741458464</a></span>
+                        <span><a href="phone:{{$site->phone}}">{{$site->phone}}</a></span>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                         <div class="icon-box-info-title">
                             <h3 class="font-weight-bold text-4 mb-0">Email Address</h3>
                         </div>
-										<span class="d-block"><a href="mailto:customer.service@pharmasrs.com">customer.service@pharmasrs.com</a> <a href="#">support@pharmasrs.com</a>
+										<span class="d-block"><a href="mailto:{{$site->email}}">{{$site->email}}</a>
 										</span>
                     </div>
                 </div>

@@ -33,7 +33,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/news')}}">
                     <i class="nav-icon icon-drop"></i> News and Articles </a>
-            </li> <li class="nav-item">
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/site')}}">
+                    <i class="nav-icon icon-drop"></i> Site Setting </a>
+            </li>
+
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/contact')}}">
                     <i class="nav-icon icon-drop"></i> Contact Informations </a>
             </li>

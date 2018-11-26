@@ -29,7 +29,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
     Route::resource('/package','PackageController');
     Route::get('/package/{id}/destroy',['as'=>'package.destroy','uses'=>'PackageController@destroy']);
 
-
+    Route::resource('/site','SiteSettingController');
 
     Route::resource('users','UserController');
     Route::get('users/edit/{id}','UserController@edit');

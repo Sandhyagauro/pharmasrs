@@ -48,7 +48,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label>Select Category Department:</label>
-                            <select class="form-control" name="category_department_id">
+                            <select  class="form-control" id="category_department_id" name="category_department_id" required>
                                 @foreach($departments as $department)
                                 <option value="{{$department->id}}">{{$department->title}}</option>
                                 @endforeach
@@ -58,22 +58,15 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="department"> Choose your preferred Pharmacist</label><br>
-                            @foreach($pharmacists as $pharmacist)
-                            <section class="section section-height-1 bg-light-5 mt-2 mb-2">
-                                <h4 class="font-weight-semibold mb-0"><input type="radio" class="radio"
-                                                                             name="pharmacist_id"
-                                                                             value="{{$pharmacist->id}}"><label>{{$pharmacist->name}}</label>
-                                </h4>
+                            <div class="pharmacist_list">
 
-                                <p class="font-weight-light mb-0">{{$pharmacist->speciality}}</p>
-                            </section>
-                            @endforeach
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col">
-                            <label > Choose Patient</label>
-                            <select  name="patient" class="form-control"  id="choose_patient">
+                            <label> Choose Patient</label>
+                            <select name="patient" class="form-control" id="choose_patient">
                                 <option value="self">Self</option>
                                 <option value="others">Others</option>
                             </select>
@@ -160,6 +153,24 @@
                 $('.patient_section').show();
             }
         });
+
+        $('#category_department_id').click(function () {
+            var category_department_id = $("#category_department_id").val();
+            $.ajax({
+                type: "GET",
+                url: "{{route('counsel.pharmacist_list')}}",
+                data: {
+                    'category_department_id': category_department_id
+                },
+                success: function (response) {
+                    console.log(response);
+                    $('.pharmacist_list').html(response.data.pharmacist_list_html);
+
+                }
+            })
+        });
+
+
     })
 </script>
 @endsection
