@@ -54,6 +54,9 @@ class PatientUserController extends BaseController
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'unique:users,email,'
+        ]);
         //patient register
         DB::beginTransaction();
         try {
@@ -79,11 +82,26 @@ class PatientUserController extends BaseController
             $post->inches = $request->inches;
             $post->blood_group = $request->blood_group;
             $post->save();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $type = $image->getClientOriginalExtension();
+                $destination = 'uploads';
+                if (empty($image)) {
+                    return redirect()->back()->withInput();
+                } else if (!$image->isValid()) {
+                    return redirect()->back()->withInput();
+                } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                    return redirect()->back()->withInput();
+                } else {
+                    $fileName = rand(1, 999999) . '.' . $type;
+                    $post->image = $destination . "/" . $fileName;
+                    $image->move($destination, $fileName);
+                }
+                $post->save();
+            }
 
             $user->assignRole($role);
-
             DB::commit();
-            Session::flash('message', 'Registered successfully');
 
             // all good
         } catch (\Exception $e) {
@@ -99,10 +117,14 @@ class PatientUserController extends BaseController
         // attempt to do the login
 
         if (Auth::attempt($userdata)) {
-            return response()->json(['success' => true, 'message' => 'Registered successfully', 'data' => ['route' => route('patient.dashboard')]], 200);
+            $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+            $this->view_data['user'] = Auth::user();
+            return redirect()->route('patient.dashboard');
+//            return response()->json(['success' => true, 'message' => 'Registered successfully', 'data' => ['route' => route('patient.dashboard')]], 200);
         } else {
             // validation not successful, send back to form
-            return response()->json(['success' => false, 'message' => 'Registered successfully', 'data' => ['route' => route('patient.dashboard')]], 200);
+            return back();
+//            return response()->json(['success' => false, 'message' => 'Registered successfully', 'data' => ['route' => route('patient.dashboard')]], 200);
         }
 
     }
@@ -126,7 +148,7 @@ class PatientUserController extends BaseController
      */
     public function edit($id)
     {
-        dd($id);
+
     }
 
     /**
@@ -138,9 +160,52 @@ class PatientUserController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
+    public function updateProfile(Request $request, $id)
+    {
+
+        $patient_user = PatientUser::find($id);
+        $patient_user->name = $request->name;
+        $patient_user->email = $request->email;
+        $patient_user->country = $request->country;
+        $patient_user->phone = $request->phone;
+        $patient_user->address = $request->address;
+        $patient_user->dob = $request->dob;
+        $patient_user->gender = $request->gender;
+        $patient_user->weight = $request->weight;
+        $patient_user->feet = $request->feet;
+        $patient_user->inches = $request->inches;
+        $patient_user->blood_group = $request->blood_group;
+        $patient_user->save();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $type = $image->getClientOriginalExtension();
+            $destination = 'uploads';
+            if (empty($image)) {
+                return redirect()->back()->withInput();
+            } else if (!$image->isValid()) {
+                return redirect()->back()->withInput();
+            } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                return redirect()->back()->withInput();
+            } else {
+                $fileName = rand(1, 999999) . '.' . $type;
+                $patient_user->image = $destination . "/" . $fileName;
+                $image->move($destination, $fileName);
+            }
+            $patient_user->save();
+        }
+
+        $user = User::where('id','=',$patient_user->user_id)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
+
+        Session::flash('message','Profile Updated Successfully');
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -156,8 +221,13 @@ class PatientUserController extends BaseController
     public function dashboard()
     {
         $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
-        $this->view_data['user'] = Auth::user();
-        return view('frontend.pages.patient.dashboard',$this->view_data);
+        $login_user = Auth::user();
+        $role =$login_user->roles->first()->name;
+        if ($role == 'patient'){
+            $this->view_data['user'] = PatientUser::where('user_id','=',$login_user->id)->first();
+        }
+
+        return view('frontend.pages.patient.dashboard', $this->view_data);
     }
 
     public function login(Request $request)
@@ -166,12 +236,17 @@ class PatientUserController extends BaseController
             'email' => $request->email,
             'password' => $request->password
         ];
-        if(Auth::attempt($user)){
+        if (Auth::attempt($user)) {
             return redirect('/patient/dashboard');
-        }else{
-            Session::flash('message','Something went wrong');
+        } else {
+            Session::flash('message', 'Something went wrong');
             return redirect('/login-page');
 
         }
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect ('/login-page');
     }
 }

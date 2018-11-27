@@ -42,7 +42,7 @@
                         </div>
                         @endif
 
-                        <form  action="{{route('pharmacist.store')}}" method="post">
+                        <form  action="{{route('pharmacist.store')}}"    method="post" enctype="multipart/form-data">
                             {!! csrf_field(); !!}
                             <div class="form-row">
                                 <div class="form-group col mb-2">
@@ -84,7 +84,7 @@
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="qualification"
                                            >
-                                </div>P
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -161,13 +161,18 @@
                                 </div>
                             </div>
                             <div class="form-row">
-
-
                                 <div class="form-group col-md-6">
                                     <label class="text-color-light-2" >MEMBERSHIPS</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="memberships"
                                           >
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label class="text-color-light-2" >PROFILE IMAGE</label>
+                                    <input type="file" value=""
+                                           class="form-control bg-light rounded border-0 text-1" name="image"
+                                        >
                                 </div>
                             </div>
 
@@ -181,47 +186,6 @@
                         </form>
                     </div>
                 </div>
-<!--                <div class="col-lg-6 appear-animation" data-appear-animation="fadeInRightShorter"-->
-<!--                     data-appear-animation-delay="200">-->
-<!--                    <div class="border rounded h-100 p-5">-->
-<!--                        <span class="top-sub-title text-color-primary">DON'T HAVE AN ACCOUNT?</span>-->
-<!---->
-<!--                        <h2 class="font-weight-bold text-4 mb-4">Register Now!</h2>-->
-<!---->
-<!--                        <form action="/" id="frmRegister" method="post">-->
-<!--                            <div class="form-row">-->
-<!--                                <div class="form-group col mb-2">-->
-<!--                                    <label for="frmRegisterEmail">EMAIL / USERNAME</label>-->
-<!--                                    <input type="email" value="" maxlength="100"-->
-<!--                                           class="form-control bg-light-5 rounded border-0 text-1" name="email"-->
-<!--                                           id="frmRegisterEmail" required>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="form-row mb-5">-->
-<!--                                <div class="form-group col-lg-6">-->
-<!--                                    <label for="frmRegisterPassword">PASSWORD</label>-->
-<!--                                    <input type="password" value=""-->
-<!--                                           class="form-control bg-light-5 rounded border-0 text-1" name="password"-->
-<!--                                           id="frmRegisterPassword" required>-->
-<!--                                </div>-->
-<!--                                <div class="form-group col-lg-6">-->
-<!--                                    <label for="frmRegisterPassword2">RE-ENTER PASSWORD</label>-->
-<!--                                    <input type="password" value=""-->
-<!--                                           class="form-control bg-light-5 rounded border-0 text-1" name="password2"-->
-<!--                                           id="frmRegisterPassword2" required>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="row align-items-center">-->
-<!--                                <div class="col text-right">-->
-<!--                                    <button type="submit"-->
-<!--                                            class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">-->
-<!--                                        REGISTER NOW-->
-<!--                                    </button>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
     </section>
@@ -245,6 +209,8 @@
            }
            })
        });
+
+
 
 
     });

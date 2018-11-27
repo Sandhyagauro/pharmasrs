@@ -49,12 +49,25 @@
     <nav class="collapse">
     <ul class="nav flex-column flex-lg-row" id="mainNav">
         @foreach($menus as $menu)
-        <li class=" active ">
+        <li class="active">
             <a href="/{{$menu->url}}" >
-                {{$menu->title}}
+                {{ucfirst(trans($menu->title))}}
             </a>
         </li>
         @endforeach
+        @if(Auth::check())
+        <li >
+            <a href="{{url('/patient/dashboard')}}">
+                 Profile
+            </a>
+        </li>
+        @else
+        <li >
+            <a href="{{url('/login-page')}}">
+                LOGIN
+            </a>
+        </li>
+        @endif
 
     </ul>
     </nav>

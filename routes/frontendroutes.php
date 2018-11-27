@@ -16,7 +16,9 @@ Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 
 Route::get('/patient/dashboard',['as'=>'patient.dashboard','uses'=>'Frontend\PatientUserController@dashboard']);
+Route::post('/patient/dashboard/{id}/update',['as'=>'patient.update_profile','uses'=>'Frontend\PatientUserController@updateProfile']);
 Route::post('/patient/login',['as'=>'patient.login','uses'=>'Frontend\PatientUserController@login']);
+Route::get('/patient/logout',['as'=>'patient.logout','uses'=>'Frontend\PatientUserController@logout']);
 Route::resource('/patient','Frontend\PatientUserController');
 
 Route::post('/pharmacist/login',['as'=>'pharmacist.login','uses'=>'Frontend\PharmacistUserController@login']);

@@ -25,7 +25,7 @@
                 <div class="col-lg-6 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter">
                     <div class="bg-primary rounded p-5">
                         <h2 class="text-color-light font-weight-bold text-4 mb-4">Patient Login / Registration</h2>
-                        <a href="{{url('auth/facebook')}}">Login in with Facebook</a>
+<!--                        <a href="{{url('auth/facebook')}}">Login in with Facebook</a>-->
                         <form  action="{{route('patient.login')}}"  method="post">
                             {!! csrf_field(); !!}
                             <div class="form-row">

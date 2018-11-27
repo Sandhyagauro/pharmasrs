@@ -55,9 +55,8 @@ class PharmacistUserController extends BaseController
      */
     public function store(Request $request)
     {
-        $login_user = Auth::user();
         $this->validate($request, [
-            'email' => 'unique:users,email,' . $login_user->id
+            'email' => 'unique:users,email,'
         ]);
 
 
@@ -89,7 +88,23 @@ class PharmacistUserController extends BaseController
             $post->awards = $request->awards;
             $post->memberships = $request->memberships;
             $post->save();
-
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $type = $image->getClientOriginalExtension();
+                $destination = 'uploads';
+                if (empty($image)) {
+                    return redirect()->back()->withInput();
+                } else if (!$image->isValid()) {
+                    return redirect()->back()->withInput();
+                } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                    return redirect()->back()->withInput();
+                } else {
+                    $fileName = rand(1, 999999) . '.' . $type;
+                    $post->image = $destination . "/" . $fileName;
+                    $image->move($destination, $fileName);
+                }
+                $post->save();
+            }
             $user->assignRole($role);
             DB::commit();
         } catch (\Exception $e) {
@@ -97,7 +112,7 @@ class PharmacistUserController extends BaseController
             dd($e->getMessage());
 
         }
-        //patient login
+        //pharmacist login
         $userdata = array(
             'email' => $request->email,
             'password' => $request->password
@@ -106,7 +121,9 @@ class PharmacistUserController extends BaseController
         // attempt to do the login
 
         if (Auth::attempt($userdata)) {
-            return view('frontend.pages.pharmacist.dashboard');
+            $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+            $this->view_data['user'] = Auth::user();
+            return redirect()->route('pharmacist.dashboard');
         } else {
             // validation not successful, send back to form
             return back();

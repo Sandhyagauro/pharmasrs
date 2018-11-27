@@ -144,6 +144,23 @@
 </section>
 <script src="{{url('node_modules/jquery/dist/jquery.min.js')}}"></script>
 <script type="text/javascript">
+    var category_department_id = $("#category_department_id").val();
+    pharmacist_list(category_department_id);
+
+    function pharmacist_list(category_department_id){
+        $.ajax({
+            type: "GET",
+            url: "{{route('counsel.pharmacist_list')}}",
+            data: {
+                'category_department_id': category_department_id
+            },
+            success: function (response) {
+                console.log(response);
+                $('.pharmacist_list').html(response.data.pharmacist_list_html);
+
+            }
+        })
+    }
     $(document).ready(function () {
         $('.patient_section').hide();
         $('#choose_patient').click(function () {
@@ -156,18 +173,7 @@
 
         $('#category_department_id').click(function () {
             var category_department_id = $("#category_department_id").val();
-            $.ajax({
-                type: "GET",
-                url: "{{route('counsel.pharmacist_list')}}",
-                data: {
-                    'category_department_id': category_department_id
-                },
-                success: function (response) {
-                    console.log(response);
-                    $('.pharmacist_list').html(response.data.pharmacist_list_html);
-
-                }
-            })
+            pharmacist_list(category_department_id);
         });
 
 

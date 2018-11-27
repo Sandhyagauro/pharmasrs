@@ -19,13 +19,17 @@
 
 
     <!-- Web Fonts  -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800"
+    <link  href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800"
         rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
     <!--compiled css-->
     <link rel="stylesheet" href="{{ url('assets/css/all.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/custom.css')}}">
+    <link rel="stylesheet" href="{{ url('assets/css/dash-tab.css')}}">
+    <link rel="stylesheet" href="{{ url('assets/css/dash-tab.css')}}">
+    <link rel="stylesheet" href="{{ url('assets/css/dropzone.css')}}">
+
 
 </head>
 <body>
@@ -36,12 +40,37 @@
     @yield('content')
 
     @include('frontend/layout/footer')
-    <script src="{{ 'assets/js/all.js' }}"></script>
+   <script src="{{url('assets/js/all.js') }}"></script>
+    <script src="{{url('assets/js/dropzone.js') }}"></script>
+
     <script>
         $("#date").datepicker({
             dateFormat: 'yy-mm-dd'
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            <!--patient dashboard tabs-->
+            $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            });
+
+
+
+        });
+    </script>
+
+    <script src="{{('assets/js/countries.js')}}"></script>
+    <script language="javascript">
+        populateCountries("country"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+    </script>
+
 </div>
 </body>
 </html>
