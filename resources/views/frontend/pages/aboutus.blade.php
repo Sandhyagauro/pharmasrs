@@ -27,7 +27,7 @@
 
                     <p class="text-color-light-2 text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter"
                        data-appear-animation-delay="400">
-                        {{ $aboutBanner->content }}
+                        {!! html_entity_decode($aboutBanner->content) !!}
                     </p>
                 </div>
             </div>

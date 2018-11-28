@@ -55,10 +55,16 @@
             </a>
         </li>
         @endforeach
-        @if(Auth::check())
+        @if(Auth::check() && Auth::user()->hasRole('patient'))
         <li >
             <a href="{{url('/patient/dashboard')}}">
                  Profile
+            </a>
+        </li>
+        @elseif(Auth::check() && Auth::user()->hasRole('pharmacist'))
+        <li >
+            <a href="{{url('/pharmacist/dashboard')}}">
+                Profile
             </a>
         </li>
         @else

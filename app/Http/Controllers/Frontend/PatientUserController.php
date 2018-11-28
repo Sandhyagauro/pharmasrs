@@ -225,9 +225,12 @@ class PatientUserController extends BaseController
         $role =$login_user->roles->first()->name;
         if ($role == 'patient'){
             $this->view_data['user'] = PatientUser::where('user_id','=',$login_user->id)->first();
+            return view('frontend.pages.patient.dashboard', $this->view_data);
+        }else{
+            return redirect('/login-page');
         }
 
-        return view('frontend.pages.patient.dashboard', $this->view_data);
+
     }
 
     public function login(Request $request)
