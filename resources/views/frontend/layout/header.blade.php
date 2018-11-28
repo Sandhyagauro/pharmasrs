@@ -39,7 +39,7 @@
     <div class="header-column justify-content-start">
         <div class="header-logo">
             <a href="{{url('/')}}">
-                <img alt="EZ" width="188" height="25" src="{{url('img/view9logo.png')}}">
+                <img alt="EZ" width="100px" height="50px" src="{{asset($site->logo)}}">
             </a>
         </div>
     </div>

@@ -34,7 +34,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="{{url('/')}}">
-        <img class="navbar-brand-full" src="{{url('img/view9logo.png')}}" width="89" height="25" alt="Pharma SRS">
+<!--        <img class="navbar-brand-full" src="{{url('img/view9logo.png')}}" width="89" height="25" alt="Pharma SRS">-->
         <img class="navbar-brand-minimized" src="{{url('img/brand/sygnet.svg')}}" width="30" height="30"
              alt="Pharma SRS">
     </a>

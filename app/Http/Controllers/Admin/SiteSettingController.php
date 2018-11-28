@@ -23,6 +23,7 @@ class SiteSettingController extends Controller
     public function index()
     {
         $post = SiteSetting::where('id', '=', 1)->first();
+
         return view('backend.admin.site.index', compact('post'));
 
 
