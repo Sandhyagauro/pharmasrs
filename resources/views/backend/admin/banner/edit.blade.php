@@ -43,7 +43,9 @@
                                                     <input type="text" value="{{$post->excerpt}}" name="excerpt"
                                                            class="form-control">
                                                 </div>
-
+                                                @foreach($post->image as $image)
+                                                <img src="{{ asset($image->file_data) }}" style="width: 150px; height: 150px" />
+                                                @endforeach
                                                 <div class="form-group">
                                                     <input type="file" name="image" class="form-control">
                                                 </div>
