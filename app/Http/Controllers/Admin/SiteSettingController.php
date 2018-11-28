@@ -54,6 +54,26 @@ class SiteSettingController extends Controller
         $post->twitter_link = $request->twitter_link;
         $post->save();
 
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $type = $image->getClientOriginalExtension();
+            $destination = 'uploads';
+            if (empty($image)) {
+                return redirect()->back()->withInput();
+            } else if (!$image->isValid()) {
+                return redirect()->back()->withInput();
+            } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                return redirect()->back()->withInput();
+            } else {
+                $fileName = rand(1, 999999) . '.' . $type;
+                $post->logo = $destination . "/" . $fileName;
+                $image->move($destination, $fileName);
+
+            }
+            $post->save();
+
+        }
+
         Session::flash('message', 'Site settings Updated Successfully');
         return redirect('admin/site');
 
