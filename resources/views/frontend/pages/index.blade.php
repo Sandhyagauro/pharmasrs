@@ -190,7 +190,7 @@
                     <h2 class="font-secondary text-5 mb-0 px-5 appear-animation" data-appear-animation="fadeInUpShorter">{{$teamSection->title}}</h2>
                 </div>
                 <div class="overflow-hidden mb-3">
-                    <p class="lead mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{html_entity_decode($teamSection->content)}}</p>
+                    <p class="lead mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{!! html_entity_decode($teamSection->content) !!}</p>
                 </div>
             </div>
         </div>
