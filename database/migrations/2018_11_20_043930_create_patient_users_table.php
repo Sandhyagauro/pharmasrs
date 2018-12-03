@@ -28,6 +28,7 @@ class CreatePatientUsersTable extends Migration
             $table->integer('feet')->nullable();;
             $table->integer('inches')->nullable();;
             $table->enum('blood_group',['a+','a-','b+','b-','ab+','ab-','o+','o-'])->nullable();;
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -135,8 +135,15 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('consult-online')}}"
-                           class="btn btn-dark bg-dark-3 btn-rounded btn-v-4 btn-h-3 font-weight-semibold mb-3">Consult Online</a>
+                        @if(Auth::check() && Auth::user()->hasRole(['patient','pharmacist']))
+                        <a href="{{url('prescription-option')}}"
+                           class="btn btn-dark bg-dark-3 btn-rounded btn-v-4 btn-h-3 font-weight-semibold mb-3">Upload / View Prescription
+                        </a>
+                        @else
+                            <a href="{{url('/login-page')}}" class="btn btn-dark bg-dark-3 btn-rounded btn-v-4 btn-h-3 font-weight-semibold mb-3">
+                                Upload / View Prescription
+                            </a>
+                        @endif
 
 <!--                        <p class="text-color-light-3 mb-0">Lorem ipsum dolor sit amet, consectetu</p>-->
                     </div>

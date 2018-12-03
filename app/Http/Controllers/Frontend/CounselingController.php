@@ -53,6 +53,7 @@ class CounselingController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
 
         DB::beginTransaction();
 
@@ -62,22 +63,22 @@ class CounselingController extends Controller
             $info = new CounselingInfo();
             $info->user_id = $user->id;
             $info->category_department_id = $request->category_department_id;
-            $info->pharmacist_id = $request->pharmacist_id;
-            $info->package_id = $request->package_id;
+//            $info->pharmacist_id = $request->pharmacist_id;
+//            $info->package_id = $request->package_id;
 
-            $package_info = PackageList::where('id', '=', $request->package_id)->first();
-
-            $info->package_amount = $package_info->amount;
-            $info->package_duration = $package_info->duration;
+//            $package_info = PackageList::where('id', '=', $request->package_id)->first();
+//
+//            $info->package_amount = $package_info->amount;
+//            $info->package_duration = $package_info->duration;
             $info->patient = $request->patient;
             $info->patient_name = $request->patient_name;
             $info->patient_age = $request->patient_age;
             $info->patient_gender = $request->patient_gender;
             $info->patient_relation = $request->patient_relation;
-            $info->current_symptoms = $request->current_symptoms;
-            $info->medical_history = $request->medical_history;
+//            $info->current_symptoms = $request->current_symptoms;
+//            $info->medical_history = $request->medical_history;
             $info->patient_query = $request->patient_query;
-            $info->prescription = $request->prescription;
+//            $info->prescription = $request->prescription;
             $info->save();
             DB::commit();
 

@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
 
     Route::resource('/site','SiteSettingController');
 
+    Route::resource('/consult','CounselingController');
+
     Route::resource('users','UserController');
     Route::get('users/edit/{id}','UserController@edit');
     Route::post('users/edit/{id}/addRole',['as'=>'admin.users.addRole','uses'=>'UserController@addRole']);

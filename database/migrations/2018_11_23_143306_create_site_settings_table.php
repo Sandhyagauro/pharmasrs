@@ -20,6 +20,8 @@ class CreateSiteSettingsTable extends Migration
             $table->string('email');
             $table->string('facebook_link');
             $table->string('twitter_link');
+            $table->string('logo')->nullable();
+
             $table->timestamps();
         });
     }

@@ -41,7 +41,7 @@ class PagesController extends BaseController
         if (file_exists($file_path)) {
             switch ($slug) {
                 case 'index':
-                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+
                     $this->view_data['banners'] = Post::where('type', '=', 'banner')->orderBy('id', 'desc')->get();
                     $this->view_data['teamSection'] = Post::where('slug', '=', 'an-amazing-team')->first();
                     $this->view_data['teams'] = Post::where('type', '=', 'team')->orderBy('id', 'desc')->get();
@@ -51,7 +51,6 @@ class PagesController extends BaseController
                     $this->view_data['news'] = Post::where('type', '=', 'news')->limit(3)->orderBy('id', 'desc')->get();
                     break;
                 case 'aboutus':
-                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     $this->view_data['aboutBanner'] = Post::where('slug', '=', 'about-us')->first();
                     $this->view_data['aboutSection'] = Post::where('slug', '=', 'about-pharma-srs')->first();
                     $this->view_data['happyCustomers'] = Post::where('slug', '=', 'happy-customers')->first();
@@ -61,30 +60,26 @@ class PagesController extends BaseController
                     $this->view_data['ansTickets'] = Post::where('slug', '=', 'answered-tickets')->first();
                     break;
                 case 'news-and-articles':
-                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     $this->view_data['newsBanner'] = Post::where('slug', '=', 'news-and-articles')->first();
                     $this->view_data['news'] = Post::where('type', '=', 'news')->limit(3)->orderBy('id', 'desc')->get();
                     break;
                 case 'contactus':
-                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     $this->view_data['contactSection'] = Post::where('slug', '=', 'contact-us')->first();
                     break;
                 case 'blog-detail':
-                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     break;
                 case 'consult-online':
-                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     $this->view_data['consultOnlineBanner'] = Post::where('slug', '=', 'consult-online')->first();
                     $this->view_data['departments'] =CategoryDepartment::orderBy('id', 'desc')->get();
                     break;
                 case 'consult':
-                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
                     $this->view_data['packages'] = PackageList::all();
                     $this->view_data['pharmacists'] = PharmacistUser::all();
                     $this->view_data['departments'] =CategoryDepartment::orderBy('id', 'desc')->get();
                     break;
                 case 'login-page':
-                    $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+                    break;
+                case 'prescription-option':
                     break;
                 default:
                     break;
@@ -93,7 +88,6 @@ class PagesController extends BaseController
             return view('frontend.pages.' . $slug, $this->view_data);
         }
         // 3. No page exist (404)
-        $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
         return view('frontend.pages.404',$this->view_data);
 
     }
