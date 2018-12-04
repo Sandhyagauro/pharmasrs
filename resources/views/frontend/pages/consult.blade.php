@@ -22,7 +22,7 @@
                 <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
                 @endif
 
-                <form class="contact-form form-style-2 " action="{{route('counsel.store')}}" method="POST">
+                <form class="contact-form form-style-2" action="{{route('counsel.store')}}" method="POST" enctype="multipart/form-data">
                     {!! csrf_field(); !!}
                     <!--                    <div class="contact-form-success alert alert-success d-none">-->
                     <!--                        <strong>Success!</strong> Your message has been sent to us.-->
@@ -130,18 +130,20 @@
                             <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
                                       class="form-control" name="patient_query" placeholder="Your Queries"
                                 >
-
-                                </textarea>
+                            </textarea>
                         </div>
                     </div>
+                    <div class="form-row mt-2">
+                        <div class="col">
+                    <div class="image_save"></div></div></div>
 
-                    <div class="form-row ">
-                        <div class="form-group col">
-                                <div id="myDropZone" class="form-control " style="padding: 100px;">
-                                </div>
+                    <div class="dropzone">
+                        <div class="dz-clickable" id="myDrop">
+                            <div class="dz-default dz-message" data-dz-message="">
+                                <span>Drop files here to upload</span>
+                            </div>
                         </div>
                     </div>
-
                     <div class="form-row mt-2">
                         <div class="col">
                             <input type="submit" value="REQUEST ONLINE COUNSELING"
@@ -154,8 +156,11 @@
         </div>
     </div>
 </section>
+
 <script src="{{url('node_modules/jquery/dist/jquery.min.js')}}"></script>
+
 <script type="text/javascript">
+
     //    var category_department_id = $("#category_department_id").val();
     //    pharmacist_list(category_department_id);
     //
@@ -173,10 +178,32 @@
     //            }
     //        })
     //    }
+
+    //        $('#category_department_id').click(function () {
+    //            var category_department_id = $("#category_department_id").val();
+    //            pharmacist_list(category_department_id);
+    //        });
+
+
     $(document).ready(function () {
 
-        $("div#myDropZone").dropzone({
-            url: "/consult"
+//dropzone prescription
+        $("div#myDrop").dropzone({
+            url: "{{route('counsel.prescription.store')}}",
+            paramName: "file",
+            maxFilesize: 2, //MB
+            addRemoveLinks: true,
+            sending: function(file, xhr, formData) {
+                formData.append("_token", $('[name=_token').val());
+            },
+            success: function (file, response) {
+                $('.image_save').append('<input type="hidden" name="image_id[]" value="'+response.id+'"/>');
+                console.log(response);
+
+            },
+            error: function (file, response) {
+//                file.previewElement.classList.add("dz-error");
+            }
         });
 
 
@@ -189,10 +216,7 @@
             }
         });
 
-//        $('#category_department_id').click(function () {
-//            var category_department_id = $("#category_department_id").val();
-//            pharmacist_list(category_department_id);
-//        });
+
 
 
     })

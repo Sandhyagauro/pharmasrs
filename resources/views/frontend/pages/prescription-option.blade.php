@@ -19,7 +19,7 @@
                     <h4 class="font-weight-bold mb-3">View Prescriptions</h4>
 
                     <p class="mb-0">Want to know more about our prescription. View Here</p>
-                    <a href="#" class="btn btn-rounded btn-dark btn-h-4 btn-v-3 mt-4">View Prescription</a>
+                    <a href="{{url('/prescription-categories')}}" class="btn btn-rounded btn-dark btn-h-4 btn-v-3 mt-4">View Prescription</a>
                 </div>
             </div>
 

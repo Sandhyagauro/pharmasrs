@@ -26,7 +26,13 @@ Route::get('/pharmacist/dashboard',['as'=>'pharmacist.dashboard','uses'=>'Fronte
 Route::resource('/pharmacist','Frontend\PharmacistUserController');
 
 Route::get('/counsel/pharmacist_list',['as'=>'counsel.pharmacist_list','uses'=>'Frontend\CounselingController@getPharmacistList']);
+Route::post('/counsel/prescription',['as'=>'counsel.prescription.store','uses'=>'Frontend\CounselingController@storeCounselPrescription']);
+
+Route::post('/counsel/prescription-list',['as'=>'counsel.prescription.store','uses'=>'Frontend\CounselingController@storeCounselPrescription']);
+Route::get('/prescription-list/{type}',['uses'=>'Frontend\CounselingController@categoryPrescriptionList']);
 Route::resource('/counsel','Frontend\CounselingController');
+
+
 //Pages
 Route::match(['get','post'],'/{slug}','Frontend\PagesController@index')->where('slug','.*');
 

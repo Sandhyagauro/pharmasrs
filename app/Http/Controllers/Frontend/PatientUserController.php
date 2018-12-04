@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CounselingInfo;
 use App\Models\Menu;
 use App\Models\PatientUser;
 use Illuminate\Http\Request;
@@ -225,6 +226,7 @@ class PatientUserController extends BaseController
         $role =$login_user->roles->first()->name;
         if ($role == 'patient'){
             $this->view_data['user'] = PatientUser::where('user_id','=',$login_user->id)->first();
+            $this->view_data['prescriptions'] = CounselingInfo::where('user_id','=',$login_user->id)->get();
             return view('frontend.pages.patient.dashboard', $this->view_data);
         }else{
             return redirect('/login-page');
@@ -240,7 +242,7 @@ class PatientUserController extends BaseController
             'password' => $request->password
         ];
         if (Auth::attempt($user)) {
-            return redirect('/patient/dashboard');
+            return redirect('/prescription-option');
         } else {
             Session::flash('message', 'Something went wrong');
             return redirect('/login-page');

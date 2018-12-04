@@ -17,7 +17,7 @@ class CreateCounselingInfosTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('category_department_id')->unsigned();
-            $table->integer('pharmacist_id')->unsigned();
+            $table->integer('pharmacist_id')->unsigned()->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
@@ -30,7 +30,7 @@ class CreateCounselingInfosTable extends Migration
                 ->references('id')
                 ->on('pharmacist_users')
                 ->onDelete('cascade');
-            $table->integer('package_id');
+            $table->integer('package_id')->nullable()->default(null);
             $table->integer('package_amount')->nullable()->default(null);
             $table->string('package_duration')->nullable()->default('');
             $table->string('patient')->nullable();
@@ -41,7 +41,6 @@ class CreateCounselingInfosTable extends Migration
             $table->longText('current_symptoms')->nullable()->default(null);
             $table->longText('medical_history')->nullable()->default(null);
             $table->longText('patient_query')->nullable()->default(null);
-            $table->string('prescription')->nullable()->default(null);
             $table->timestamps();
         });
     }

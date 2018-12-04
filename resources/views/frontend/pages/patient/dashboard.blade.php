@@ -155,9 +155,20 @@
                             <!-- hotel search -->
                             <div class="bhoechie-tab-content">
                                 <center>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem doloremque,
-                                        quidem maxime veniam maiores incidunt fugiat, quod debitis facilis consectetur
-                                        illum eius eveniet, dolor eaque ut sapiente hic dolore laudantium.</p>
+                                    <p >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been th
+                                    </p>
+                                    @foreach($prescriptions as $prescription)
+                                    @if($prescription->image->count() > 0)
+                                    @foreach($prescription->image as $img)
+                                    <td>
+                                        <img src="{{asset($img->file_data)}}" style="width: 100px;height: 100px">
+                                    </td>
+                                    @endforeach
+
+                                    @else
+
+                                    @endif
+                                    @endforeach
                                 </center>
                             </div>
 

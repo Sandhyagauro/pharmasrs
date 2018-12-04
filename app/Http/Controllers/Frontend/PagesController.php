@@ -68,7 +68,7 @@ class PagesController extends BaseController
                     break;
                 case 'blog-detail':
                     break;
-                case 'consult-online':
+                case 'prescription-categories':
                     $this->view_data['consultOnlineBanner'] = Post::where('slug', '=', 'consult-online')->first();
                     $this->view_data['departments'] =CategoryDepartment::orderBy('id', 'desc')->get();
                     break;
@@ -81,6 +81,7 @@ class PagesController extends BaseController
                     break;
                 case 'prescription-option':
                     break;
+
                 default:
                     break;
 

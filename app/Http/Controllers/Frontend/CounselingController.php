@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\CategoryDepartment;
+use App\Models\CounselingInfoHasImages;
 use App\Models\CounselingInfo;
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Models\Menu;
 use App\Models\PackageList;
 use App\Models\PharmacistUser;
@@ -13,13 +16,15 @@ use DB;
 use Session;
 use Auth;
 
-class CounselingController extends Controller
+
+
+class CounselingController extends BaseController
 {
 
 
     public function __construct()
     {
-
+        parent::__construct();
     }
 
     /**
@@ -51,9 +56,38 @@ class CounselingController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    public function storeCounselPrescription(Request $request)
+    {
+
+        $image = new Image();
+        $prescription = $request->file('file');
+        $type = $prescription->getClientOriginalExtension();
+        $destination = 'uploads';
+        if (empty($prescription)) {
+            return redirect()->back()->withInput();
+        } else if (!$prescription->isValid()) {
+            return redirect()->back()->withInput();
+        } else if (!$type == 'jpeg' && $type == 'png' && $type == 'pdf' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+            return redirect()->back()->withInput();
+        } else {
+            $fileName = rand(1, 999999) . '.' . $type;
+            $image->file_data = $destination . "/" . $fileName;
+            $prescription->move($destination, $fileName);
+
+        }
+        $image->save();
+
+
+        if ($prescription) {
+            return response()->json($image, 200);
+        } else {
+            return response()->json('error', 400);
+        }
+
+    }
+
     public function store(Request $request)
     {
-        dd($request->all());
 
         DB::beginTransaction();
 
@@ -65,9 +99,7 @@ class CounselingController extends Controller
             $info->category_department_id = $request->category_department_id;
 //            $info->pharmacist_id = $request->pharmacist_id;
 //            $info->package_id = $request->package_id;
-
-//            $package_info = PackageList::where('id', '=', $request->package_id)->first();
-//
+//            $package_info = PackageList::where('id', '=', $request->package_id)->first();//
 //            $info->package_amount = $package_info->amount;
 //            $info->package_duration = $package_info->duration;
             $info->patient = $request->patient;
@@ -80,6 +112,18 @@ class CounselingController extends Controller
             $info->patient_query = $request->patient_query;
 //            $info->prescription = $request->prescription;
             $info->save();
+
+            if (!empty($request->image_id))
+            {
+                foreach ($request->image_id as $image_id)
+                {
+                 $prescription = new CounselingInfoHasImages();
+                $prescription->counseling_info_id = $info->id;
+                $prescription->file_id = $image_id;
+                $prescription->save();
+                }
+            }
+
             DB::commit();
 
             Session::flash('message', 'Form submitted Successfully');
@@ -93,10 +137,24 @@ class CounselingController extends Controller
     public function getPharmacistList(Request $request)
     {
         $pharmacist_lists = PharmacistUser::where('category_department_id', '=', $request->category_department_id)->orderBy('id', 'desc')->get();
-        $pharmacist_list_html = view('frontend.pages.ajaxConsult',compact('pharmacist_lists'))->render();
-        return response()->json(['success' => true,'data' => ['pharmacist_list_html' => $pharmacist_list_html]], 200);
+        $pharmacist_list_html = view('frontend.pages.ajaxConsult', compact('pharmacist_lists'))->render();
+        return response()->json(['success' => true, 'data' => ['pharmacist_list_html' => $pharmacist_list_html]], 200);
     }
 
+    public function categoryPrescriptionList($type)
+    {
+//
+//        $this->view_data['prescriptions'] = CounselingInfo::select('category_departments.*','counseling_infos.*')
+//            ->join('category_departments','category_departments.id','=','counseling_infos.category_department_id')
+//            ->where('category_departments.slug','=',$type)
+//            ->orderBy('counseling_infos.id','desc')
+//            ->get();
+        $category = CategoryDepartment::where('slug','=',$type)->first();
+        $this->view_data['prescriptions'] = CounselingInfo::where('category_department_id','=',$category->id)
+            ->get();
+
+        return view('frontend.pages.prescription-list',$this->view_data);
+    }
     /**
      * Display the specified resource.
      *

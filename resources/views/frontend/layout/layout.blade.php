@@ -42,6 +42,9 @@
     @include('frontend/layout/footer')
    <script src="{{url('assets/js/all.js') }}"></script>
     <script src="{{url('assets/js/dropzone.js') }}"></script>
+    <script>
+        Dropzone.autoDiscover = false;
+    </script>
 
     <script>
         $("#date").datepicker({

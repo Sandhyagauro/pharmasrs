@@ -8,9 +8,7 @@
         <div class="row text-center mb-4">
             <div class="col-12">
                 <div class="overflow-hidden">
-
                 </div>
-
                 <div class="overflow-hidden">
                     <h2 class="banner-title font-weight-bold text-color-light mb-0 appear-animation"
                         data-appear-animation="maskUp"
@@ -18,7 +16,7 @@
 
                     <p class="text-color-light-2 text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter"
                        data-appear-animation-delay="400">
-                        {{ $consultOnlineBanner->content }}
+                        {!! html_entity_decode( $consultOnlineBanner->content) !!}
                     </p>
                 </div>
             </div>
@@ -36,7 +34,7 @@
                  data-appear-animation-delay="200">
                 <div class="card border-0">
                     <div class="card-body text-center p-2">
-                        <a href="{{ url('consult')}}">
+                        <a href="{{ url('prescription-list/'.$department->slug)}}">
                             <div class="image-frame mb-4">
                                 <img src="{{$department->image}}" class="img-fluid rounded-circle" alt="">
                             </div>
