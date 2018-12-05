@@ -22,16 +22,22 @@
     <section class="section">
         <div class="container">
             <div class="row">
+                <div class="col-md-12" >
+                @if(Session::has('message'))
+                <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('message') }}</p>
+                @endif
+</div>
                 <div class="col-lg-6 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter">
                     <div class="bg-primary rounded p-5">
                         <h2 class="text-color-light font-weight-bold text-4 mb-4">Patient Login / Registration</h2>
 <!--                        <a href="{{url('auth/facebook')}}">Login in with Facebook</a>-->
+
                         <form  action="{{route('patient.login')}}"  method="post">
                             {!! csrf_field(); !!}
                             <div class="form-row">
                                 <div class="form-group col mb-2">
-                                    <label class="text-color-light-2" for="email">EMAIL / USERNAME</label>
-                                    <input type="email" value="" maxlength="100" class="form-control bg-light rounded border-0 text-1" name="email" id="frmSignInEmail" required>
+                                    <label class="text-color-light-2" for="email">EMAIL / PHONE</label>
+                                    <input type="text" value="" maxlength="100" class="form-control bg-light rounded border-0 text-1" name="email" id="frmSignInEmail" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -70,8 +76,8 @@
                             {!! csrf_field(); !!}
                             <div class="form-row">
                                 <div class="form-group col mb-2">
-                                    <label>EMAIL / USERNAME</label>
-                                    <input type="email" value="" maxlength="100" class="form-control bg-light-5 rounded border-0 text-1" name="email" required>
+                                    <label>EMAIL / PHONE</label>
+                                    <input type="text" value="" maxlength="100" class="form-control bg-light-5 rounded border-0 text-1" name="email" required>
                                 </div>
                             </div>
                             <div class="form-row mb-5">

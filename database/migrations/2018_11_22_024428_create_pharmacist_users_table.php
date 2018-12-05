@@ -21,7 +21,7 @@ class CreatePharmacistUsersTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->integer('category_department_id')->unsigned();
+            $table->integer('category_department_id')->unsigned()->nullable();
             $table->foreign('category_department_id')
                 ->references('id')
                 ->on('category_departments')

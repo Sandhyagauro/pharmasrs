@@ -36,7 +36,7 @@
                     <div class="card-body text-center p-2">
                         @if(Auth::check() && Auth::user()->hasRole(['patient','pharmacist']))
                         <a href="{{ url('prescription-list/'.$department->slug)}}">
-                                                
+
                         @else
                         <a href="{{url('/login-page')}}" >
 

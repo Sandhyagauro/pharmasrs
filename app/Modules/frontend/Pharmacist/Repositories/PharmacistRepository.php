@@ -29,6 +29,7 @@ class PharmacistRepository extends RepositoryImplementation implements  Pharmaci
             $user = new User();
             $user->name = $attributes['name'];
             $user->email = $attributes['email'];
+            $user->phone = $attributes['phone'];
             $user->password = bcrypt($attributes['password']);
             $user->save();
 
@@ -37,21 +38,21 @@ class PharmacistRepository extends RepositoryImplementation implements  Pharmaci
 
             $post = new PharmacistUser();
             $post->user_id = $user->id;
-            $post->category_department_id = $attributes['category_department_id'];
+//            $post->category_department_id = $attributes['category_department_id'];
             $post->name = $attributes['name'];
             $post->nmc_number = $attributes['nmc_number'];
             $post->qualification = $attributes['qualification'];
-            $post->speciality = $attributes['speciality'];
-            $post->website = $attributes['website'];
+//            $post->speciality = $attributes['speciality'];
+//            $post->website = $attributes['website'];
             $post->shop_name = $attributes['shop_name'];
             $post->shop_address = $attributes['shop_address'];
-            $post->shop_number = $attributes['shop_number'];
-            $post->specialization = $attributes['specialization'];
-            $post->experience = $attributes['experience'];
-            $post->education = $attributes['education'];
-            $post->journals = $attributes['journals'];
-            $post->awards = $attributes['awards'];
-            $post->memberships = $attributes['memberships'];
+//            $post->shop_number = $attributes['shop_number'];
+//            $post->specialization = $attributes['specialization'];
+//            $post->experience = $attributes['experience'];
+//            $post->education = $attributes['education'];
+//            $post->journals = $attributes['journals'];
+//            $post->awards = $attributes['awards'];
+//            $post->memberships = $attributes['memberships'];
             $post->save();
             if (Input::hasFile('image')) {
                 $image = Input::file('image');
@@ -84,14 +85,14 @@ class PharmacistRepository extends RepositoryImplementation implements  Pharmaci
         );
 
         // attempt to do the login
-
         if (Auth::attempt($userdata)) {
             $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
             $this->view_data['user'] = Auth::user();
-            return redirect()->route('pharmacist.dashboard');
+            return true;
+
         } else {
             // validation not successful, send back to form
-            return back();
+            return false;
         }
     }
 

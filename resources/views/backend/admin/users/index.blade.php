@@ -24,6 +24,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th class="text-center">Email</th>
+                                <th>Phone</th>
                                 <th>Roles</th>
                                 <th class="text-center">Actions</th>
                             </tr>
@@ -47,6 +48,9 @@
                                 </td>
                                 <td class="text-center">
                                     {{$user->email}}
+                                </td>
+                                <td>
+                                    {{$user->phone}}
                                 </td>
                                 <td>
                                     <div class="clearfix">
@@ -80,6 +84,7 @@
                                 </th>
                                 <th>Name</th>
                                 <th class="text-center">Email</th>
+                                <th>Phone</th>
                                 <th>Roles</th>
                                 <th class="text-center">Actions</th>
                             </tr>
@@ -104,6 +109,9 @@
                                 </td>
                                 <td class="text-center">
                                     {{$user->email}}
+                                </td>
+                                <td>
+                                    {{$user->phone}}
                                 </td>
                                 <td>
                                     <div class="clearfix">

@@ -64,27 +64,34 @@ class PharmacistUserController extends BaseController
             'email' => 'unique:users,email,'
         ]);
 
-        $this->pharmacist->registerPharmacist($request->all());
+        $register = $this->pharmacist->registerPharmacist($request->all());
+        if($register){
+            return redirect()->route('pharmacist.dashboard');
+        }else{
+            return back();
+        }
 
     }
 
     public function login(Request $request)
     {
-        $user = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-        if (Auth::attempt($user)) {
-            return redirect('/pharmacist/dashboard');
-        } else {
-            Session::flash('message', 'Something went wrong');
-            return redirect('/login-page');
+        $user = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL )
+            ? 'email'
+            : 'phone';
 
+        $request->merge([
+            $user => $request->input('email')
+        ]);
+        if (Auth::attempt($request->only($user, 'password'))) {
+            return redirect('/pharmacist/dashboard');
         }
+        Session::flash('message', 'Something went wrong');
+        return redirect('/login-page');
     }
 
     public function dashboard()
     {
+
         $login_user = Auth::user();
         $role =$login_user->roles->first()->name;
         if ($role == 'pharmacist'){

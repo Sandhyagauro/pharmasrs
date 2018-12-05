@@ -64,6 +64,7 @@ class PatientUserController extends BaseController
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
+            $user->phone = $request->phone;
             $user->password = bcrypt($request->password);
             $user->save();
 
@@ -73,15 +74,8 @@ class PatientUserController extends BaseController
             $post->user_id = $user->id;
             $post->name = $request->name;
             $post->email = $request->email;
-            $post->country = $request->country;
             $post->phone = $request->phone;
             $post->address = $request->address;
-            $post->dob = $request->dob;
-            $post->gender = $request->gender;
-            $post->weight = $request->weight;
-            $post->feet = $request->feet;
-            $post->inches = $request->inches;
-            $post->blood_group = $request->blood_group;
             $post->save();
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
@@ -221,7 +215,7 @@ class PatientUserController extends BaseController
 
     public function dashboard()
     {
-//        $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+        $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
         $login_user = Auth::user();
         $role =$login_user->roles->first()->name;
         if ($role == 'patient'){
@@ -237,17 +231,20 @@ class PatientUserController extends BaseController
 
     public function login(Request $request)
     {
-        $user = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-        if (Auth::attempt($user)) {
-            return redirect('/prescription-option');
-        } else {
-            Session::flash('message', 'Something went wrong');
-            return redirect('/login-page');
+        $user = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL )
+            ? 'email'
+            : 'phone';
 
+        $request->merge([
+            $user => $request->input('email')
+        ]);
+        if (Auth::attempt($request->only($user, 'password'))) {
+            return redirect('/prescription-option');
         }
+        Session::flash('message', 'Something went wrong!!! Please Try Again');
+        return redirect('/login-page');
+
+
     }
     public function logout(Request $request)
     {

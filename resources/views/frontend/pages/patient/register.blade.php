@@ -60,84 +60,82 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label class="text-color-light-2" >COUNTRY</label>
-
-                                    <select id="country" name ="country" class="form-control"></select>
+                                    <label class="text-color-light-2" for="address">ADDRESS</label>
+                                    <input type="text" value=""
+                                           class="form-control bg-light rounded border-0 text-1" name="address"
+                                           id="address" >
                                 </div>
-
                                 <div class="form-group col-md-6">
                                     <label class="text-color-light-2" for="phone">PHONE</label>
                                     <input type="text" value=""
                                            class="form-control bg-light rounded border-0 text-1" name="phone"
-                                           id="phone" required>
+                                           id="phone" >
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-color-light-2" for="address">ADDRESS</label>
-                                    <input type="text" value=""
-                                           class="form-control bg-light rounded border-0 text-1" name="address"
-                                           id="address" required>
-                                </div>
+<!--                            <div class="form-row">-->
+<!--                                <div class="form-group col-md-6">-->
+<!--                                    <label class="text-color-light-2">COUNTRY</label>-->
+<!--                                    <select id="country" name="country" class="form-control"></select>-->
+<!--                                </div>-->
+<!--                                <div class="form-group col-md-6">-->
+<!--                                    <label class="text-color-light-2" for="dob">DOB</label>-->
+<!--                                    <input type="text" value=""-->
+<!--                                           class="form-control bg-light rounded border-0 text-1" name="dob"-->
+<!--                                           id="date" required>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-row">-->
+<!--                                <div class="form-group col-md-6">-->
+<!--                                    <label class="text-color-light-2"  >GENDER</label>-->
+<!--                                    <select name="gender" class="form-control" >-->
+<!--                                        <optgroup label="--Select Gender--">-->
+<!--                                        <option value="male">Male</option>-->
+<!--                                        <option value="female">Female</option>-->
+<!--                                        </optgroup>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!---->
+<!--                                <div class="form-group col-md-6">-->
+<!--                                    <label class="text-color-light-2" for="weight">WEIGHT</label>-->
+<!--                                    <input type="number" value=""-->
+<!--                                           class="form-control bg-light rounded border-0 text-1" name="weight"-->
+<!--                                           id="weight" required>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-row">-->
+<!--                                <div class="form-group col-md-6">-->
+<!--                                    <label class="text-color-light-2" for="feet">FEET</label>-->
+<!--                                    <input type="number" value=""-->
+<!--                                           class="form-control bg-light rounded border-0 text-1" name="feet"-->
+<!--                                           id="feet" required>-->
+<!--                                </div>-->
+<!---->
+<!--                                <div class="form-group col-md-6">-->
+<!--                                    <label class="text-color-light-2" for="inches">INCHES</label>-->
+<!--                                    <input type="number" value=""-->
+<!--                                           class="form-control bg-light rounded border-0 text-1" name="inches"-->
+<!--                                           id="inches" required>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                                <div class="form-group col-md-6">-->
+<!--                                    <label class="text-color-light-2" for="blood_group">BLOOD GROUP</label>-->
+<!--                                    <select name="blood_group" class="form-control" >-->
+<!--                                        <optgroup label="--Select Blood Group--">-->
+<!--                                            <option value="a+">A+</option>-->
+<!--                                            <option value="a-">A-</option>-->
+<!--                                            <option value="b+">B+</option>-->
+<!--                                            <option value="b-">B-</option>-->
+<!--                                            <option value="ab+">AB+</option>-->
+<!--                                            <option value="ab-">AB-</option>-->
+<!--                                            <option value="o+">O+</option>-->
+<!--                                            <option value="o-">O-</option>-->
+<!--                                        </optgroup>-->
+<!--                                    </select>-->
+<!--                                </div>-->
 
-                                <div class="form-group col-md-6">
-                                    <label class="text-color-light-2" for="dob">DOB</label>
-                                    <input type="text" value=""
-                                           class="form-control bg-light rounded border-0 text-1" name="dob"
-                                           id="date" required>
-                                </div>
-                            </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-color-light-2"  >GENDER</label>
-                                    <select name="gender" class="form-control" >
-                                        <optgroup label="--Select Gender--">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
 
-                                <div class="form-group col-md-6">
-                                    <label class="text-color-light-2" for="weight">WEIGHT</label>
-                                    <input type="number" value=""
-                                           class="form-control bg-light rounded border-0 text-1" name="weight"
-                                           id="weight" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-color-light-2" for="feet">FEET</label>
-                                    <input type="number" value=""
-                                           class="form-control bg-light rounded border-0 text-1" name="feet"
-                                           id="feet" required>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label class="text-color-light-2" for="inches">INCHES</label>
-                                    <input type="number" value=""
-                                           class="form-control bg-light rounded border-0 text-1" name="inches"
-                                           id="inches" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="text-color-light-2" for="blood_group">BLOOD GROUP</label>
-                                    <select name="blood_group" class="form-control" >
-                                        <optgroup label="--Select Blood Group--">
-                                            <option value="a+">A+</option>
-                                            <option value="a-">A-</option>
-                                            <option value="b+">B+</option>
-                                            <option value="b-">B-</option>
-                                            <option value="ab+">AB+</option>
-                                            <option value="ab-">AB-</option>
-                                            <option value="o+">O+</option>
-                                            <option value="o-">O-</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
+                            <div class="form-group col-md-6">
                                     <label class="text-color-light-2" >PROFILE IMAGE</label>
                                     <input type="file"
                                            class="form-control bg-light rounded border-0 text-1" name="image"
