@@ -94,6 +94,11 @@
                                             <input type="email" class="form-control" value="{{$user->email}}"
                                                    name="email">
                                         </div>
+<!--                                        <div class="col-md-6">-->
+<!--                                            <label>Contact Number</label>-->
+<!--                                            <input type="text" class="form-control" value="{{$user->phone}}"-->
+<!--                                                   name="phone">-->
+<!--                                        </div>-->
                                         <div class="col-md-6">
                                             <label>NPC number</label>
                                             <input type="number" class="form-control" value="{{$user->nmc_number}}"
