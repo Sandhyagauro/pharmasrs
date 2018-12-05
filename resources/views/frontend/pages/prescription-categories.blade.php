@@ -34,7 +34,15 @@
                  data-appear-animation-delay="200">
                 <div class="card border-0">
                     <div class="card-body text-center p-2">
+                        @if(Auth::check() && Auth::user()->hasRole(['patient','pharmacist']))
                         <a href="{{ url('prescription-list/'.$department->slug)}}">
+                                                
+                        @else
+                        <a href="{{url('/login-page')}}" >
+
+                        @endif
+
+
                             <div class="image-frame mb-4">
                                 <img src="{{$department->image}}" class="img-fluid rounded-circle" alt="">
                             </div>

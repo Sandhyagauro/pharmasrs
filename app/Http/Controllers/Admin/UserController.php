@@ -24,6 +24,7 @@ class UserController extends Controller
     public function index()
     {
         $users = \App\User::all();
+
         return view('backend.admin.users.index', compact('users'));
     }
 

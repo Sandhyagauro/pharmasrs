@@ -19,6 +19,7 @@
                     <th>Category Department</th>
                     <th>Patient Query</th>
                     <th>Patient type</th>
+                    <th>Prescriptions</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -38,6 +39,13 @@
                     </td>
                     <td>
                         {{$post->patient}}
+                    </td>
+                    <td>
+                        @if($post->image->count() > 0)
+                        @foreach($post->image as $img)
+                     <img src="{{asset($img->file_data)}}"   style="height: 80px; width: 80px">
+                        @endforeach
+                        @endif
                     </td>
                     <td>
                         <a href="#" class='btn btn-primary btn-sm'><i

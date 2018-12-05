@@ -23,6 +23,8 @@ Route::resource('/patient','Frontend\PatientUserController');
 
 Route::post('/pharmacist/login',['as'=>'pharmacist.login','uses'=>'Frontend\PharmacistUserController@login']);
 Route::get('/pharmacist/dashboard',['as'=>'pharmacist.dashboard','uses'=>'Frontend\PharmacistUserController@dashboard']);
+Route::post('/pharmacist/dashboard/{id}/update',['as'=>'pharmacist.update_profile','uses'=>'Frontend\PharmacistUserController@updateProfile']);
+Route::get('/pharmacist/logout',['as'=>'pharmacist.logout','uses'=>'Frontend\PharmacistUserController@logout']);
 Route::resource('/pharmacist','Frontend\PharmacistUserController');
 
 Route::get('/counsel/pharmacist_list',['as'=>'counsel.pharmacist_list','uses'=>'Frontend\CounselingController@getPharmacistList']);

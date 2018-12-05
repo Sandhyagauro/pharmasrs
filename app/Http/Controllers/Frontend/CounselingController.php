@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\Menu;
 use App\Models\PackageList;
 use App\Models\PharmacistUser;
+use App\User;
 use Illuminate\Http\Request;
 
 use DB;
@@ -150,7 +151,9 @@ class CounselingController extends BaseController
 //            ->orderBy('counseling_infos.id','desc')
 //            ->get();
         $category = CategoryDepartment::where('slug','=',$type)->first();
-        $this->view_data['prescriptions'] = CounselingInfo::where('category_department_id','=',$category->id)
+        $this->view_data['prescriptions'] = CounselingInfo::select('users.name','counseling_infos.*')
+            ->where('category_department_id','=',$category->id)
+            ->join('users','users.id','=','counseling_infos.user_id')
             ->get();
 
         return view('frontend.pages.prescription-list',$this->view_data);

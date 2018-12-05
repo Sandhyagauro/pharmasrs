@@ -221,7 +221,7 @@ class PatientUserController extends BaseController
 
     public function dashboard()
     {
-        $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+//        $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
         $login_user = Auth::user();
         $role =$login_user->roles->first()->name;
         if ($role == 'patient'){

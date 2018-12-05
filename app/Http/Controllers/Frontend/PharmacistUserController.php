@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 
 use App\Models\CategoryDepartment;
+use App\Models\CounselingInfo;
 use App\Models\PharmacistUser;
+use App\Modules\frontend\Categories\Repositories\CategoryInterface;
+use App\Modules\frontend\Pharmacist\Repositories\PharmacistInterface;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\Menu;
@@ -16,11 +19,13 @@ use Auth;
 
 class PharmacistUserController extends BaseController
 {
+   private $categories;
 
-
-    public function __construct()
+    public function __construct(CategoryInterface $categories, PharmacistInterface $pharmacist)
     {
         parent::__construct();
+        $this->categories=$categories;
+        $this->pharmacist = $pharmacist;
     }
 
     /**
@@ -31,8 +36,8 @@ class PharmacistUserController extends BaseController
 
     public function index()
     {
-        $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
-        $this->view_data['departments'] = CategoryDepartment::orderBy('id', 'desc')->get();
+
+        $this->view_data['departments'] =  $this->categories->getAll();
         return view('frontend.pages.pharmacist.register', $this->view_data);
 
     }
@@ -59,75 +64,7 @@ class PharmacistUserController extends BaseController
             'email' => 'unique:users,email,'
         ]);
 
-
-        DB::beginTransaction();
-        try {
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-            $user->save();
-
-            $role = Role::where('name', '=', 'pharmacist')->first();
-
-            $post = new PharmacistUser();
-            $post->user_id = $user->id;
-            $post->category_department_id = $request->category_department_id;
-            $post->name = $request->name;
-            $post->nmc_number = $request->nmc_number;
-            $post->qualification = $request->qualification;
-            $post->speciality = $request->speciality;
-            $post->website = $request->website;
-            $post->shop_name = $request->shop_name;
-            $post->shop_address = $request->shop_address;
-            $post->shop_number = $request->shop_number;
-            $post->specialization = $request->specialization;
-            $post->experience = $request->experience;
-            $post->education = $request->education;
-            $post->journals = $request->journals;
-            $post->awards = $request->awards;
-            $post->memberships = $request->memberships;
-            $post->save();
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $type = $image->getClientOriginalExtension();
-                $destination = 'uploads';
-                if (empty($image)) {
-                    return redirect()->back()->withInput();
-                } else if (!$image->isValid()) {
-                    return redirect()->back()->withInput();
-                } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
-                    return redirect()->back()->withInput();
-                } else {
-                    $fileName = rand(1, 999999) . '.' . $type;
-                    $post->image = $destination . "/" . $fileName;
-                    $image->move($destination, $fileName);
-                }
-                $post->save();
-            }
-            $user->assignRole($role);
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-            dd($e->getMessage());
-
-        }
-        //pharmacist login
-        $userdata = array(
-            'email' => $request->email,
-            'password' => $request->password
-        );
-
-        // attempt to do the login
-
-        if (Auth::attempt($userdata)) {
-            $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
-            $this->view_data['user'] = Auth::user();
-            return redirect()->route('pharmacist.dashboard');
-        } else {
-            // validation not successful, send back to form
-            return back();
-        }
+        $this->pharmacist->registerPharmacist($request->all());
 
     }
 
@@ -148,11 +85,60 @@ class PharmacistUserController extends BaseController
 
     public function dashboard()
     {
-        $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
-        $this->view_data['user'] = Auth::user();
-        return view('frontend.pages.pharmacist.dashboard', $this->view_data);
+        $login_user = Auth::user();
+        $role =$login_user->roles->first()->name;
+        if ($role == 'pharmacist'){
+            $this->view_data['user'] = PharmacistUser::select('users.email','pharmacist_users.*')->where('user_id','=',$login_user->id)
+                ->join('users','users.id','=','pharmacist_users.user_id')->first();
+            $this->view_data['prescriptions'] = CounselingInfo::where('user_id','=',$login_user->id)->get();
+            return view('frontend.pages.pharmacist.dashboard', $this->view_data);
+        }else{
+            return redirect('/login-page');
+        }
     }
 
+    public function updateProfile(Request $request, $id)
+    {
+        $pharmacist_user = PharmacistUser::find($id);
+        $pharmacist_user->name = $request->name;
+        $pharmacist_user->nmc_number = $request->nmc_number;
+        $pharmacist_user->qualification = $request->qualification;
+        $pharmacist_user->shop_name = $request->shop_name;
+        $pharmacist_user->shop_address = $request->shop_address;
+
+        $pharmacist_user->save();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $type = $image->getClientOriginalExtension();
+            $destination = 'uploads';
+            if (empty($image)) {
+                return redirect()->back()->withInput();
+            } else if (!$image->isValid()) {
+                return redirect()->back()->withInput();
+            } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                return redirect()->back()->withInput();
+            } else {
+                $fileName = rand(1, 999999) . '.' . $type;
+                $pharmacist_user->image = $destination . "/" . $fileName;
+                $image->move($destination, $fileName);
+            }
+            $pharmacist_user->save();
+        }
+
+        $user = User::where('id','=',$pharmacist_user->user_id)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
+
+        Session::flash('message','Profile Updated Successfully');
+        return redirect()->back();
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect ('/login-page');
+    }
     /**
      * Display the specified resource.
      *
