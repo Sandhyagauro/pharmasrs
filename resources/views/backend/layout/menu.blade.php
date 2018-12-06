@@ -4,45 +4,44 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/dashboard')}}">
                     <i class="nav-icon icon-speedometer"></i> Dashboard
-                    <span class="badge badge-primary">NEW</span>
                 </a>
             </li>
             <li class="nav-title">Content Management</li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/menu')}}">
-                    <i class="nav-icon icon-drop"></i> Menu Manager</a>
+                    <i class="nav-icon icon-arrow-right"></i> Menu Manager</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/post')}}">
-                    <i class="nav-icon icon-drop"></i> Content Manager</a>
+                    <i class="nav-icon icon-note"></i> Content Manager</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/banner')}}">
-                    <i class="nav-icon icon-drop"></i> Banner Manager</a>
+                    <i class="nav-icon icon-star"></i> Banner Manager</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/team')}}">
-                    <i class="nav-icon icon-drop"></i> Team Manager</a>
+                    <i class="nav-icon icon-people"></i> Team Manager</a>
             </li>
 
 
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/department')}}">
-                    <i class="nav-icon icon-drop"></i> Clinic Departments </a>
+                    <i class="nav-icon icon-briefcase"></i> Clinic Departments </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/news')}}">
-                    <i class="nav-icon icon-drop"></i> News and Articles </a>
+                    <i class="nav-icon icon-docs"></i> News and Articles </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/site')}}">
-                    <i class="nav-icon icon-drop"></i> Site Setting </a>
+                    <i class="nav-icon icon-pencil"></i> Site Setting </a>
             </li>
 
 
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/contact')}}">
-                    <i class="nav-icon icon-drop"></i> Contact Informations </a>
+                    <i class="nav-icon icon-phone"></i> Contact Informations </a>
             </li>
             <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="typography.html">-->
@@ -236,11 +235,11 @@
 <!--                </ul>-->
 <!--            </li>-->
             <li class="nav-item mt-auto">
-                <a class="nav-link nav-link-success" href="#" target="_top">
-                    <i class="nav-icon icon-cloud-download"></i>Download App </a>
+                <a class="nav-link nav-link-success" href="{{url('admin/dashboard')}}" target="_top">
+                    <i class="nav-icon icon-cloud-download"></i>Dashboard </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-link-danger" href="#" target="_top">
+                <a class="nav-link nav-link-danger" href="{{url('/')}}" target="_blank">
                     <i class="nav-icon icon-layers"></i>Visit
                     <strong>Website</strong>
                 </a>
