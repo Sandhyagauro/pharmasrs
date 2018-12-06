@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
 
     Route::resource('/site','SiteSettingController');
 
+    Route::get('/consult/reply/{id}','CounselingController@reply');
+    Route::post('/consult/reply',['as'=>'reply.prescription','uses'=>'CounselingController@replyPrescription']);
     Route::resource('/consult','CounselingController');
 
     Route::resource('users','UserController');
