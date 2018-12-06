@@ -30,7 +30,6 @@
                 <div class="col-lg-6 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter">
                     <div class="bg-primary rounded p-5">
                         <h2 class="text-color-light font-weight-bold text-4 mb-4">Patient Login / Registration</h2>
-<!--                        <a href="{{url('auth/facebook')}}">Login in with Facebook</a>-->
 
                         <form  action="{{route('patient.login')}}"  method="post">
                             {!! csrf_field(); !!}
@@ -59,12 +58,19 @@
                                     <a href="#" class="forgot-pw text-color-light-2 d-block">Forgot password?</a>
                                 </div>
                             </div>
+                            <div class="row ">
+                                <div class="col ">
+                                    <a href="{{ url('/auth/facebook') }}" style="background-color: #3b5998" class="btn btn-light btn-outline btn-rounded font-weight-semibold btn-h-3 btn-v-3 text-0"><i class="fab fa-facebook-f" style="padding: 2px 0px; margin-right: 10px;" ></i>LOGIN WITH FACEBOOK</a>
+                                </div>
+                            </div><br>
+
                             <div class="row align-items-center">
                                 <div class="col text-right">
                                     <button type="submit" class="btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">LOGIN</button>
                                     <a href="{{route('patient.index')}}" class="btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">  REGISTER</a>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -94,6 +100,8 @@
                                     <a href="{{route('pharmacist.index')}}" class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">REGISTER NOW</a>
                                 </div>
                             </div>
+
+
                         </form>
                     </div>
                 </div>

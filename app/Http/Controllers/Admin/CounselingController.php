@@ -23,7 +23,7 @@ class CounselingController extends Controller
     public function index()
     {
 
-        $posts = CounselingInfo::select('users.name','category_departments.title','counseling_infos.*')
+        $posts = CounselingInfo::select('users.name','users.email','category_departments.title','counseling_infos.*')
             ->leftjoin('category_departments','category_departments.id','=','counseling_infos.category_department_id')
             ->join('users','users.id','=','counseling_infos.user_id')
             ->orderBy('created_at', 'desc')

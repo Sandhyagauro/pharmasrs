@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\PatientUser;
 use Illuminate\Http\Request;
 use Session;
 
 use App\User;
 use Auth;
 use Socialite;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
@@ -25,45 +27,47 @@ class AuthController extends Controller
         return Socialite::driver($provider)->redirect();
     }
 
-    /**
-    _ Obtain the user information from provider.  Check if the user already exists in our
-    _ database by looking up their provider_id in the database.
-    _ If the user exists, log them in. Otherwise, create a new user then log them in. After that
-    _ redirect them to the authenticated users homepage.
-    _
-    _ @return Response
-    _/
     public function handleProviderCallback($provider)
     {
-    $user = Socialite::driver($provider)->user();
+        $user = Socialite::driver($provider)->user();
 
-    $authUser = $this->findOrCreateUser($user, $provider);
-    Auth::login($authUser, true);
-    return redirect($this->redirectTo);
+        $authUser = $this->findOrCreateUser($user, $provider);
+        Auth::login($authUser, true);
+
+        return redirect()->route('patient.dashboard');
+//        return redirect($this->redirectTo);
     }
 
-    /**
-    _ If a user has registered before using social auth, return the user
-    _ else, create a new user object.
-    _ @param  $user Socialite user object
-    _ @param $provider Social auth provider
-    _ @return  User
-     */
     public function findOrCreateUser($user, $provider)
     {
         $authUser = User::where('provider_id', $user->id)->first();
+
         if ($authUser) {
             return $authUser;
         }
+        try {
+            $user = User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'provider' => $provider,
+                'provider_id' => $user->id
+            ]);
 
-         User::create([
-            'name'     => $user->name,
-            'email'    => $user->email,
-            'provider' => $provider,
-            'provider_id' => $user->id
-        ]);
-        return redirect()->route('patient.dashboard');
+            $post = new PatientUser();
+            $post->user_id = $user->id;
+            $post->name = $user->name;
+            $post->email = $user->email;
+            $post->save();
+
+            $role = Role::where('name', '=', 'patient')->first();
+            $user->assignRole($role);
+            return $user;
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $e;
+        }
     }
+
     /**
      * Show the form for creating a new resource.
      *

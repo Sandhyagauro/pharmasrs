@@ -212,10 +212,10 @@
 
     });
 </script>
-<!--<script src="{{('assets/js/countries.js')}}"></script>-->
-<!--<script language="javascript">-->
-<!--    populateCountries("country"); -->
-<!--</script>-->
+<script src="{{('assets/js/countries.js')}}"></script>
+<script language="javascript">
+    populateCountries("country");
+</script>
 
 
 @endsection

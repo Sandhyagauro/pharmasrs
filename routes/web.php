@@ -14,7 +14,6 @@
 
 include('backendroutes.php');
 
-
 //Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -33,5 +32,10 @@ Route::get('/home', 'HomeController@index')->name('home');
         $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
         $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
         $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+
+Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/callback/{provider}', 'Auth\AuthController@handleProviderCallback');
+
 
 include('frontendroutes.php');

@@ -95,7 +95,7 @@ class PharmacistUserController extends BaseController
         $login_user = Auth::user();
         $role =$login_user->roles->first()->name;
         if ($role == 'pharmacist'){
-            $this->view_data['user'] = PharmacistUser::select('users.email','pharmacist_users.*')->where('user_id','=',$login_user->id)
+            $this->view_data['user'] = PharmacistUser::select('users.email','users.phone','pharmacist_users.*')->where('user_id','=',$login_user->id)
                 ->join('users','users.id','=','pharmacist_users.user_id')->first();
             $this->view_data['prescriptions'] = CounselingInfo::where('user_id','=',$login_user->id)->get();
             return view('frontend.pages.pharmacist.dashboard', $this->view_data);

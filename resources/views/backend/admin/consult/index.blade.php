@@ -16,6 +16,7 @@
 
                     <th>S.No.</th>
                     <th>User name</th>
+                    <th>User email</th>
                     <th>Category Department</th>
                     <th>Patient Query</th>
                     <th>Patient type</th>
@@ -30,6 +31,9 @@
                     <td>{{++$index}}.</td>
                     <td>
                         {{$post->name}}
+                    </td>
+                    <td>
+                        {{$post->email}}
                     </td>
                     <td>
                         {{$post->title}}
