@@ -9,6 +9,27 @@
                 <h2 class="font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter">Prescription
                     Lists</h2>
 
+                <!--search-->
+                <input type="text" class="form-controller" id="search" name="search">
+
+<!--                <div class="row">-->
+<!--                    <div class="col-md-4 col-md-offset-8">-->
+<!--                        <form id="search" >-->
+<!--                            {!! csrf_field() !!}-->
+<!--                            <div class="input-group" >-->
+<!--                                <input type="text" class="form-control" name="search"-->
+<!--                                       placeholder="Search">-->
+<!--                        <span class="input-group-btn">-->
+<!--            <button type="submit" class="btn btn-default">-->
+<!--                <span class="glyphicon glyphicon-search"></span>-->
+<!--            </button>-->
+<!--        </span>-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
                 <p class="lead appear-animation" data-appear-animation="fadeInUpShorter"
                    data-appear-animation-delay="200"></p>
             </div>
@@ -24,7 +45,9 @@
                             <h4 class="font-weight-semibold mb-0">
                                 <label>{{$prescription->name}}</label>
                             </h4>
-                            <p class="font-weight-light mb-0">Posted On {{$prescription->created_at->format('d/m/Y')}}</p>
+
+                            <p class="font-weight-light mb-0">Posted On
+                                {{$prescription->created_at->format('d/m/Y')}}</p>
                         </div>
                         @if($prescription->image->count() > 0)
                         @foreach($prescription->image as $img)
@@ -39,5 +62,4 @@
         </div>
     </div>
 </section>
-
 @endsection

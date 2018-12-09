@@ -64,8 +64,8 @@
                                 <td>
 <!--                                    <a href="{{url('admin/users/edit')}}/{{$user->id}}" class='btn btn-primary btn-sm'><i-->
 <!--                                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
-<!--                                    <a href="{{url('admin/users/delete')}}/{{$user->id}}" class="btn btn-danger btn-sm"><i-->
-<!--                                            class="fa fa-trash-o" aria-hidden="true"></i></a>-->
+                                    <a href="{{url('admin/users/destroy')}}/{{$user->id}}" class="btn btn-danger btn-sm"><i
+                                            class="fa fa-trash-o" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                             @endif
@@ -125,8 +125,8 @@
                                 <td>
 <!--                                    <a href="{{url('admin/users/edit')}}/{{$user->id}}" class='btn btn-primary btn-sm'><i-->
 <!--                                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
-<!--                                    <a href="{{url('admin/users/delete')}}/{{$user->id}}" class="btn btn-danger btn-sm"><i-->
-<!--                                            class="fa fa-trash-o" aria-hidden="true"></i></a>-->
+                                    <a href="{{url('admin/users/destroy')}}/{{$user->id}}" class="btn btn-danger btn-sm"><i
+                                            class="fa fa-trash-o" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                             @endif
@@ -181,8 +181,8 @@
                                 <td>
 <!--                                    <a href="{{url('admin/users/edit')}}/{{$user->id}}" class='btn btn-primary btn-sm'><i-->
 <!--                                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
-<!--                                    <a href="{{url('admin/users/delete')}}/{{$user->id}}" class="btn btn-danger btn-sm"><i-->
-<!--                                            class="fa fa-trash-o" aria-hidden="true"></i></a>-->
+                                    <a href="{{url('admin/users/destroy')}}/{{$user->id}}" class="btn btn-danger btn-sm"><i
+                                            class="fa fa-trash-o" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                             @endif

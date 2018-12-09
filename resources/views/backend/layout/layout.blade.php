@@ -65,7 +65,7 @@
                     <strong>Settings</strong>
                 </div>
 <!--                <a class="dropdown-item" href="#">-->
-<!--                    <i class="fa fa-user"></i> Profile</a>-->
+<!--                    <i class="fa fa-user"></i>name</a>-->
 
 
                 <a class="dropdown-item" href="{{ route('logout') }}"

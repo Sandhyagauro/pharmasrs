@@ -21,7 +21,7 @@
                 <form action="{{route('reply.prescription')}}" method="POST" >
                     {!! csrf_field() !!}
 
-                    <input value="{{$id}}" type="hidden" name="reply_to">
+                    <input value="{{$post->user_id}}" type="hidden" name="reply_to">
                     <div class="card">
                         <div class="card-header" id="headingOne" role="tab">
                             <h5 class="mb-0">
@@ -106,6 +106,13 @@
                                 <textarea name="if_dose_missed" rows="5" class=" form-control"></textarea>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" value="{{$post->category_department_id}}" name="category_department_id" >
+                    </div>
+                    <div class="form-group">
+                        Keyword
+                        <input class="form-control" name="keyword" required="">
                     </div>
                     <button class="btn btn-block btn-primary" type="submit">Submit</button>
                 </form>

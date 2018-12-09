@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col text-right">
-                                    <a href="#" class="forgot-pw text-color-light-2 d-block">Forgot password?</a>
+<!--                                    <a href="#" class="forgot-pw text-color-light-2 d-block">Forgot password?</a>-->
                                 </div>
                             </div>
                             <div class="row ">

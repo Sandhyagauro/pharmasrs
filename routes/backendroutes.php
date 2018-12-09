@@ -33,9 +33,11 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
 
     Route::get('/consult/reply/{id}','CounselingController@reply');
     Route::post('/consult/reply',['as'=>'reply.prescription','uses'=>'CounselingController@replyPrescription']);
+    Route::post('/consult/show/{id}',['as'=>'consult.show','uses'=>'CounselingController@show']);
     Route::resource('/consult','CounselingController');
 
     Route::resource('users','UserController');
+    Route::get('users/destroy/{id}','UserController@destroy');
     Route::get('users/edit/{id}','UserController@edit');
     Route::post('users/edit/{id}/addRole',['as'=>'admin.users.addRole','uses'=>'UserController@addRole']);
     Route::post('users/edit/{id}/{role_id}',['as'=>'admin.users.revokeRole','uses'=>'UserController@revokeRole']);

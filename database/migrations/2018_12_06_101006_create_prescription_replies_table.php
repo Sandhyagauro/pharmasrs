@@ -17,12 +17,20 @@ class CreatePrescriptionRepliesTable extends Migration
             $table->increments('id');
             $table->integer('replied_by');
             $table->integer('reply_to');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('category_departments')
+                ->onDelete('cascade');
+
+
             $table->longText('medicine_name')->nullable();
             $table->longText('medicine_cause')->nullable();
             $table->longText('medicine_routine')->nullable();
             $table->longText('precaution')->nullable();
             $table->longText('diet')->nullable();
             $table->longText('if_dose_missed')->nullable();
+            $table->string('keyword')->nullable();
             $table->timestamps();
         });
     }

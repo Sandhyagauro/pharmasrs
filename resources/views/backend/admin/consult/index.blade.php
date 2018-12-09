@@ -18,9 +18,7 @@
                     <th>User name</th>
                     <th>User email</th>
                     <th>Category Department</th>
-                    <th>Patient Query</th>
-                    <th>Patient type</th>
-                    <th>Prescriptions</th>
+
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -30,7 +28,7 @@
                 <tr>
                     <td>{{++$index}}.</td>
                     <td>
-                        {{$post->name}}
+                       <a href="{{route('consult.show',$post->id)}}"> {{$post->name}}</a>
                     </td>
                     <td>
                         {{$post->email}}
@@ -38,36 +36,18 @@
                     <td>
                         {{$post->title}}
                     </td>
-                    <td>
-                        {{$post->patient_query}}
-                    </td>
-                    <td>
-                        {{$post->patient}}
-                    </td>
-                    <td>
-                        @if($post->image->count() > 0)
-                        @foreach($post->image as $img)
-                     <img src="{{asset($img->file_data)}}"   style="height: 80px; width: 80px">
-                        @endforeach
-                        @endif
-                    </td>
+
+<!--                    <td>-->
+<!--                        @if($post->image->count() > 0)-->
+<!--                        @foreach($post->image as $img)-->
+<!--                     <img src="{{asset($img->file_data)}}"   style="height: 80px; width: 80px">-->
+<!--                        @endforeach-->
+<!--                        @endif-->
+<!--                    </td>-->
                     <td>
                         <a href="{{url('admin/consult/reply',$post->user_id)}}" class='btn btn-primary btn-sm'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>Reply</a>
                     </td>
-
-
-<!---->
-<!--                <td style="width: 150px">-->
-<!--                    <a href="{{route('post.edit',$post->id)}}" class='btn btn-primary btn-sm'><i-->
-<!--                            class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
-<!--                                            <a href="{{route('post.destroy',$post->id)}}" class="btn btn-danger btn-sm">-->
-<!--                    -->
-<!--                                                <i class="fa fa-trash-o" aria-hidden="true"></i>-->
-<!--                                            </a>-->
-<!--                </td>-->
-
-
                 </tr>
                 @endforeach
                 @else

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CategoryDepartment;
 use App\Models\CounselingInfo;
 use App\Models\Image;
 use App\Models\Post;
+use App\Modules\backend\Counseling\Repositories\CounselingInterface;
+use App\Modules\backend\User\Repositories\UserInterface;
 use App\PostHasImage;
 use App\Models\PrescriptionReply;
 use Illuminate\Foundation\Auth\User;
@@ -15,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use Input;
 use Mail;
+
 /**
  * Class PageController.
  *
@@ -22,17 +26,18 @@ use Mail;
  */
 class CounselingController extends Controller
 {
+    public function __construct(CounselingInterface $counseling)
+    {
+        $this->counseling = $counseling;
+
+    }
 
 
     public function index()
     {
 
-        $posts = CounselingInfo::select('users.name', 'users.email', 'category_departments.title', 'counseling_infos.*')
-            ->leftjoin('category_departments', 'category_departments.id', '=', 'counseling_infos.category_department_id')
-            ->join('users', 'users.id', '=', 'counseling_infos.user_id')
-            ->orderBy('created_at', 'desc')
-            ->get();
-        return view('backend.admin.consult.index', compact('posts'));
+        $this->view_data['posts'] =$this->counseling->counselingList();
+        return view('backend.admin.consult.index',$this->view_data);
 
 
     }
@@ -65,28 +70,31 @@ class CounselingController extends Controller
 
     public function reply($id)
     {
-        return view('backend.admin.consult.reply-prescription', compact('id'));
+        $this->view_data['post'] = CounselingInfo::where('user_id','=',$id)->first();
+        return view('backend.admin.consult.reply-prescription', $this->view_data);
     }
 
     public function replyPrescription(Request $request)
     {
         $user = Auth::user();
 
-        $precaution_upload_by_user = User::where('id','=',$request->reply_to)->first();
+        $precaution_upload_by_user = User::where('id', '=', $request->reply_to)->first();
 
         $post = new PrescriptionReply();
         $post->replied_by = $user->id;
         $post->reply_to = $request->reply_to;
+        $post->category_id = $request->category_department_id;
         $post->medicine_name = $request->medicine_name;
         $post->medicine_cause = $request->medicine_cause;
         $post->medicine_routine = $request->medicine_routine;
         $post->precaution = $request->precaution;
         $post->diet = $request->diet;
         $post->if_dose_missed = $request->if_dose_missed;
+        $post->keyword = $request->keyword;
         $post->save();
 
         $vars = [
-            'email'=>$precaution_upload_by_user->email,
+            'email' => $precaution_upload_by_user->email,
             'medicine_name' => Input::get('medicine_name'),
             'medicine_cause' => Input::get('medicine_cause'),
             'medicine_routine' => Input::get('medicine_routine'),
@@ -101,12 +109,21 @@ class CounselingController extends Controller
             $message->subject('Reply to Precaution');
 
         });
-        Session::flash('message', 'Replied Prescription to email '.$vars['email'].'.Successfully!!! ');
+        Session::flash('message', 'Replied Prescription to email ' . $vars['email'] . '.Successfully!!! ');
         return redirect('/admin/consult');
 
 
     }
 
+    public function show($id)
+    {
+        $this->view_data['post'] =  $this->counseling->show($id);
+        return view('backend.admin.consult.show',$this->view_data);
+    }
+    public function searchPrescription(){
+
+        dd('tets');
+    }
 
 }
 

@@ -68,11 +68,27 @@
 
         });
     </script>
-
+    <script>
+        $('#search').on('keyup',function(){
+            $value=$(this).val();
+            console.log($value);
+            $.ajax({
+                type : 'post',
+                url : '#',
+                data: {'search':$value
+                },
+                success:function(data){
+                    $('tbody').html(data);
+                }
+            });
+        })
+    </script>
     <script src="{{('assets/js/countries.js')}}"></script>
     <script language="javascript">
         populateCountries("country"); // first parameter is id of country drop-down and second parameter is id of state drop-down
     </script>
+
+
 
 </div>
 </body>

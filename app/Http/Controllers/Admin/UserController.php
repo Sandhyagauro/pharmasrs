@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\User;
 
 class UserController extends Controller
 {
@@ -101,7 +102,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id);
+        $users->delete();
+        return Redirect('admin/users');
     }
     public function addRole(Request $request){
         $user = \App\User::findOrfail($request->user_id);
