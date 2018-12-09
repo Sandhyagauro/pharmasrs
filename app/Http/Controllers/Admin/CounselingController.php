@@ -120,10 +120,7 @@ class CounselingController extends Controller
         $this->view_data['post'] =  $this->counseling->show($id);
         return view('backend.admin.consult.show',$this->view_data);
     }
-    public function searchPrescription(){
 
-        dd('tets');
-    }
 
 }
 

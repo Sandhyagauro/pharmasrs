@@ -10,6 +10,7 @@
                     Lists</h2>
 
                 <!--search-->
+                <input type="hidden" name="category_id" value="{{$category->id}}">
                 <input type="text" class="form-controller" id="search" name="search">
 
 <!--                <div class="row">-->

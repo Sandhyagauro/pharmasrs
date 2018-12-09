@@ -144,6 +144,7 @@ class CounselingController extends BaseController
 
     public function categoryPrescriptionList($type)
     {
+
 //
 //        $this->view_data['prescriptions'] = CounselingInfo::select('category_departments.*','counseling_infos.*')
 //            ->join('category_departments','category_departments.id','=','counseling_infos.category_department_id')
@@ -156,7 +157,7 @@ class CounselingController extends BaseController
             ->join('users','users.id','=','counseling_infos.user_id')
             ->get();
 
-        return view('frontend.pages.prescription-list',$this->view_data);
+        return view('frontend.pages.prescription-list',compact('category'),$this->view_data);
     }
     /**
      * Display the specified resource.
@@ -204,4 +205,8 @@ class CounselingController extends BaseController
         //
     }
 
+    public function searchPrescription(Request $request){
+
+        dd('tets');
+    }
 }
