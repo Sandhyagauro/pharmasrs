@@ -205,8 +205,9 @@ class CounselingController extends BaseController
         //
     }
 
-    public function searchPrescription(Request $request){
+    public function searchPrescription(Request $request)
+    {
 
-        dd('tets');
+        dd($request->all());
     }
 }

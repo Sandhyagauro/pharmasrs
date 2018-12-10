@@ -77,12 +77,12 @@
         $('#search').on('keyup',function(){
             $value=$(this).val();
             var category = $('input[name="category_id"]').val();
-            var base_url
-            console.log($value);
+
             $.ajax({
                 type : 'post',
-                url : base_url + '/admin/prescription-list/'+ category +'/search',
+                url :  '/prescription-list/'+ category +'/search',
                 data: {
+                    "_token": "{{ csrf_token() }}",
                     'search':$value,
                     'category':category
                 },
