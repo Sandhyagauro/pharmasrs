@@ -29,7 +29,8 @@ Route::post('/counsel/prescription',['as'=>'counsel.prescription.store','uses'=>
 
 Route::post('/counsel/prescription-list',['as'=>'counsel.prescription.store','uses'=>'Frontend\CounselingController@storeCounselPrescription']);
 Route::get('/prescription-list/{type}',['uses'=>'Frontend\CounselingController@categoryPrescriptionList']);
-Route::get('/prescription-list/{type}/search',['as'=>'prescription-list.search','uses'=>'Frontend\CounselingController@searchPrescription']);
+Route::post('/prescription-list/{category_id}/search',['as'=>'prescription-list.search','uses'=>'Frontend\CounselingController@searchPrescription']);
+Route::get('/prescription-list/{counseling_info_id}/detail',['as'=>'prescription-list.detail','uses'=>'Frontend\CounselingController@prescriptionDetail']);
 Route::resource('/counsel','Frontend\CounselingController');
 
 

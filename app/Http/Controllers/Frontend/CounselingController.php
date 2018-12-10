@@ -10,6 +10,8 @@ use App\Models\Image;
 use App\Models\Menu;
 use App\Models\PackageList;
 use App\Models\PharmacistUser;
+use App\Models\PrescriptionReply;
+use App\Modules\backend\Counseling\Repositories\CounselingInterface;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -18,14 +20,15 @@ use Session;
 use Auth;
 
 
-
 class CounselingController extends BaseController
 {
 
 
-    public function __construct()
+    public function __construct(CounselingInterface $counseling)
     {
+
         parent::__construct();
+        $this->counseling =$counseling;
     }
 
     /**
@@ -114,14 +117,12 @@ class CounselingController extends BaseController
 //            $info->prescription = $request->prescription;
             $info->save();
 
-            if (!empty($request->image_id))
-            {
-                foreach ($request->image_id as $image_id)
-                {
-                 $prescription = new CounselingInfoHasImages();
-                $prescription->counseling_info_id = $info->id;
-                $prescription->file_id = $image_id;
-                $prescription->save();
+            if (!empty($request->image_id)) {
+                foreach ($request->image_id as $image_id) {
+                    $prescription = new CounselingInfoHasImages();
+                    $prescription->counseling_info_id = $info->id;
+                    $prescription->file_id = $image_id;
+                    $prescription->save();
                 }
             }
 
@@ -151,14 +152,15 @@ class CounselingController extends BaseController
 //            ->where('category_departments.slug','=',$type)
 //            ->orderBy('counseling_infos.id','desc')
 //            ->get();
-        $category = CategoryDepartment::where('slug','=',$type)->first();
-        $this->view_data['prescriptions'] = CounselingInfo::select('users.name','counseling_infos.*')
-            ->where('category_department_id','=',$category->id)
-            ->join('users','users.id','=','counseling_infos.user_id')
+        $category = CategoryDepartment::where('slug', '=', $type)->first();
+        $this->view_data['prescriptions'] = CounselingInfo::select('users.name', 'counseling_infos.*')
+            ->where('category_department_id', '=', $category->id)
+            ->join('users', 'users.id', '=', 'counseling_infos.user_id')
             ->get();
 
-        return view('frontend.pages.prescription-list',compact('category'),$this->view_data);
+        return view('frontend.pages.prescription-list', compact('category'), $this->view_data);
     }
+
     /**
      * Display the specified resource.
      *
@@ -205,9 +207,36 @@ class CounselingController extends BaseController
         //
     }
 
-    public function searchPrescription(Request $request)
+    public function searchPrescription(Request $request, $id)
     {
 
-        dd($request->all());
+        $search = $request->search;
+
+        $prescriptions = PrescriptionReply::select('users.name', 'prescription_replies.*')
+            ->join('users', 'users.id', '=', 'prescription_replies.reply_to')
+            ->where([
+                ['keyword', 'LIKE', '%' . $search . '%'],
+                ['category_id', '=', $id]
+            ])->get();
+
+        $success = false;
+        foreach ($prescriptions as $prescription) {
+            $success = true;
+            break;
+        }
+
+        $search_html = view('frontend.pages.ajaxSearch', compact('prescriptions'))->render();
+        return response()->json(['success' => $success, 'message' => null, 'data' => ['search_html' => $search_html]], 200);
+
+
+    }
+    public function prescriptionDetail($id)
+    {
+
+
+        $this->view_data['post'] =  $this->counseling->show($id);
+
+        return view('frontend.pages.prescription-detail',$this->view_data);
+
     }
 }

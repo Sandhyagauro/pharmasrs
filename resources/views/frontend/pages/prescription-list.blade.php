@@ -1,7 +1,6 @@
 @extends('frontend/layout/layout')
 @section('content')
 
-
 <section class="section">
     <div class="container">
         <div class="row text-center">
@@ -10,25 +9,18 @@
                     Lists</h2>
 
                 <!--search-->
-                <input type="hidden" name="category_id" value="{{$category->id}}">
-                <input type="text" class="form-controller" id="search" name="search">
 
-<!--                <div class="row">-->
-<!--                    <div class="col-md-4 col-md-offset-8">-->
-<!--                        <form id="search" >-->
-<!--                            {!! csrf_field() !!}-->
-<!--                            <div class="input-group" >-->
-<!--                                <input type="text" class="form-control" name="search"-->
-<!--                                       placeholder="Search">-->
-<!--                        <span class="input-group-btn">-->
-<!--            <button type="submit" class="btn btn-default">-->
-<!--                <span class="glyphicon glyphicon-search"></span>-->
-<!--            </button>-->
-<!--        </span>-->
-<!--                            </div>-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="d-flex justify-content-center h-50">
+                    <div class="searchbar">
+                        <input type="hidden" name="category_id" value="{{$category->id}}">
+                        <input type="text" placeholder="Search" class="search_input" id="search" name="search">
+                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                        <div class="search_list" id="search_list">
+                        </div>
+                    </div>
+                </div>
+
+
 
 
                 <p class="lead appear-animation" data-appear-animation="fadeInUpShorter"

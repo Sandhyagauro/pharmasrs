@@ -54,6 +54,7 @@
 
     <script>
         $(document).ready(function() {
+
             <!--patient dashboard tabs-->
             $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
                 e.preventDefault();
@@ -73,25 +74,42 @@
     <script language="javascript">
         populateCountries("country"); // first parameter is id of country drop-down and second parameter is id of state drop-down
     </script>
+
+    <!--search prescription list-->
     <script>
         $('#search').on('keyup',function(){
-            $value=$(this).val();
+            var search_list = document.getElementById('search_list');
+            var value=$(this).val();
             var category = $('input[name="category_id"]').val();
+            var url = '{{ route("prescription-list.search", ":category") }}';
+            url = url.replace(':category', category);
+
+            if( value == "" ) {
+                search_list.style.display = 'none';
+                return false;
+            }
 
             $.ajax({
                 type : 'post',
-                url :  '/prescription-list/'+ category +'/search',
+                url :url,
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    'search':$value,
-                    'category':category
+                    'search':value
                 },
-                success:function(data){
-                    $('tbody').html(data);
+                success:function(response){
+                    if(response.success == true){
+                    $('.search_list').html(response.data.search_html);
+                    search_list.style.display = 'block';
+                    }
+                    else
+                    {
+                        search_list.style.display = 'none';
+                    }
                 }
             });
         })
     </script>
+
 
 
 </div>

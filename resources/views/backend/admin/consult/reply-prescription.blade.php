@@ -21,6 +21,7 @@
                 <form action="{{route('reply.prescription')}}" method="POST" >
                     {!! csrf_field() !!}
 
+                    <input value="{{$post->id}}" type="hidden" name="counseling_info_id">
                     <input value="{{$post->user_id}}" type="hidden" name="reply_to">
                     <div class="card">
                         <div class="card-header" id="headingOne" role="tab">

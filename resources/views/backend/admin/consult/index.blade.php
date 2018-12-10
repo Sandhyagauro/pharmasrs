@@ -45,7 +45,7 @@
 <!--                        @endif-->
 <!--                    </td>-->
                     <td>
-                        <a href="{{url('admin/consult/reply',$post->user_id)}}" class='btn btn-primary btn-sm'><i
+                        <a href="{{url('admin/consult/reply',$post->counseling_info_id)}}" class='btn btn-primary btn-sm'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>Reply</a>
                     </td>
                 </tr>

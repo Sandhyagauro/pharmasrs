@@ -271,10 +271,82 @@ p.banner-para{
 
 
 
+.searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    /*border-radius: 30px;*/
+    padding: 10px;
+    position: relative;
+}
 
+.search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 450px;
+    line-height: 40px;
+    transition: width 0.4s linear;
+}
 
+.searchbar:hover > .search_input {
+    padding: 0 10px;
+    width: 450px;
+    transition: width 0.4s linear;
+}
 
+.searchbar:hover > .search_icon {
+    background: white;
+    color: #e74c3c;
+}
 
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+}
+
+.search_list{
+    position: absolute;
+    background: white;
+    width: 100%;
+    box-shadow: 0 4px 5px #e0dfdf;
+    height: 295px;
+    top: 60px;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+.search_list ul{
+    list-style: none;
+    text-align: left;
+    background: whitesmoke;
+    padding: 0;
+
+}
+
+.search_list ul li{
+    border-bottom: 1px solid #dedede;
+    padding-left: 10px;
+    padding-bottom: 22px;
+}
+
+.search_list ul img{
+    float: left;
+    padding-top: 10px;
+}
+
+.search_list ul li a, .search_list span{
+    padding-left: 20px;
+}
 
 
 

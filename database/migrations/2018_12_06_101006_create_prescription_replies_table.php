@@ -18,9 +18,14 @@ class CreatePrescriptionRepliesTable extends Migration
             $table->integer('replied_by');
             $table->integer('reply_to');
             $table->integer('category_id')->unsigned();
+            $table->integer('counseling_info_id')->unsigned();
             $table->foreign('category_id')
                 ->references('id')
                 ->on('category_departments')
+                ->onDelete('cascade');
+            $table->foreign('counseling_info_id')
+                ->references('id')
+                ->on('counseling_infos')
                 ->onDelete('cascade');
 
 

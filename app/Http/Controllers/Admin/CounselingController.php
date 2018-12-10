@@ -84,6 +84,7 @@ class CounselingController extends Controller
         $post->replied_by = $user->id;
         $post->reply_to = $request->reply_to;
         $post->category_id = $request->category_department_id;
+        $post->counseling_info_id = $request->counseling_info_id;
         $post->medicine_name = $request->medicine_name;
         $post->medicine_cause = $request->medicine_cause;
         $post->medicine_routine = $request->medicine_routine;
