@@ -68,7 +68,7 @@
 //       messenger integration
         window.fbAsyncInit = function() {
             FB.init({
-                appId            : '912333495590130',
+                appId            : '196086948005019',
                 autoLogAppEvents : true,
                 xfbml            : true,
                 version          : 'v2.11'
