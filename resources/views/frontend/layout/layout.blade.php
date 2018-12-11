@@ -40,6 +40,7 @@
     @yield('content')
 
     @include('frontend/layout/footer')
+
     <!--messenger integration-->
     <div class="fb-customerchat"
          page_id="2209707419241266"
@@ -63,6 +64,7 @@
     </script>
 
     <script>
+
 //       messenger integration
         window.fbAsyncInit = function() {
             FB.init({
