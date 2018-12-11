@@ -233,9 +233,7 @@ class CounselingController extends BaseController
     public function prescriptionDetail($id)
     {
 
-
         $this->view_data['post'] =  $this->counseling->show($id);
-
         return view('frontend.pages.prescription-detail',$this->view_data);
 
     }

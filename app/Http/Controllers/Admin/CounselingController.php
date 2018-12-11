@@ -76,6 +76,7 @@ class CounselingController extends Controller
 
     public function replyPrescription(Request $request)
     {
+
         $user = Auth::user();
 
         $precaution_upload_by_user = User::where('id', '=', $request->reply_to)->first();
