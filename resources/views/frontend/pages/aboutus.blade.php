@@ -252,8 +252,10 @@
                             <div class="testimonial testimonial-style-2">
                                 <div class="card card-style-2 card-style-3 bg-light-5 border-0 text-center mt-5">
                                     <div class="testimonial-author-image">
-                                        <img src="{{url('img/avatars/3.jpg')}}" class="card-img-top border-light-5"
+
+                                        <img src="{{asset($pharmacist->image)}}" class="card-img-top border-light-5"
                                              alt=""/>
+
                                     </div>
                                     <div class="card-body p-5">
 <!--                                        <blockquote class="font-tertiary font-style-italic text-3 m-0 p-0 mt-4">" uhjbn-->

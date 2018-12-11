@@ -17,25 +17,27 @@
 <section class="section">
     <div class="container">
         <div class="row">
-            @foreach($news as $news)
+            @foreach($news as $n)
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
 <!--                <a href="{{url('/blog-detail')}}">-->
-                    @foreach($news->image as $image)
+                    @foreach($n->image as $image)
                     <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{$image->file_data}}'}">
                         <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">{{$news->title}}</h3>
+                            <h3 class="font-weight-bold text-4 mb-1">{{$n->title}}</h3>
                             <p>
                                 <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-16">{{$news->created_at->format('j F Y')}}</time>
+                                <time class="font-tertiary text-1" datetime="2018-01-16">{{$n->created_at->format('j F Y')}}</time>
                             </p>
-                            <p>{!! html_entity_decode(str_limit($news->content,20)) !!}</p>
+                            <p>{!! html_entity_decode(str_limit($n->content,20)) !!}</p>
                             <p class="text-color-dark font-weight-semibold mb-0">
+
 <!--                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />-->
-                                {{$news->excerpt}}
+                                {{$n->excerpt}}
                             </p>
                         </div>
                     </div>
-                    @endforeach
+
+                @endforeach
 <!--                </a>-->
             </div>
             @endforeach
@@ -43,27 +45,12 @@
         </div>
         <hr class="mt-5 mb-4">
         <div class="row align-items-center justify-content-between">
-            <div class="col-auto mb-3 mb-sm-0">
-                <span>Showing 1-9 of 60 results</span>
-            </div>
             <div class="col-auto">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination mb-0">
-                        <li class="page-item">
-                            <a class="page-link prev" href="#" aria-label="Previous">
-                                <span><i class="fas fa-angle-left" aria-label="Previous"></i></span>
-                            </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">...</li>
-                        <li class="page-item"><a class="page-link" href="#">15</a></li>
-                        <li class="page-item">
-                            <a class="page-link next" href="#" aria-label="Next">
-                                <span><i class="fas fa-angle-right" aria-label="Next"></i></span>
-                            </a>
-                        </li>
+
+                        {{ $news->links() }}
+
                     </ul>
                 </nav>
             </div>

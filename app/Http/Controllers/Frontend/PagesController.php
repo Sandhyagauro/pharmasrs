@@ -61,7 +61,7 @@ class PagesController extends BaseController
                     break;
                 case 'news-and-articles':
                     $this->view_data['newsBanner'] = Post::where('slug', '=', 'news-and-articles')->first();
-                    $this->view_data['news'] = Post::where('type', '=', 'news')->limit(3)->orderBy('id', 'desc')->get();
+                    $this->view_data['news'] = Post::where('type', '=', 'news')->orderBy('id', 'desc')->paginate(4);
                     break;
                 case 'contactus':
                     $this->view_data['contactSection'] = Post::where('slug', '=', 'contact-us')->first();
