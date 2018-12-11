@@ -10,13 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Route::group(['middleware' =>'role:admin'], function () {
 
 include('backendroutes.php');
 
+
 //Auth::routes();
 
-//Route::group(['middleware' =>'role:admin'], function () {
+
 
 // Authentication Routes...
     $this->get('login','Auth\LoginController@showLoginForm')->name('login');
@@ -33,7 +34,6 @@ include('backendroutes.php');
     $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
-//});
 
 Route::get('/home', 'HomeController@index')->name('home');
 

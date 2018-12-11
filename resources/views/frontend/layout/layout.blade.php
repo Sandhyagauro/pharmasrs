@@ -65,7 +65,6 @@
 
     <script>
 
-//       messenger integration
 
 
         $(document).ready(function() {
@@ -123,6 +122,9 @@
                 }
             });
         })
+
+        //       messenger integration
+
         window.fbAsyncInit = function() {
             FB.init({
                 appId            : '196086948005019',
