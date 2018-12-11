@@ -40,7 +40,17 @@
     @yield('content')
 
     @include('frontend/layout/footer')
-   <script src="{{url('assets/js/all.js') }}"></script>
+    <!--messenger integration-->
+    <div class="fb-customerchat"
+         page_id="2209707419241266"
+         theme_color="#459645"
+         logged_in_greeting="Hi! How can we help you?"
+         logged_out_greeting="GoodBye!... Hope to see you soon."
+         minimized="false">
+    </div>
+
+
+    <script src="{{url('assets/js/all.js') }}"></script>
     <script src="{{url('assets/js/dropzone.js') }}"></script>
     <script>
         Dropzone.autoDiscover = false;
@@ -53,6 +63,24 @@
     </script>
 
     <script>
+//       messenger integration
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId            : '912333495590130',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v2.11'
+            });
+        };
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
         $(document).ready(function() {
 
             <!--patient dashboard tabs-->
@@ -110,8 +138,7 @@
         })
     </script>
 
-
-
 </div>
+
 </body>
 </html>
