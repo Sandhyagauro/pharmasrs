@@ -31,6 +31,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
 
     Route::resource('/site','SiteSettingController');
 
+    Route::resource('/seo','SeoController');
+    Route::get('/seo/{id}/destroy',['as'=>'seo.destroy','uses'=>'SeoController@destroy']);
+
     Route::get('/consult/reply/{id}','CounselingController@reply');
     Route::post('/consult/reply',['as'=>'reply.prescription','uses'=>'CounselingController@replyPrescription']);
     Route::post('/consult/show/{id}',['as'=>'consult.show','uses'=>'CounselingController@show']);

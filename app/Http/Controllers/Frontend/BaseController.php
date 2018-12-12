@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\Post;
+use App\Models\SeoTool;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Session;
@@ -13,9 +14,11 @@ class BaseController extends Controller
 {
     public function __construct()
     {
+
         $this->view_data['site'] = SiteSetting::where('id','=',1)->first();
         $this->view_data['footer1'] = Post::where('slug','=','footer-1')->first();
         $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
+
     }
 
     /**

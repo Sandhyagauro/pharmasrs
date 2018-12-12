@@ -9,12 +9,14 @@ use App\Models\Menu;
 use App\Models\PackageList;
 use App\Models\PharmacistUser;
 use App\Models\Post;
+use App\Models\SeoTool;
 use App\Models\SiteSetting;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
 use Session;
 
@@ -24,7 +26,9 @@ class PagesController extends BaseController
 
     public function __construct()
     {
-      parent::__construct();
+        parent::__construct();
+
+
     }
 
     /**
@@ -47,8 +51,9 @@ class PagesController extends BaseController
                     $this->view_data['teams'] = Post::where('type', '=', 'team')->orderBy('id', 'desc')->get();
                     $this->view_data['clinicDepartment'] = Post::where('slug', '=', 'clinic-departments')->first();
                     $this->view_data['aboutSection'] = Post::where('slug', '=', 'about-pharma-srs')->first();
-                    $this->view_data['departments'] =CategoryDepartment::limit(6)->orderBy('id', 'desc')->get();
+                    $this->view_data['departments'] = CategoryDepartment::limit(6)->orderBy('id', 'desc')->get();
                     $this->view_data['news'] = Post::where('type', '=', 'news')->limit(3)->orderBy('id', 'desc')->get();
+
                     break;
                 case 'aboutus':
                     $this->view_data['aboutBanner'] = Post::where('slug', '=', 'about-us')->first();
@@ -70,12 +75,12 @@ class PagesController extends BaseController
                     break;
                 case 'prescription-categories':
                     $this->view_data['consultOnlineBanner'] = Post::where('slug', '=', 'consult-online')->first();
-                    $this->view_data['departments'] =CategoryDepartment::orderBy('id', 'desc')->get();
+                    $this->view_data['departments'] = CategoryDepartment::orderBy('id', 'desc')->get();
                     break;
                 case 'consult':
                     $this->view_data['packages'] = PackageList::all();
                     $this->view_data['pharmacists'] = PharmacistUser::all();
-                    $this->view_data['departments'] =CategoryDepartment::orderBy('id', 'desc')->get();
+                    $this->view_data['departments'] = CategoryDepartment::orderBy('id', 'desc')->get();
                     break;
                 case 'login-page':
                     break;
@@ -86,10 +91,16 @@ class PagesController extends BaseController
                     break;
 
             }
+            $seo = SeoTool::all();
+            foreach ($seo as $s)
+                if ($s->url == $slug) {
+                    return view('frontend.pages.' . $slug, $this->view_data, compact('s'));
+                }
+
             return view('frontend.pages.' . $slug, $this->view_data);
         }
         // 3. No page exist (404)
-        return view('frontend.pages.404',$this->view_data);
+        return view('frontend.pages.404', $this->view_data);
 
     }
 
@@ -98,7 +109,8 @@ class PagesController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public
+    function create()
     {
         //
     }
@@ -109,7 +121,8 @@ class PagesController extends BaseController
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public
+    function store(Request $request)
     {
         //
     }
@@ -120,7 +133,8 @@ class PagesController extends BaseController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public
+    function show($id)
     {
         //
     }
@@ -131,7 +145,8 @@ class PagesController extends BaseController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public
+    function edit($id)
     {
         //
     }
@@ -143,7 +158,8 @@ class PagesController extends BaseController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public
+    function update(Request $request, $id)
     {
         //
     }
@@ -154,7 +170,8 @@ class PagesController extends BaseController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function contact(Request $request)
+    public
+    function contact(Request $request)
     {
         $contact = new ContactDetail();
         $contact->name = $request->name;
@@ -181,7 +198,8 @@ class PagesController extends BaseController
         return redirect('/');
     }
 
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         //
     }

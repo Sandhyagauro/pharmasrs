@@ -6,8 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Pharma SRS</title>
-    <meta name="title" content="sdf">
-    <meta name="description" content="sfsdf">
+
+
+    <meta name="title" content="{{isset($s) ? $s->title : ' '}}">
+    <meta name="description" content="{{isset($s) ? $s->description : ' '}}">
+    <meta name="keyword" content="{{isset($s) ? $s->keyword : ' '}}">
+
+
     <meta name="author" content="Pharma SRS">
     <meta name="generator" content="Pharma SRS">
 
@@ -19,7 +24,8 @@
 
 
     <!-- Web Fonts  -->
-    <link  href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800"
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800"
         rel="stylesheet" type="text/css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -66,11 +72,10 @@
     <script>
 
 
-
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             <!--patient dashboard tabs-->
-            $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
                 e.preventDefault();
                 $(this).siblings('a.active').removeClass("active");
                 $(this).addClass("active");
@@ -78,7 +83,6 @@
                 $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
                 $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
             });
-
 
 
         });
@@ -91,32 +95,31 @@
 
     <!--search prescription list-->
     <script>
-        $('#search').on('keyup',function(){
+        $('#search').on('keyup', function () {
             var search_list = document.getElementById('search_list');
-            var value=$(this).val();
+            var value = $(this).val();
             var category = $('input[name="category_id"]').val();
             var url = '{{ route("prescription-list.search", ":category") }}';
             url = url.replace(':category', category);
 
-            if( value == "" ) {
+            if (value == "") {
                 search_list.style.display = 'none';
                 return false;
             }
 
             $.ajax({
-                type : 'post',
-                url :url,
+                type: 'post',
+                url: url,
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    'search':value
+                    'search': value
                 },
-                success:function(response){
-                    if(response.success == true){
-                    $('.search_list').html(response.data.search_html);
-                    search_list.style.display = 'block';
+                success: function (response) {
+                    if (response.success == true) {
+                        $('.search_list').html(response.data.search_html);
+                        search_list.style.display = 'block';
                     }
-                    else
-                    {
+                    else {
                         search_list.style.display = 'none';
                     }
                 }
@@ -125,18 +128,21 @@
 
         //       messenger integration
 
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function () {
             FB.init({
-                appId            : '196086948005019',
-                autoLogAppEvents : true,
-                xfbml            : true,
-                version          : 'v2.11'
+                appId: '196086948005019',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.11'
             });
         };
-        (function(d, s, id){
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
             js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));

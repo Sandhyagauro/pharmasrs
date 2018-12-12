@@ -43,6 +43,10 @@
                 <a class="nav-link" href="{{url('admin/contact')}}">
                     <i class="nav-icon icon-phone"></i> Contact Informations </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/seo')}}">
+                    <i class="nav-icon icon-phone"></i> SEO tools manager </a>
+            </li>
             <!--            <li class="nav-item">-->
 <!--                <a class="nav-link" href="typography.html">-->
 <!--                    <i class="nav-icon icon-pencil"></i> Typography</a>-->
