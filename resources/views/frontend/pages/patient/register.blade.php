@@ -23,6 +23,7 @@
 <div class="failed">
 
 </div>
+
     @if(Session::has('message'))
     <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
     @endif
@@ -32,13 +33,21 @@
                 <div class="col-lg-10 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter">
                     <div class="bg-primary rounded p-5">
                         <h2 class="text-color-light font-weight-bold text-4 mb-4">Patient  Registration</h2>
-
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <form  id="patientRegister" method="post" enctype="multipart/form-data">
                             {!! csrf_field(); !!}
                             <div class="form-row">
                                 <div class="form-group col mb-2">
                                     <label class="text-color-light-2" >NAME</label>
-                                    <input type="text" value="" maxlength="100"
+                                    <input type="text" value="{{ old('name') }}" maxlength="100"
                                            class="form-control bg-light rounded border-0 text-1" name="name"
                                            id="name" required>
                                 </div>
@@ -47,7 +56,7 @@
 
                                 <div class="form-group col">
                                     <label class="text-color-light-2" for="email">EMAIL</label>
-                                    <input type="email" value=""
+                                    <input type="email"  value="{{ old('email') }}"
                                            class="form-control bg-light rounded border-0 text-1" name="email"
                                            id="email" required>
                                 </div>
@@ -61,13 +70,13 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="text-color-light-2" for="address">ADDRESS</label>
-                                    <input type="text" value=""
+                                    <input type="text" value="{{ old('address') }}"
                                            class="form-control bg-light rounded border-0 text-1" name="address"
                                            id="address" >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="text-color-light-2" for="phone">PHONE</label>
-                                    <input type="text" value=""
+                                    <input type="text" value="{{ old('phone') }}"
                                            class="form-control bg-light rounded border-0 text-1" name="phone"
                                            id="phone" >
                                 </div>

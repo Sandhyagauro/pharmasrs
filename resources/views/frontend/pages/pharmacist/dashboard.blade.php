@@ -12,8 +12,11 @@
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                             <div class="list-group">
                                 <a href="#" class="list-group-item active user-profile-img text-center">
-                                    <br/><img src="{{asset($user->image)}}">
-
+                                    @if (file_exists($user->image))
+                                    <img src="{{asset($user->image)}}">
+                                    @else
+                                    <img src="{{url('img/authors/author.jpg')}}">
+                                    @endif
                                     <h3>{{$user->name}}</h3>
                                 </a>
                                 <a href="#" class="list-group-item text-center">

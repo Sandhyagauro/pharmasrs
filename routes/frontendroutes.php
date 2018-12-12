@@ -33,6 +33,7 @@ Route::post('/prescription-list/{category_id}/search',['as'=>'prescription-list.
 Route::get('/prescription-list/{counseling_info_id}/detail',['as'=>'prescription-list.detail','uses'=>'Frontend\CounselingController@prescriptionDetail']);
 Route::resource('/counsel','Frontend\CounselingController');
 
+Route::get('/news-and-articles/{slug}','Frontend\NewsController@detailPage');
 
 //Pages
 Route::match(['get','post'],'/{slug}','Frontend\PagesController@index')->where('slug','.*');

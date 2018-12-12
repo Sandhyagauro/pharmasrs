@@ -1,6 +1,10 @@
 @extends('frontend/layout/layout')
 @section('content')
-
+@if (session('message'))
+<div class="alert alert-danger">
+    {{ session('message') }}
+</div>
+@endif
 <div role="main" class="main">
     <section class="section bg-light-5">
         <img src="{{url('img/others/lamp-holder.png')}}" class="img-fluid lamp-style-2 position-absolute transform-center-x appear-animation" data-appear-animation="fadeIn" alt="" />

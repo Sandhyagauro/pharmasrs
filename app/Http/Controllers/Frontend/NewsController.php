@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+use Session;
+
+class NewsController extends BaseController
 {
+
+
     public function __construct()
     {
+        parent::__construct();
+
 
     }
 
@@ -18,10 +23,19 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function detailPage($slug)
+    {
+        $this->view_data['post'] = Post::where('slug','=',$slug)->first();
+        $this->view_data['news_lists'] =  Post::where('type','=','news')->orderBy('id','desc')->limit(4)->get();
+        return view('frontend.pages.news-detail', $this->view_data);
+
+    }
+
     public function index()
     {
-        $this->view_data['user'] = Auth::user();
-        return view('backend.layout.dashboard', $this->view_data);
+
+
     }
 
     /**
@@ -29,7 +43,8 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public
+    function create()
     {
         //
     }
@@ -40,7 +55,8 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public
+    function store(Request $request)
     {
         //
     }
@@ -51,7 +67,8 @@ class DashboardController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public
+    function show($id)
     {
         //
     }
@@ -62,7 +79,8 @@ class DashboardController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public
+    function edit($id)
     {
         //
     }
@@ -74,7 +92,8 @@ class DashboardController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public
+    function update(Request $request, $id)
     {
         //
     }
@@ -85,10 +104,16 @@ class DashboardController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public
+    function contact(Request $request)
+    {
+
+    }
+
+    public
+    function destroy($id)
     {
         //
     }
-
 
 }

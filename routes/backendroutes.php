@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],function ()
+Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>['role:admin']],function ()
 {
     Route::get('/dashboard', array('as' => 'admin.dashboard', 'uses' => 'DashboardController@index'));
 
@@ -50,7 +50,6 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin', 'middleware'=>'auth'],
     Route::get('roles/edit/{id}',['as'=>'admin.roles.edit','uses'=>'RoleController@edit']);
     Route::post('roles/edit/{id}/update',['as'=>'admin.roles.update','uses'=>'RoleController@update']);
     Route::post('roles/destroy/{id}',['as'=>'admin.roles.destroy','RoleController@destroy']);
-
 
 
 });

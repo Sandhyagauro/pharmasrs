@@ -55,9 +55,10 @@ class PatientUserController extends BaseController
      */
     public function store(Request $request)
     {
-//        $this->validate($request, [
-//            'email' => 'unique:users,email,'
-//        ]);
+        $this->validate($request, [
+            'email' => 'unique:users,email,'
+        ]);
+
         //patient register
         DB::beginTransaction();
         try {

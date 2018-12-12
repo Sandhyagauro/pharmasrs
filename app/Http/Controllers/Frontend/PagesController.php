@@ -37,7 +37,7 @@ class PagesController extends BaseController
      * @return \Illuminate\Http\Response
      */
 
-    public function index($slug = null)
+    public function index($slug = null )
     {
 
         $slug = $slug ? $slug : 'index';
@@ -71,8 +71,7 @@ class PagesController extends BaseController
                 case 'contactus':
                     $this->view_data['contactSection'] = Post::where('slug', '=', 'contact-us')->first();
                     break;
-                case 'blog-detail':
-                    break;
+
                 case 'prescription-categories':
                     $this->view_data['consultOnlineBanner'] = Post::where('slug', '=', 'consult-online')->first();
                     $this->view_data['departments'] = CategoryDepartment::orderBy('id', 'desc')->get();

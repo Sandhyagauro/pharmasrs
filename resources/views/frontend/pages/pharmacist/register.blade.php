@@ -47,13 +47,13 @@
                         <div class="form-row">
                             <div class="form-group col mb-2">
                                 <label class="text-color-light-2">NAME</label>
-                                <input type="text" value="" maxlength="100"
-                                       class="form-control bg-light rounded border-0 text-1" name="name"
+                                <input type="text"  maxlength="100"
+                                       class="form-control bg-light rounded border-0 text-1" value="{{ old('name') }}" name="name"
                                        id="name" required>
                             </div>
                             <div class="form-group col mb-2">
                                 <label class="text-color-light-2">Email</label>
-                                <input type="email" value="" maxlength="100"
+                                <input type="email" value="{{ old('email') }}" maxlength="100"
                                        class="form-control bg-light rounded border-0 text-1" name="email"
                                        required>
                             </div>
@@ -75,19 +75,19 @@
                             <!--                                </div>-->
                             <div class="form-group col">
                                 <label class="text-color-light-2">Phone NUMBER</label>
-                                <input type="string" value=""
+                                <input type="string" value="{{ old('phone') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="phone"
                                        required>
                             </div>
                             <div class="form-group col">
                                 <label class="text-color-light-2">NPC NUMBER</label>
-                                <input type="number" value=""
+                                <input type="number"value="{{ old('nmc_number') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="nmc_number"
                                        required>
                             </div>
                             <div class="form-group col">
                                 <label class="text-color-light-2">QUALIFICATION</label>
-                                <input type="text" value=""
+                                <input type="text" value="{{ old('qualification') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="qualification"
                                     >
                             </div>
@@ -95,14 +95,14 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label class="text-color-light-2">SHOP NAME</label>
-                                <input type="text" value=""
+                                <input type="text" value="{{ old('shop_name') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="shop_name"
                                     >
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label class="text-color-light-2">SHOP ADDRESS</label>
-                                <input type="text" value=""
+                                <input type="text" value="{{ old('shop_address') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="shop_address"
                                     >
                             </div>

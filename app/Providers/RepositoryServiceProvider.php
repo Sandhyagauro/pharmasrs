@@ -57,14 +57,12 @@ class RepositoryServiceProvider extends ServiceProvider
             CounselingRepository::class
         );
         /**
-         * Counseling
+         * User
          */
         $this->app->bind(
             UserInterface::class,
             UserRepository::class
         );
-
-
 
     }
 }
