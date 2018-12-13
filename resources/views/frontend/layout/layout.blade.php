@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/dash-tab.css')}}">
     <link rel="stylesheet" href="{{ url('assets/css/dash-tab.css')}}">
     <link rel="stylesheet" href="{{ url('assets/css/dropzone.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 
 
 </head>
@@ -59,6 +60,7 @@
 
     <script src="{{url('assets/js/all.js') }}"></script>
     <script src="{{url('assets/js/dropzone.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
     <script>
         Dropzone.autoDiscover = false;
     </script>
@@ -148,6 +150,18 @@
         }(document, 'script', 'facebook-jssdk'));
 
     </script>
+
+    <script type="text/javascript">
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+</script>
 
 </div>
 

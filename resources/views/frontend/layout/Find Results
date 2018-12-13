@@ -1,0 +1,10 @@
+Searching 3 files for "<<<<<<< HEAD"
+
+/Applications/XAMPP/xamppfiles/htdocs/meropharmaceutical/resources/views/frontend/layout/layout.blade.php:
+   29      <link rel="stylesheet" href="{{ url('assets/css/custom.css')}}">
+   30      <link rel="stylesheet" href="{{ url('assets/css/dash-tab.css')}}">
+   31: <<<<<<< HEAD
+   32     
+   33  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+1 match in 1 file

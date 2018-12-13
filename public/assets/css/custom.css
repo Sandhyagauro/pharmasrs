@@ -249,11 +249,18 @@ p.banner-para{
 .pharmacist-list{
     background: #fff;
     margin: 6px;
-    width: 99%;
-    border-radius: 5px;
-    box-shadow: 0 0 3px #bfbfbf;
+    box-shadow: 0px 2px 2px #f7f7f7;
+    border: 1px solid #eaeaea;
 }
 
+.pharmacist-list h4 label{
+    font-weight: 400;
+    color: #a5a3a3;
+}
+
+.pharmacist-list p{
+    padding-bottom:5px
+}
 .pharmacist-radio{
     margin-top: 30px;
     margin-left: 15px;
@@ -267,6 +274,17 @@ p.banner-para{
     color: #000;
 }
 
+.pharmacist-list img{
+    height: 80px;
+    width: 80px;
+    border-radius: 18px;
+    margin: 3px 0px;
+}
+
+.section-height-1{
+    margin:0;
+    padding:0 !important
+}
 
 
 
@@ -347,6 +365,48 @@ p.banner-para{
 .search_list ul li a, .search_list span{
     padding-left: 20px;
 }
+
+.pre-detail{
+    margin: 25px 0px;
+    box-shadow: 0 0 15px #f7f7f7;
+}
+
+.pre-title h4{
+    margin-bottom:40px;
+    margin-top: 15px;
+    position: relative
+}
+
+.pre-title h4:before{
+    content: "";
+    width: 35px;
+    height: 6px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background: #2794ef;
+    border-radius: 30px;
+    
+}
+
+.pre-images img{
+    height: 120px;
+    width: 130px;
+    border-radius: 18px;
+    margin: 3px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -31,11 +31,12 @@
         <div class="row pt-5">
             <div class="col-lg-12 appear-animation" data-appear-animation="fadeInRightShorter">
                 @foreach($prescriptions as $prescription)
-                <section class="section section-height-1 bg-light-5 mt-2 mb-2" required>
-                    <div class="row pharmacist-list">
+                <section class="section section-height-1 mt-2 mb-2" required>
+                    <div class="container">
+                    <div class="row">
+                     <div class="pharmacist-list col-md-12">
                         <div class="col-md-2">
-                            Posted By :
-                            <h4 class="font-weight-semibold mb-0">
+                             <h4 class="font-weight-semibold mb-0">Posted By :
                                 <label>{{$prescription->name}}</label>
                             </h4>
 
@@ -48,6 +49,8 @@
                                                                        style="height: 80px; width: 80px"></div>
                         @endforeach
                         @endif
+                     </div>
+                     </div>
                     </div>
                 </section>
                 @endforeach
