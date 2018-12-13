@@ -156,6 +156,7 @@ class CounselingController extends BaseController
         $this->view_data['prescriptions'] = CounselingInfo::select('users.name', 'counseling_infos.*')
             ->where('category_department_id', '=', $category->id)
             ->join('users', 'users.id', '=', 'counseling_infos.user_id')
+        ->orderBy('id','desc')
             ->get();
 
         return view('frontend.pages.prescription-list', compact('category'), $this->view_data);
