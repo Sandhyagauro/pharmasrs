@@ -11,7 +11,7 @@
             @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
             @endif
-            <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <table class="table table-responsive-sm table-hover table-outline mb-0" id="myTable">
                 <thead class="thead-light">
                 <tr>
 

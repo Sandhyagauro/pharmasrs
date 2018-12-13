@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
+    <meta name="description" content="Pharma SRS">
+    <meta name="author" content="Pharma SRS">
     <meta name="_token" content="{!! csrf_token() !!}"/>
 
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
@@ -27,6 +27,8 @@
     <!-- Main styles for this application-->
     <link href="{{url('css/style.css')}}" rel="stylesheet">
     <link href="{{url('node_modules/pace-progress/css/pace.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url('assets/dataTables/datatables.min.css')}}"/>
+
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 <header class="app-header navbar">
@@ -117,9 +119,12 @@
 @include('backend/layout/footer')
 
 <!-- CoreUI and necessary plugins-->
+
 <script src="{{url('node_modules/jquery/dist/jquery.min.js')}}"></script>
-<script src="../assets/js/jquery.nestable.js"></script>
-<script src="{{url('node_modules/popper.js/dist/umd/popper.min.js')}}"></script>
+<script src="{{url('assets/dataTables/datatables.min.js')}}"></script>
+
+<script  type="text/javascript" src="../assets/js/jquery.nestable.js"></script>
+<script type="text/javascript"  src="{{url('node_modules/popper.js/dist/umd/popper.min.js')}}"></script>
 <script src="{{url('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <script src="{{url('node_modules/pace-progress/pace.min.js')}}"></script>
 <script src="{{url('node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>
@@ -130,13 +135,19 @@
 <script src="{{url('js/main.js')}}"></script>
 
 <script src="{{ url('assets/ckeditor/ckeditor.js') }}"></script>
+
 <script>
+    $('#myTable').DataTable( {
+        responsive: true
+    } );
+
     CKEDITOR.replace('content');
 </script>
 
 <!--menu -->
 <script type="text/javascript">
     $(document).ready(function () {
+
 
         var updateOutput = function (e) {
             var list = e.length ? e : $(e.target),

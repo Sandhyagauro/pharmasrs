@@ -311,7 +311,7 @@
                                 <img src="{{asset($image->file_data)}}" class="img-fluid" alt=""/>
                             </div>
                             @endforeach
-                          
+
 
                         </div>
                     </div>

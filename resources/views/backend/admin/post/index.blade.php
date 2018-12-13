@@ -5,13 +5,13 @@
     <div class="card">
         <div class="card-body">
 
-            <a href="{{route('post.create')}}" class="btn btn-success"><i class="fa fa-plus fa-md"
-                                                                                 aria-hidden="true"></i> New</a>
+<!--            <a href="{{route('post.create')}}" class="btn btn-success"><i class="fa fa-plus fa-md"-->
+<!--                                                                                 aria-hidden="true"></i> New</a>-->
 
             @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
             @endif
-            <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <table class="table table-responsive-sm table-hover table-outline mb-0" id="myTable">
                 <thead class="thead-light">
                 <tr>
 
