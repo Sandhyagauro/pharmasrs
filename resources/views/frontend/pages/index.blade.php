@@ -338,13 +338,13 @@
                 <article class="blog-post">
                     <header class="mb-2">
                         <div class="image-frame hover-effect-2">
-                            <a href="{{url('/blog-detail')}}" class="d-block">
+                            <a href="{{url('/news-and-articles',$news->slug)}}" class="d-block">
                                 @foreach($news->image as $image)
                                 <img src="{{$image->file_data}}" class="img-fluid mb-3" alt=""/>
                                 @endforeach
                             </a>
                         </div>
-                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/blog-detail')}}"
+                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/news-and-articles',$news->slug)}}"
                                                                     class="text-color-dark">{{$news->title}}</a></h3>
                         <i class="far fa-clock mt-1 text-color-primary"></i>
                         <time class="font-tertiary text-1" datetime="2018-01-17">{{$news->created_at->format('l j F Y')
