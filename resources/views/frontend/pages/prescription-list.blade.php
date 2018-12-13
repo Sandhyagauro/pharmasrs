@@ -31,6 +31,7 @@
         <div class="row pt-5">
             <div class="col-lg-12 appear-animation" data-appear-animation="fadeInRightShorter">
                 @foreach($prescriptions as $prescription)
+                <a href="{{route('prescription-list.detail',$prescription->id)}}">
                 <section class="section section-height-1 mt-2 mb-2" required>
                     <div class="container">
                     <div class="row">
@@ -53,6 +54,7 @@
                      </div>
                     </div>
                 </section>
+                </a>
                 @endforeach
             </div>
         </div>

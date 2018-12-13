@@ -42,19 +42,19 @@
                             </p>
                             </div>
                             <div class="col-md-12 pre-images">
-                                <div class="pre-title"><h4>Prespription Screen Shots</h4></div>
+                                <div class="pre-title"><h4>Prespription Images</h4></div>
                                 <div class="row">
+                                    @if($post->image->count() > 0)
+                                    @foreach($post->image as $img)
+                                    <div class="col-md-2">
+                                        <a href="{{asset($img->file_data)}}" data-toggle="lightbox" data-lightbox="image-1" data-title=" Prespriptions" data-gallery="example-gallery">
+                                            <img src="{{asset($img->file_data)}}">
+                                        </a>
 
-                                    <div class="col-md-2">
-                                        <a href="/img/aboutusbanner.jpg" data-toggle="lightbox" data-lightbox="image-1" data-title=" Prespription 1" data-gallery="example-gallery"> <img src="/img/aboutusbanner.jpg"></a>
-                                      
                                     </div>
-                                    <div class="col-md-2">
-                                        <a href="/img/aboutusbanner.jpg" data-toggle="lightbox" data-lightbox="image-1" data-title="My caption" data-gallery="example-gallery"> <img src="/img/aboutusbanner.jpg"></a>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <a href="/img/aboutusbanner.jpg" data-toggle="lightbox" data-lightbox="image-1" data-title="My Prespription" data-gallery="example-gallery"> <img src="/img/aboutusbanner.jpg"></a>
-                                    </div>
+                                    @endforeach
+                                    @endif
+
                                 </div>
                             </div>
 
