@@ -301,15 +301,17 @@
                          data-plugin-options="{'startPos': 'none', 'speed': 8.5, 'transition': true, 'style': 'bottom: -20px; left: -56%; width: 150%;'}">
                         <div class="owl-carousel owl-theme dots-style-3 mb-0"
                              data-plugin-options="{'items': 1, 'dots': true, 'nav': false}">
+                            @foreach($aboutSection->image as $image)
                             <div>
-                                <img src="{{url('img/medical/about3.jpg')}}" class="img-fluid" alt=""/>
+                                <img src="{{asset($image->file_data)}}" class="img-fluid" alt=""/>
                             </div>
+                            @endforeach
+                            @foreach($aboutSectionImage2->image as $image)
                             <div>
-                                <img src="{{url('img/medical/medicine.jpg')}}" class="img-fluid" alt=""/>
+                                <img src="{{asset($image->file_data)}}" class="img-fluid" alt=""/>
                             </div>
-                            <div>
-                                <img src="{{url('img/medical/medicine2.jpg')}}" class="img-fluid" alt=""/>
-                            </div>
+                            @endforeach
+                          
 
                         </div>
                     </div>

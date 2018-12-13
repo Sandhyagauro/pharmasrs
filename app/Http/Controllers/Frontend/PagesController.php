@@ -51,6 +51,7 @@ class PagesController extends BaseController
                     $this->view_data['teams'] = Post::where('type', '=', 'team')->orderBy('id', 'desc')->get();
                     $this->view_data['clinicDepartment'] = Post::where('slug', '=', 'clinic-departments')->first();
                     $this->view_data['aboutSection'] = Post::where('slug', '=', 'about-pharma-srs')->first();
+                    $this->view_data['aboutSectionImage2'] = Post::where('slug', '=', 'about-apharma-srs-1')->first();
                     $this->view_data['departments'] = CategoryDepartment::limit(6)->orderBy('id', 'desc')->get();
                     $this->view_data['news'] = Post::where('type', '=', 'news')->limit(3)->orderBy('id', 'desc')->get();
 
