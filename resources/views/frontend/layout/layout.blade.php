@@ -50,7 +50,7 @@
 
     <!--messenger integration-->
     <div class="fb-customerchat"
-         page_id="2209707419241266"
+         page_id="574785959645712"
          theme_color="#459645"
          logged_in_greeting="Hi! How can we help you?"
          logged_out_greeting="GoodBye!... Hope to see you soon."
