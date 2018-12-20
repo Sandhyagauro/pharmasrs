@@ -41,5 +41,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/callback/{provider}', 'Auth\AuthController@handleProviderCallback');
 
+Route::post('/change-password/{id}',['as'=>'user.changePassword','uses'=>'Auth\AuthController@changePassword'] );
 
 include('frontendroutes.php');

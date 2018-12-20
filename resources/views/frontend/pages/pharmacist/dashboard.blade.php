@@ -29,7 +29,9 @@
                                 <a href="#" class="list-group-item text-center">
                                     <i class="fa fa-alert"></i> Prescription
                                 </a>
-
+                                <a href="#" class="list-group-item text-center">
+                                    <i class="fa fa-alert"></i> Change Password
+                                </a>
 
                             </div>
                             <a href="{{route('pharmacist.logout')}}" class="list-group-item text-center">
@@ -60,13 +62,18 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="dash-box">
-                                            <h4>Total Recommendations</h4>
+                                            <h4>License Image</h4>
+
+                                            <img src="{{asset($user->license_front)}}" style="width: 280px; height: 250px">
+
+
 
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="dash-box">
-                                            <h4>Medical Reports</h4>
+                                            <h4>Citizenship Image</h4>
+                                            <img src="{{asset($user->citizenship_front)}}" style="width: 280px; height: 250px">
 
                                         </div>
                                     </div>
@@ -113,7 +120,11 @@
                                             <input type="text" class="form-control" value="{{$user->qualification}}"
                                                    name="qualification">
                                         </div>
-
+                                        <div class="col-md-6">
+                                            <label>University / Board</label>
+                                            <input type="text" class="form-control" value="{{$user->education}}"
+                                                   name="education">
+                                        </div>
                                         <div class="col-md-6">
                                             <label>Shop name</label>
                                             <input type="text" class="form-control" value="{{$user->shop_name}}"
@@ -157,6 +168,39 @@
                                     @endif
                                     @endforeach
                                 </center>
+                            </div>
+
+                            <div class="bhoechie-tab-content user-profile">
+
+                                <h3>Change Password</h3>
+
+                                <form action="{{route('user.changePassword',$user->user_id)}}" method="POST">
+                                    {!! csrf_field() !!}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" value="{{$user->email}}"
+                                                   name="email" readonly >
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Current Password</label>
+                                            <input type="text" class="form-control" value=""
+                                                   name="currentPassword">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>New Password</label>
+                                            <input type="text" class="form-control" value=""
+                                                   name="newPassword">
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-md-3 nopadding">
+                                        <button type="submit" class="btn btn-danger update-profile-btn">Update Password
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
 
 

@@ -35,6 +35,7 @@ Route::resource('/counsel','Frontend\CounselingController');
 
 Route::get('/news-and-articles/{slug}','Frontend\NewsController@detailPage');
 
+
 //Pages
 Route::match(['get','post'],'/{slug}','Frontend\PagesController@index')->where('slug','.*');
 

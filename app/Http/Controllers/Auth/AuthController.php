@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PatientUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use \Validator;
 use Session;
 
 use App\User;
 use Auth;
 use Socialite;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Redirect;
+
 
 class AuthController extends Controller
 {
@@ -22,6 +26,7 @@ class AuthController extends Controller
 
     }
 
+    //login with social media
     public function redirectToProvider($provider)
     {
         return Socialite::driver($provider)->redirect();
@@ -68,6 +73,34 @@ class AuthController extends Controller
         }
     }
 
+    //  change pw
+    Public function changePassword(Request $request,$id)
+    {
+
+
+        $user = Auth::user();
+
+        $currentPassword = $request->currentPassword;
+        $newPassword = $request->newPassword;
+
+        if (Hash::check($currentPassword, $user->password)) {
+
+            $user = User::where('id','=',$id)->first();
+            $user->password = Hash::make($newPassword);
+            $user->save();
+
+            Session::flash('message','Password Changed to '.$newPassword);
+            return Redirect::back();
+
+        }
+        else
+        {
+            Session::flash('message','Password not changed');
+            return Redirect::back();
+
+        }
+
+    }
     /**
      * Show the form for creating a new resource.
      *

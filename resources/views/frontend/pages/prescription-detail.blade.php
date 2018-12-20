@@ -41,6 +41,7 @@
                                 - {{$post->patient_query}}
                             </p>
                             </div>
+
                             <div class="col-md-12 pre-images">
                                 <div class="pre-title"><h4>Prespription Images</h4></div>
                                 <div class="row">

@@ -62,6 +62,8 @@ class PharmacistUserController extends BaseController
     {
         $this->validate($request, [
             'email' => 'unique:users,email,',
+            'phone' => 'unique:users,phone,',
+            'nmc_number' => 'unique:pharmacist_users,nmc_number,',
         ]);
 
         $register = $this->pharmacist->registerPharmacist($request->all());
@@ -110,6 +112,7 @@ class PharmacistUserController extends BaseController
         $pharmacist_user->name = $request->name;
         $pharmacist_user->nmc_number = $request->nmc_number;
         $pharmacist_user->qualification = $request->qualification;
+        $pharmacist_user->education = $request->education;
         $pharmacist_user->shop_name = $request->shop_name;
         $pharmacist_user->shop_address = $request->shop_address;
 

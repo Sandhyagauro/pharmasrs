@@ -8,7 +8,18 @@
 
                 <div class="row">
                     <div class="col-lg-10 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
-
+                        @if(Session::has('message'))
+                            <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+                        @endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                             <div class="list-group">
                                 <a href="#" class="list-group-item active user-profile-img text-center">
@@ -28,6 +39,9 @@
 
                                 <a href="#" class="list-group-item text-center">
                                     <i class="fa fa-alert"></i> Prescription
+                                </a>
+                                <a href="#" class="list-group-item text-center">
+                                    <i class="fa fa-alert"></i> Change Password
                                 </a>
 
 
@@ -174,7 +188,38 @@
                                     @endforeach
                                 </center>
                             </div>
+                            <div class="bhoechie-tab-content user-profile">
 
+                                <h3>Change Password</h3>
+
+                                <form action="{{route('user.changePassword',$user->user_id)}}" method="POST">
+                                    {!! csrf_field() !!}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" value="{{$user->email}}"
+                                                   name="email" readonly >
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Current Password</label>
+                                            <input type="text" class="form-control" value=""
+                                                   name="currentPassword">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>New Password</label>
+                                            <input type="text" class="form-control" value=""
+                                                   name="newPassword">
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-md-3 nopadding">
+                                        <button type="submit" class="btn btn-danger update-profile-btn">Update Password
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
 
                         </div>
                     </div>

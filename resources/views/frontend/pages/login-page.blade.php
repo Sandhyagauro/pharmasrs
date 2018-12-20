@@ -50,12 +50,16 @@
                                     <div class="form-check checkbox-custom checkbox-custom-transparent checkbox-default">
                                         <input class="form-check-input" type="checkbox" id="frmSignInRemember">
                                         <label class="form-check-label text-color-light-2" for="frmSignInRemember">
-                                            Remember me
+                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group col text-right">
-<!--                                    <a href="#" class="forgot-pw text-color-light-2 d-block">Forgot password?</a>-->
+                                    <a class="forgot-pw text-color-light-2 d-block" href="{{ route('password.request') }}">
+                                        Forgot Your Password?
+                                    </a>
+
                                 </div>
                             </div>
                             <div class="row ">
@@ -86,12 +90,29 @@
                                     <input type="text" value="" maxlength="100" class="form-control bg-light-5 rounded border-0 text-1" name="email" required>
                                 </div>
                             </div>
-                            <div class="form-row mb-5">
-                                <div class="form-group col-lg-6">
+                            <div class="form-row ">
+                                <div class="form-group col">
                                     <label for="frmRegisterPassword">PASSWORD</label>
                                     <input type="password" value="" class="form-control bg-light-5 rounded border-0 text-1" name="password" id="frmRegisterPassword" required>
                                 </div>
 
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="form-group col">
+                                    <div class="form-check checkbox-custom checkbox-custom-transparent checkbox-default">
+                                        <input class="form-check-input" type="checkbox" id="frmSignInRemember">
+                                        <label class="form-check-label text-color-light-2" for="frmSignInRemember">
+                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col text-right">
+                                    <a class="forgot-pw text-color-dark-2 d-block" href="{{ route('password.request') }}">
+                                        Forgot Your Password?
+                                    </a>
+
+                                </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col text-right">
