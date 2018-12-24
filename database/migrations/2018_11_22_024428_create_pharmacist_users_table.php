@@ -41,6 +41,8 @@ class CreatePharmacistUsersTable extends Migration
             $table->string('awards')->nullable()->default('');
             $table->string('memberships')->nullable()->default('');
             $table->string('image')->nullable();
+            $table->string('license_front')->nullable();
+            $table->string('citizenship_front')->nullable();
 
             $table->timestamps();
         });

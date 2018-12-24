@@ -161,6 +161,9 @@ class PatientUserController extends BaseController
 
     public function updateProfile(Request $request, $id)
     {
+        $this->validate($request, [
+            'email' => 'unique:users,email,'
+        ]);
 
         $patient_user = PatientUser::find($id);
         $patient_user->name = $request->name;

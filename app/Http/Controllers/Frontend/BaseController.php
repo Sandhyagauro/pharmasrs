@@ -7,9 +7,12 @@ use App\Models\Menu;
 use App\Models\Post;
 use App\Models\SeoTool;
 use App\Models\SiteSetting;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Session;
-
+use Auth;
+use Illuminate\Support\Facades\Redirect;
 class BaseController extends Controller
 {
     public function __construct()
@@ -20,6 +23,7 @@ class BaseController extends Controller
         $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
 
     }
+
 
     /**
      * Display a listing of the resource.

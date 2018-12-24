@@ -24,6 +24,7 @@ class PharmacistRepository extends RepositoryImplementation implements  Pharmaci
     }
     public function registerPharmacist($attributes)
     {
+
         DB::beginTransaction();
         try {
             $user = new User();
@@ -33,44 +34,31 @@ class PharmacistRepository extends RepositoryImplementation implements  Pharmaci
             $user->password = bcrypt($attributes['password']);
             $user->save();
 
-
             $role = Role::where('name', '=', 'pharmacist')->first();
 
             $post = new PharmacistUser();
             $post->user_id = $user->id;
-//            $post->category_department_id = $attributes['category_department_id'];
             $post->name = $attributes['name'];
             $post->nmc_number = $attributes['nmc_number'];
             $post->qualification = $attributes['qualification'];
-//            $post->speciality = $attributes['speciality'];
-//            $post->website = $attributes['website'];
             $post->shop_name = $attributes['shop_name'];
             $post->shop_address = $attributes['shop_address'];
-//            $post->shop_number = $attributes['shop_number'];
-//            $post->specialization = $attributes['specialization'];
-//            $post->experience = $attributes['experience'];
-//            $post->education = $attributes['education'];
-//            $post->journals = $attributes['journals'];
-//            $post->awards = $attributes['awards'];
-//            $post->memberships = $attributes['memberships'];
+            $post->education = $attributes['education'];
+
+            $profile_image = imageUpload(isset($attributes['image'])?$attributes['image']:'', 'uploads_pharmacist_profileimage' );
+            $license_image =  imageUpload(isset($attributes['license_front'])?$attributes['license_front']:'', 'uploads_pharmacist_licenseimage' );
+            $citizenship_image= imageUpload(isset($attributes['citizenship_front'])?$attributes['citizenship_front']:'', 'uploads_pharmacist_citizenshipimage' );
+
+            $post->image=isset($profile_image['image'])?$profile_image['image']:'';
+            $post->license_front=isset($license_image['image'])?$license_image['image']:'';
+
+            $post->citizenship_front=isset($citizenship_image['image'])?$citizenship_image['image']:'';
+
+
             $post->save();
-            if (Input::hasFile('image')) {
-                $image = Input::file('image');
-                $type = $image->getClientOriginalExtension();
-                $destination = 'uploads';
-                if (empty($image)) {
-                    return redirect()->back()->withInput();
-                } else if (!$image->isValid()) {
-                    return redirect()->back()->withInput();
-                } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
-                    return redirect()->back()->withInput();
-                } else {
-                    $fileName = rand(1, 999999) . '.' . $type;
-                    $post->image = $destination . "/" . $fileName;
-                    $image->move($destination, $fileName);
-                }
-                $post->save();
-            }
+
+
+
             $user->assignRole($role);
             DB::commit();
         } catch (\Exception $e) {

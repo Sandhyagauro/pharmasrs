@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-lg-12 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter">
                 <div class="bg-primary rounded p-5">
-                    <h2 class="text-color-light font-weight-bold text-4 mb-4">Pharmacist Registration</h2>
+                    <h2 class="text-color-light font-weight-bold text-4 mb-4">Register Pharmacist / Assistant Pharmacist</h2>
 
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -47,72 +47,83 @@
                         <div class="form-row">
                             <div class="form-group col mb-2">
                                 <label class="text-color-light-2">NAME</label>
-                                <input type="text"  maxlength="100"
+                                <input type="text" placeholder="Enter your Name" maxlength="100"
                                        class="form-control bg-light rounded border-0 text-1" value="{{ old('name') }}" name="name"
                                        id="name" required>
                             </div>
                             <div class="form-group col mb-2">
                                 <label class="text-color-light-2">Email</label>
-                                <input type="email" value="{{ old('email') }}" maxlength="100"
+                                <input type="email" placeholder="Enter your Email" value="{{ old('email') }}" maxlength="100"
                                        class="form-control bg-light rounded border-0 text-1" name="email"
                                        required>
                             </div>
                             <div class="form-group col">
                                 <label class="text-color-light-2">PASSWORD</label>
-                                <input type="password" value=""
+                                <input type="password" placeholder="Enter your Password" value=""
                                        class="form-control bg-light rounded border-0 text-1" name="password"
                                        required>
                             </div>
                         </div>
                         <div class="form-row">
-                            <!--                                <div class="form-group col">-->
-                            <!--                                    <label class="text-color-light-2" > Select Category Department</label>-->
-                            <!--                                    <select  name="category_department_id" class="form-control">-->
-                            <!--                                        @foreach($departments as $department)-->
-                            <!--                                        <option value="{{$department->id}}">{{$department->title}}</option>-->
-                            <!--                                        @endforeach-->
-                            <!--                                    </select>-->
-                            <!--                                </div>-->
+
                             <div class="form-group col">
                                 <label class="text-color-light-2">Phone NUMBER</label>
-                                <input type="string" value="{{ old('phone') }}"
+                                <input type="string" placeholder="Enter your Phone Number" value="{{ old('phone') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="phone"
                                        required>
                             </div>
                             <div class="form-group col">
                                 <label class="text-color-light-2">NPC NUMBER</label>
-                                <input type="number"value="{{ old('nmc_number') }}"
+                                <input type="number" placeholder="Enter your NPC Number" value="{{ old('nmc_number') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="nmc_number"
                                        required>
                             </div>
                             <div class="form-group col">
                                 <label class="text-color-light-2">QUALIFICATION</label>
-                                <input type="text" value="{{ old('qualification') }}"
+                                <input type="text" placeholder="Enter your Qualification" value="{{ old('qualification') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="qualification"
                                     >
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col">
+                                <label class="text-color-light-2">UNIVERSITY / BOARD</label>
+                                <input type="text" placeholder="Enter University / Board name" value="{{ old('education') }}"
+                                       class="form-control bg-light rounded border-0 text-1" name="education"
+                                required>
+                            </div>
+                            <div class="form-group col">
                                 <label class="text-color-light-2">SHOP NAME</label>
-                                <input type="text" value="{{ old('shop_name') }}"
+                                <input type="text" placeholder="Enter your Pharmacy / Clinic / Hospital name" value="{{ old('shop_name') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="shop_name"
                                     >
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col">
                                 <label class="text-color-light-2">SHOP ADDRESS</label>
-                                <input type="text" value="{{ old('shop_address') }}"
+                                <input type="text" placeholder="Enter your Shop address" value="{{ old('shop_address') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="shop_address"
                                     >
                             </div>
                         </div>
 
-                        <div class="form-group col-md-6">
+                        <div class="form-group col">
                             <label class="text-color-light-2">PROFILE IMAGE</label>
                             <input type="file" value=""
                                    class="form-control bg-light rounded border-0 text-1" name="image"
                                 >
+                        </div>
+                        <div class="form-group col">
+                            <label class="text-color-light-2">LICENSE IMAGE</label>
+                            <input type="file" value=""
+                                   class="form-control bg-light rounded border-0 text-1" name="license_front"
+                            >
+                        </div>
+                        <div class="form-group col">
+                            <label class="text-color-light-2">CITIZENSHIP IMAGE</label>
+                            <input type="file" value=""
+                                   class="form-control bg-light rounded border-0 text-1" name="citizenship_front"
+                            >
                         </div>
 
                         <!--                            <div class="form-row">-->
