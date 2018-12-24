@@ -1,13 +1,17 @@
 @extends('frontend/layout/layout')
 @section('content')
 @foreach($contactSection->image as $image)
-<div class="parallax py-5 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax
+
+<section class="map">
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.1125704567926!2d85.33111671539771!3d27.682915433171324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a6a1185d73%3A0x62e78f577014992c!2sView9!5e0!3m2!1sen!2snp!4v1545634413617" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+</section>
+<!-- <div class="parallax py-5 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax
      data-plugin-options="{'speed': 1.5, 'parallaxHeight': '115%'}" data-image-src="{{$image->file_data}}">
     <div class="spacer py-5 my-5"></div>
     <div class="spacer py-5 my-5"></div>
-</div>
+</div> -->
 @endforeach
-<section class="section section-content-pull-top-2 pull-top-level-3 z-index-1 py-lg-0 appear-animation"
+<section class="section section-content-pull-top-2 pull-top-level-3 z-index-1 py-lg-0 appear-animation contact-head"
          data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
     <div class="container pb-0">
 

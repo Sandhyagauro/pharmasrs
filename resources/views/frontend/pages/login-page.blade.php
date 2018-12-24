@@ -27,7 +27,7 @@
                 <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('message') }}</p>
                 @endif
 </div>
-                <div class="col-lg-6 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter">
+                <div class="col-lg-6 mb-5 mb-lg-0 appear-animation patient-login" data-appear-animation="fadeInRightShorter">
                     <div class="bg-primary rounded p-5">
                         <h2 class="text-color-light font-weight-bold text-4 mb-4">Patient Login / Registration</h2>
 
@@ -54,7 +54,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group col text-right">
+                                <div class="form-group col text-left">
 <!--                                    <a href="#" class="forgot-pw text-color-light-2 d-block">Forgot password?</a>-->
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                             </div><br>
 
                             <div class="row align-items-center">
-                                <div class="col text-right">
+                                <div class="col text-left">
                                     <button type="submit" class="btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">LOGIN</button>
                                     <a href="{{route('patient.index')}}" class="btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">  REGISTER</a>
                                 </div>
@@ -74,7 +74,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
+                <div class="col-lg-6 appear-animation patient-login" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
                     <div class="border rounded h-100 p-5">
                         <h2 class="font-weight-bold text-4 mb-4">Pharmacist Login/Register</h2>
 
@@ -87,14 +87,14 @@
                                 </div>
                             </div>
                             <div class="form-row mb-5">
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-12">
                                     <label for="frmRegisterPassword">PASSWORD</label>
                                     <input type="password" value="" class="form-control bg-light-5 rounded border-0 text-1" name="password" id="frmRegisterPassword" required>
                                 </div>
 
                             </div>
                             <div class="row align-items-center">
-                                <div class="col text-right">
+                                <div class="col text-left">
                                     <button type="submit" class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">LOGIN</button>
 
                                     <a href="{{route('pharmacist.index')}}" class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">REGISTER NOW</a>

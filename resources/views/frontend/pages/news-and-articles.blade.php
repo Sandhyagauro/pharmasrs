@@ -43,7 +43,7 @@
             @endforeach
 
         </div>
-        <hr class="mt-5 mb-4">
+        <!-- <hr class="mt-5 mb-4"> -->
         <div class="row align-items-center justify-content-between">
             <div class="col-auto">
                 <nav aria-label="Page navigation example">

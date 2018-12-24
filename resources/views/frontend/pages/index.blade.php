@@ -311,8 +311,6 @@
                                 <img src="{{asset($image->file_data)}}" class="img-fluid" alt=""/>
                             </div>
                             @endforeach
-
-
                         </div>
                     </div>
                 </div>
@@ -335,7 +333,7 @@
         </div>
         <div class="row mb-5">
             @foreach($news as $news)
-            <div class="col-md-4 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter"
+            <div class="col-md-4 mb-4 mb-md-0 appear-animation news-wrap" data-appear-animation="fadeInLeftShorter"
                  data-appear-animation-delay="800">
                 <article class="blog-post">
                     <header class="mb-2">
