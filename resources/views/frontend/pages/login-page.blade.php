@@ -106,7 +106,7 @@
                                             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
 
                                         </label>
-                                    </div>
+                                    </div>view9
                                 </div>
                                 <div class="form-group col text-right">
                                     <a class="forgot-pw text-color-dark-2 d-block" href="{{ route('password.request') }}">

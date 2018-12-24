@@ -220,7 +220,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>z                            <h3 class="font-weight-bold text-4 mb-0">{{$team->title}}</h3>
+                            </div>
+                            <h3 class="font-weight-bold text-4 mb-0">{{$team->title}}</h3>
                             <span class="text-1">{!! html_entity_decode($team->content) !!}</span>
                         </div>
                     </div>
@@ -337,13 +338,13 @@
                  data-appear-animation-delay="800">
                 <article class="blog-post">
                     <header class="mb-2">
+                        @foreach($news->image as $image)
                         <div class="image-frame hover-effect-2">
                             <a href="{{url('/news-and-articles',$news->slug)}}" class="d-block">
-                                @foreach($news->image as $image)
                                 <img src="{{$image->file_data}}" class="img-fluid mb-3" alt=""/>
-                                @endforeach
                             </a>
                         </div>
+                        @endforeach
                         <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/news-and-articles',$news->slug)}}"
                                                                     class="text-color-dark">{{$news->title}}</a></h3>
                         <i class="far fa-clock mt-1 text-color-primary"></i>
