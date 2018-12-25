@@ -1,14 +1,14 @@
 <body style="background: #0484c2">
 <div style="border-bottom: 1px solid #eee; padding: 30px 35px 35px 35px; margin: auto;display: block;width:500px;
     box-shadow: 0 0 22px #848181;background: #fff;margin-top:40px">
-<img src="img/logo.png" style="display: block;margin: auto;width: 120px;height:100px;object-fit: contain;">
+<img src="{{asset($logo->logo)}}" style="display: block;margin: auto;width: 120px;height:100px;object-fit: contain;">
 <h3 style="color: #848484;
 font-family: 'Open Sans', sans-serif;font-size: 16px;font-weight: 400;text-align: center;">
 You got a message from Contact Form
 </h3>
 <hr>
 
-<div><a href="pharma.com.np" style="text-decoration: none"><button style="background: #0879ba;
+<div><a href="{{url('/')}}" target="_blank" style="text-decoration: none"><button style="background: #0879ba;
     padding: 12px 35px;
     color: #fff;
     margin: auto;
@@ -96,7 +96,9 @@ You got a message from Contact Form
 <ul style="color: #464646; margin-left: 0px;font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 28px; font-weight: 400; text-align: center; margin: 35px 0 0 0; padding: 0; list-style: none;">
     <li>
     Pharma SRS        </li>
-    <li style="text-align: center;font-size: 15px">Copyrights © 2019. All Rights Reserved by Pharma SRS</li>
+    <li style="color: rgb(155, 155, 155); font-family:  'Open Sans', sans-serif; font-size: 15px; font-weight: 300; line-height: 22px; text-align: center; margin: 15px 0 0px 0">        {{$logo->address}} <br>       {{$logo->phone}}     </li>
+
+    <li style="text-align: center;font-size: 15px">Copyrights © {{ date('Y') }}. All Rights Reserved by Pharma SRS</li>
 
 </ul>
 </div>

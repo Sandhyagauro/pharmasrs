@@ -173,6 +173,7 @@ class PagesController extends BaseController
     public
     function contact(Request $request)
     {
+
         $contact = new ContactDetail();
         $contact->name = $request->name;
         $contact->address = $request->address;
@@ -185,7 +186,9 @@ class PagesController extends BaseController
             'address' => Input::get('address'),
             'mobile' => Input::get('mobile'),
             'email' => Input::get('email'),
-            'content' => Input::get('message')
+            'content' => Input::get('message'),
+            'logo' => $this->view_data['site'],
+
         ];
 
         Mail::send('frontend.email.contact', $vars, function ($message) use ($vars) {
@@ -195,7 +198,7 @@ class PagesController extends BaseController
 
         });
         Session::flash('message', 'Thanks for contacting us!');
-        return redirect('/');
+        return redirect('/contactus');
     }
 
     public

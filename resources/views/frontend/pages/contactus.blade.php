@@ -14,7 +14,10 @@
 <section class="section section-content-pull-top-2 pull-top-level-3 z-index-1 py-lg-0 appear-animation contact-head"
          data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
     <div class="container pb-0">
-
+        @if(Session::has('message'))
+            <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{
+                                    Session::get('message') }}</p>
+        @endif
         <div class="row text-center mb-5">
             <div class="col">
                 <div class="overflow-hidden">
@@ -33,6 +36,7 @@
 
                 </p>
             </div>
+
         </div>
 
         <div class="row justify-content-center">
@@ -128,30 +132,30 @@
                         <div class="form-row">
                             <div class="form-group col-lg-3">
                                 <input type="text" value="" data-msg-required="Please enter your name." maxlength="100"
-                                       class="form-control" name="name" id="name" placeholder="Name">
+                                       class="form-control" name="name" id="name" placeholder="Name" required>
                             </div>
 
                             <div class="form-group col-lg-3">
                                 <input type="text" value="" data-msg-required="Please enter your address."
                                        maxlength="100" class="form-control" name="address" id="address"
-                                       placeholder="Address">
+                                       placeholder="Address" required>
                             </div>
                             <div class="form-group col-lg-3">
                                 <input type="number" value="" data-msg-required="Please enter the mobile number."
                                        maxlength="100" class="form-control" name="mobile" id="mobile"
-                                       placeholder="Mobile number">
+                                       placeholder="Mobile number" required>
                             </div>
                             <div class="form-group col-lg-3">
                                 <input type="email" value="" data-msg-required="Please enter your email address."
                                        data-msg-email="Please enter a valid email address." maxlength="100"
-                                       class="form-control" name="email" id="email" placeholder="E-mail">
+                                       class="form-control" name="email" id="email" placeholder="E-mail" required>
                             </div>
                         </div>
                         <div class="form-row mb-4">
                             <div class="form-group col">
                                 <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
                                           class="form-control" name="message" id="message"
-                                          placeholder="Message"></textarea>
+                                          placeholder="Message" required></textarea>
                             </div>
                         </div>
 
