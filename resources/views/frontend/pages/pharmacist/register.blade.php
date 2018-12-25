@@ -93,15 +93,15 @@
                                 required>
                             </div>
                             <div class="form-group col">
-                                <label class="text-color-light-2">SHOP NAME</label>
+                                <label class="text-color-light-2">PHARMACY / CLINIC / HOSPITAL NAME</label>
                                 <input type="text" placeholder="Enter your Pharmacy / Clinic / Hospital name" value="{{ old('shop_name') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="shop_name"
                                     >
                             </div>
 
                             <div class="form-group col">
-                                <label class="text-color-light-2">SHOP ADDRESS</label>
-                                <input type="text" placeholder="Enter your Shop address" value="{{ old('shop_address') }}"
+                                <label class="text-color-light-2">PHARMACY / CLINIC / HOSPITAL ADDRESS</label>
+                                <input type="text" placeholder="Enter your Pharmacy / Clinic / Hospital address" value="{{ old('shop_address') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="shop_address"
                                     >
                             </div>
