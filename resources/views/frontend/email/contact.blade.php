@@ -32,7 +32,7 @@ You got a message from Contact Form
         padding: 8px;
         color: #757575;
         font-size: 12px;
-        font-weight: 400; "> {{$name}}</th>
+        font-weight: 400; text-align:justify;"> {{$name}}</th>
 
     </tr>
 
@@ -46,7 +46,7 @@ You got a message from Contact Form
         padding: 8px;
         color: #757575;
         font-size: 12px;
-        font-weight: 400;  "> {{$address}}</th>
+        font-weight: 400;text-align:left"> {{$address}}</th>
 
     </tr>
     <tr>
@@ -59,7 +59,7 @@ You got a message from Contact Form
         padding: 8px;
         color: #757575;
         font-size: 12px;
-        font-weight: 400;  "> {{$mobile}}</th>
+        font-weight: 400;text-align:left"> {{$mobile}}</th>
 
     </tr>
 
@@ -73,7 +73,7 @@ You got a message from Contact Form
         padding: 8px;
         color: #757575;
         font-size: 12px;
-        font-weight: 400;"> {{$email}}</th>
+        font-weight: 400;text-align:left"> {{$email}}</th>
 
     </tr>
     <tr>
@@ -86,7 +86,7 @@ You got a message from Contact Form
         padding: 8px;
         color: #757575;
         font-size: 12px;
-        font-weight: 400;"> {{$content}}</th>
+        font-weight: 400;text-align: justify;"> {{$content}}</th>
 
     </tr>
 </table>
