@@ -4830,6 +4830,7 @@ html.gap-outside #header .header-container:after {
 
 .font-weight-bold {
 	font-weight: 700 !important;
+	padding: 10px 0 !important;
 }
 
 .font-weight-extra-bold {
