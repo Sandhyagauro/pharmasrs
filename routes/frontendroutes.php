@@ -16,16 +16,16 @@ Route::group(['middleware' => ['role:patient']], function () {
     Route::post('/patient/dashboard/{id}/update',['as'=>'patient.update_profile','uses'=>'Frontend\PatientUserController@updateProfile']);
     Route::post('/patient/login',['as'=>'patient.login','uses'=>'Frontend\PatientUserController@login']);
     Route::get('/patient/logout',['as'=>'patient.logout','uses'=>'Frontend\PatientUserController@logout']);
-    Route::resource('/patient','Frontend\PatientUserController');
 });
+    Route::resource('/patient','Frontend\PatientUserController');
 
 Route::group(['middleware' => ['role:pharmacist']], function () {
     Route::post('/pharmacist/login', ['as' => 'pharmacist.login', 'uses' => 'Frontend\PharmacistUserController@login']);
     Route::get('/pharmacist/dashboard', ['as' => 'pharmacist.dashboard', 'uses' => 'Frontend\PharmacistUserController@dashboard']);
     Route::post('/pharmacist/dashboard/{id}/update', ['as' => 'pharmacist.update_profile', 'uses' => 'Frontend\PharmacistUserController@updateProfile']);
     Route::get('/pharmacist/logout', ['as' => 'pharmacist.logout', 'uses' => 'Frontend\PharmacistUserController@logout']);
-    Route::resource('/pharmacist', 'Frontend\PharmacistUserController');
 });
+    Route::resource('/pharmacist', 'Frontend\PharmacistUserController');
 Route::get('/counsel/pharmacist_list',['as'=>'counsel.pharmacist_list','uses'=>'Frontend\CounselingController@getPharmacistList']);
 Route::post('/counsel/prescription',['as'=>'counsel.prescription.store','uses'=>'Frontend\CounselingController@storeCounselPrescription']);
 
