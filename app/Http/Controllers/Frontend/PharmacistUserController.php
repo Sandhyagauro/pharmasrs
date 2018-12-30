@@ -84,9 +84,10 @@ class PharmacistUserController extends BaseController
         $request->merge([
             $user => $request->input('email')
         ]);
-        if (Auth::attempt($request->only($user, 'password'))) {
+        if (Auth::attempt($request->only($user, 'password')) && Auth::user()->hasRole('pharmacist')) {
             return redirect('/pharmacist/dashboard');
         }
+        Auth::logout();
         Session::flash('message', 'Something went wrong');
         return redirect('/login-page');
     }

@@ -240,6 +240,7 @@ class PatientUserController extends BaseController
 
     public function login(Request $request)
     {
+
         $user = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL )
             ? 'email'
             : 'phone';
@@ -247,9 +248,11 @@ class PatientUserController extends BaseController
         $request->merge([
             $user => $request->input('email')
         ]);
-        if (Auth::attempt($request->only($user, 'password'))) {
+        if (Auth::attempt($request->only($user, 'password')) && Auth::user()->hasRole('patient')) {
+
             return redirect('/prescription-option');
         }
+        Auth::logout();
         Session::flash('message', 'Something went wrong!!! Please Try Again');
         return redirect('/login-page');
 

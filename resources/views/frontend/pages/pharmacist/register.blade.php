@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h1 class="font-weight-bold">Login / Register</h1>
+                <h1 class="font-weight-bold">Registration Page</h1>
 
             </div>
         </div>
