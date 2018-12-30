@@ -28,7 +28,7 @@
                                 <i class="far fa-clock mt-1 text-color-primary"></i>
                                 <time class="font-tertiary text-1" datetime="2018-01-16">{{$n->created_at->format('j F Y')}}</time>
                             </p>
-                            <p>{!! html_entity_decode(str_limit($n->content,20)) !!}</p>
+                            <p>{!! html_entity_decode(str_limit($n->content,2)) !!}</p>
                             <p class="text-color-dark font-weight-semibold mb-0">
 
 <!--                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />-->
