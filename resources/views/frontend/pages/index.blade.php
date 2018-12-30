@@ -333,26 +333,26 @@
             </div>
         </div>
         <div class="row mb-5">
-            @foreach($news as $news)
+            @foreach($news as $n)
             <div class="col-md-4 mb-4 mb-md-0 appear-animation news-wrap" data-appear-animation="fadeInLeftShorter"
                  data-appear-animation-delay="800">
                 <article class="blog-post">
                     <header class="mb-2">
-                        @foreach($news->image as $image)
+                        @foreach($n->image as $image)
                         <div class="image-frame hover-effect-2">
-                            <a href="{{url('/news-and-articles',$news->slug)}}" class="d-block">
+                            <a href="{{url('/news-and-articles',$n->slug)}}" class="d-block">
                                 <img src="{{$image->file_data}}" class="img-fluid mb-3" alt=""/>
                             </a>
                         </div>
                         @endforeach
-                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/news-and-articles',$news->slug)}}"
-                                                                    class="text-color-dark">{{$news->title}}</a></h3>
+                        <h3 class="font-weight-bold text-4 mb-1"><a href="{{url('/news-and-articles',$n->slug)}}"
+                                                                    class="text-color-dark">{{$n->title}}</a></h3>
                         <i class="far fa-clock mt-1 text-color-primary"></i>
-                        <time class="font-tertiary text-1" datetime="2018-01-17">{{$news->created_at->format('l j F Y')
+                        <time class="font-tertiary text-1" datetime="2018-01-17">{{$n->created_at->format('l j F Y')
                             }}
                         </time>
                     </header>
-                    <p>{!! html_entity_decode(str_limit($news->content,100)) !!}</p>
+                    <p>{!! html_entity_decode(str_limit($n->content,100)) !!}</p>
                 </article>
             </div>
             @endforeach
