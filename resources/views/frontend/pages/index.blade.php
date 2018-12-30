@@ -352,7 +352,7 @@
                             }}
                         </time>
                     </header>
-                    <p>{!! html_entity_decode(str_limit($n->content,100)) !!}</p>
+                    <p>{!! html_entity_decode(str_limit($n->content,20)) !!}</p>
                 </article>
             </div>
             @endforeach
