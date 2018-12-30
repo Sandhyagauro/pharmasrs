@@ -214,7 +214,7 @@
                                     <img src="{{$image->file_data}}" class="img-fluid" alt="">
                                     @endforeach
                                     <div class="image-frame-inner-border"></div>
-                                   
+
                                 </div>
                             </div>
                             <h3 class="font-weight-bold text-4 mb-0">{{$team->title}}</h3>

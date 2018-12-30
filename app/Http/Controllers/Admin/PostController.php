@@ -105,6 +105,7 @@ class PostController extends Controller
             $post_image_id = PostHasImage::where('post_id', '=', $page->id)->first();
 
             if (!empty($post_image_id)) {
+
                 $file = Image::find($post_image_id->file_id);
                 $post_pic = $request->file('image');
 
