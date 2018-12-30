@@ -99,15 +99,15 @@
 
                             </div>
                             <div class="form-row mb-3">
-                                <div class="form-group col">
-                                    <div class="form-check checkbox-custom checkbox-custom-transparent checkbox-default">
-                                        <input class="form-check-input" type="checkbox" id="frmSignInRemember">
-                                        <label class="form-check-label text-color-light-2" for="frmSignInRemember">
-                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                {{--<div class="form-group col">--}}
+                                    {{--<div class="form-check checkbox-custom checkbox-custom-transparent checkbox-default">--}}
+                                        {{--<input class="form-check-input" type="checkbox" id="frmSignInRemember">--}}
+                                        {{--<label class="form-check-label text-color-light-2" for="frmSignInRemember">--}}
+                                            {{--<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me--}}
 
-                                        </label>
-                                    </div>view9
-                                </div>
+                                        {{--</label>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="form-group col text-right">
                                     <a class="forgot-pw text-color-dark-2 d-block" href="{{ route('password.request') }}">
                                         Forgot Your Password?

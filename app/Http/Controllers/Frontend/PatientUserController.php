@@ -221,13 +221,18 @@ class PatientUserController extends BaseController
     {
         $this->view_data['menus'] = Menu::orderBy('order', 'asc')->get();
         $login_user = Auth::user();
-        $role =$login_user->roles->first()->name;
-        if ($role == 'patient'){
-            $this->view_data['user'] = PatientUser::where('user_id','=',$login_user->id)->first();
-            $this->view_data['prescriptions'] = CounselingInfo::where('user_id','=',$login_user->id)->get();
-            return view('frontend.pages.patient.dashboard', $this->view_data);
-        }else{
+
+        if(!$login_user){
             return redirect('/login-page');
+        }else {
+            $role = $login_user->roles->first()->name;
+            if ($role == 'patient') {
+                $this->view_data['user'] = PatientUser::where('user_id', '=', $login_user->id)->first();
+                $this->view_data['prescriptions'] = CounselingInfo::where('user_id', '=', $login_user->id)->get();
+                return view('frontend.pages.patient.dashboard', $this->view_data);
+            } else {
+                return redirect('/login-page');
+            }
         }
 
 

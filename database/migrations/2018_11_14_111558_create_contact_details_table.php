@@ -17,7 +17,7 @@ class CreateContactDetailsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('address');
-            $table->integer('mobile');
+            $table->string('mobile');
             $table->string('email');
             $table->longText('message');
             $table->timestamps();

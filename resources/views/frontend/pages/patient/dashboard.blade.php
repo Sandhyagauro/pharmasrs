@@ -7,10 +7,7 @@
             <div class="container">
 
                 <div class="row">
-<<<<<<< HEAD
-                    <div class="col-lg-12 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
 
-=======
                     <div class="col-lg-10 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
                         @if(Session::has('message'))
                             <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
@@ -24,7 +21,6 @@
                                     </ul>
                                 </div>
                             @endif
->>>>>>> 172fac1f9a8222fb9ac2b69d76ab0349960b5159
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                             <div class="list-group">
                                 <a href="#" class="list-group-item active user-profile-img text-center">
