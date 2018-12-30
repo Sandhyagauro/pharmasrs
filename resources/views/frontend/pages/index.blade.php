@@ -214,14 +214,11 @@
                                     <img src="{{$image->file_data}}" class="img-fluid" alt="">
                                     @endforeach
                                     <div class="image-frame-inner-border"></div>
-                                    <div class="image-frame-action">
-                                        <div class="image-frame-action-icon">
-                                            <i class="lnr lnr-magnifier text-color-light"></i>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                             <h3 class="font-weight-bold text-4 mb-0">{{$team->title}}</h3>
+                            <h3 class="font-weight text-4 mb-0">{{$team->excerpt}}</h3>
                             <span class="text-1">{!! html_entity_decode($team->content) !!}</span>
                         </div>
                     </div>

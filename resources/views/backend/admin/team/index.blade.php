@@ -18,6 +18,7 @@
                     <th>S.No.</th>
                     <th>Title</th>
                     <th >Content</th>
+                    <th >Registration number</th>
                     <th>Image</th>
                     <th>Slug</th>
                     <th>Actions</th>
@@ -33,6 +34,9 @@
                     </td>
                     <td >
                         {{$post->content}}
+                    </td>
+                    <td >
+                        {{$post->excerpt}}
                     </td>
 
                     @if($post->image->count() > 0)
