@@ -56,7 +56,8 @@ class PatientUserController extends BaseController
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email' => 'unique:users,email,'
+            'email' => 'unique:users,email,',
+            'phone' => 'unique:users,phone,'
         ]);
 
         //patient register
@@ -161,13 +162,9 @@ class PatientUserController extends BaseController
 
     public function updateProfile(Request $request, $id)
     {
-        $this->validate($request, [
-            'email' => 'unique:users,email,'
-        ]);
 
         $patient_user = PatientUser::find($id);
         $patient_user->name = $request->name;
-        $patient_user->email = $request->email;
         $patient_user->country = $request->country;
         $patient_user->phone = $request->phone;
         $patient_user->address = $request->address;
@@ -198,7 +195,6 @@ class PatientUserController extends BaseController
 
         $user = User::where('id','=',$patient_user->user_id)->first();
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->phone = $request->phone;
         $user->save();
 

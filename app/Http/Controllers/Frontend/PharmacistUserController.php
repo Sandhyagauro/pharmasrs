@@ -142,7 +142,6 @@ class PharmacistUserController extends BaseController
 
         $user = User::where('id','=',$pharmacist_user->user_id)->first();
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->phone = $request->phone;
         $user->save();
 

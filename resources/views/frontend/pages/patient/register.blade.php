@@ -78,7 +78,7 @@
                                     <label class="text-color-light-2" for="phone">PHONE</label>
                                     <input type="text" value="{{ old('phone') }}"
                                            class="form-control bg-light rounded border-0 text-1" name="phone"
-                                           id="phone" >
+                                           id="phone" required>
                                 </div>
                             </div>
 <!--                            <div class="form-row">-->

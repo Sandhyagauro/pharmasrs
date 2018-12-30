@@ -44,7 +44,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="{{url('consult-online')}}" class="btn btn-dark btn-rounded btn-v-4 btn-h-2 font-weight-semibold">CONSULT ONLINE</a>
+                                    @if(Auth::check() && Auth::user()->hasRole(['patient','pharmacist']))
+                                        <a href="{{ url('consult')}}"  class="btn btn-dark btn-rounded btn-v-4 btn-h-2 font-weight-semibold">CONSULT ONLINE</a>
+
+                                            @else
+                                                <a href="{{url('/login-page')}}" class="btn btn-dark btn-rounded btn-v-4 btn-h-2 font-weight-semibold">CONSULT ONLINE</a>
+
+                                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -57,7 +63,7 @@
         <div class="row">
             <div class="col-lg-4 mb-4 mb-lg-0">
 
-                <a href="http://view9.us">
+                <a href="#">
                     <img src="#" width="152" height="22" class="img-fluid mb-3" alt="" />
                 </a>
                 <p>{{html_entity_decode($footer1->content)}}</p>
@@ -75,7 +81,13 @@
                 <ul class="list list-unstyled">
                     <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="{{url('/aboutus')}}">About us</a></li>
                     <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="{{url('/contactus')}}">Contact Us</a></li>
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="{{url('/consult-online')}}">Consult Online</a></li>
+                    @if(Auth::check() && Auth::user()->hasRole(['patient','pharmacist']))
+                        <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="{{url('/consult')}}">Consult Online</a></li>
+
+                    @else
+                        <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="{{url('/login-page')}}">Consult Online</a></li>
+
+                    @endif
                 </ul>
             </div>
         </div>

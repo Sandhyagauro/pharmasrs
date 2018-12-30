@@ -9,9 +9,7 @@
                 <div class="row">
 
                     <div class="col-lg-10 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
-                        @if(Session::has('message'))
-                            <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
-                        @endif
+
                             @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -109,7 +107,7 @@
                                         <div class="col-md-6">
                                             <label>Contact Email</label>
                                             <input type="email" class="form-control" value="{{$user->email}}"
-                                                   name="email">
+                                                   name="email" readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label>Country</label>
