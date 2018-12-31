@@ -88,7 +88,7 @@ class NewsController extends Controller
         $this->validate($request, [
             'title' => 'required',
         ]);
-        $page = post::find($id);
+        $page = Post::find($id);
         $page->title = $request->input('title');
         $page->content = $request->input('content');
         $page->excerpt = $request->excerpt;
@@ -96,6 +96,33 @@ class NewsController extends Controller
 
         if (isset($request->image)) {
             $post_image_id = PostHasImage::where('post_id', '=', $page->id)->first();
+            if(!$post_image_id){
+                 $file = new Image();
+            $banner_pic = $request->file('image');
+            $type = $banner_pic->getClientOriginalExtension();
+            $destination = 'uploads';
+
+            if (empty($banner_pic)) {
+                return redirect()->back()->withInput();
+            } else if (!$banner_pic->isValid()) {
+                return redirect()->back()->withInput();
+            } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                return redirect()->back()->withInput();
+            } else {
+                $fileName = rand(1, 999999) . '.' . $type;
+                $file->file_data = $destination . "/" . $fileName;
+                $banner_pic->move($destination, $fileName);
+            }
+
+            $file->save();
+
+            $post_file = new PostHasImage();
+            $post_file->post_id = $page->id;
+            $post_file->file_id = $file->id;
+            $post_file->save();
+                            
+            }
+            else{
             $file = Image::find($post_image_id->file_id);
             $post_pic = $request->file('image');
 
@@ -112,9 +139,9 @@ class NewsController extends Controller
                 $file->file_data = $destination . "/" . $fileName;
                 $post_pic->move($destination, $fileName);
             }
-
-
             $file->save();
+}
+
 
         }
 

@@ -171,8 +171,7 @@
                             <!-- hotel search -->
                             <div class="bhoechie-tab-content">
                                 <center>
-                                    <p >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been th
-                                    </p>
+                                    <h3> Your Prescriptions</h3>
                                     @foreach($prescriptions as $prescription)
                                     @if($prescription->image->count() > 0)
                                     @foreach($prescription->image as $img)

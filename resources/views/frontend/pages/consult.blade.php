@@ -14,6 +14,16 @@
                 </p>
             </div>
         </div>
+         @if (count($errors) > 0)
+            <div class="alert alert-danger">
+               
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="row pt-5">
             <div class="col-lg-12 appear-animation" data-appear-animation="fadeInRightShorter">
@@ -128,9 +138,7 @@
                         <div class="form-group col">
                             <label>Patient Query</label>
                             <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
-                                      class="form-control" name="patient_query" placeholder="Your Queries"
-                                >
-                            </textarea>
+                            class="form-control" name="patient_query" placeholder="Your Queries" required></textarea>
                         </div>
                     </div>
                     <div class="form-row mt-2">
@@ -148,7 +156,7 @@
                         <div class="col">
                             <input type="submit" value="REQUEST ONLINE COUNSELING"
                                    class="btn btn-primary btn-rounded btn-4 font-weight-semibold text-0"
-                                   data-loading-text="Loading...">
+                                   data-loading-text="Loading..." name="file_data" required>
                         </div>
                     </div>
                 </form>

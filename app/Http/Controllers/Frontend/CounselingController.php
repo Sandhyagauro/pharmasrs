@@ -92,6 +92,10 @@ class CounselingController extends BaseController
 
     public function store(Request $request)
     {
+        return $this->validate($request,[
+         'patient_query' => 'required'
+        ]);
+
 
         DB::beginTransaction();
 
@@ -129,6 +133,7 @@ class CounselingController extends BaseController
             DB::commit();
 
             Session::flash('message', 'Form submitted Successfully');
+
             return redirect('consult');
         } catch (\Exception $e) {
             DB::rollback();

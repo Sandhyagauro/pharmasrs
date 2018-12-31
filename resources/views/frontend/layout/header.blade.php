@@ -12,7 +12,7 @@
 									</span>
 									<span class="d-none d-sm-flex align-items-center ml-4">
 										<i class="lnr lnr-phone-handset mr-1"></i>
-										<a href="tel:+1234567890">{{$site->phone}}</a>
+										<a href="tel:+{{$site->phone}}">{{$site->phone}}</a>
 									</span>
                 </div>
                 <div class="header-column justify-content-end">
@@ -27,6 +27,10 @@
                         </li>
                         <li class="social-icons-twitter">
                             <a href="http://{{$site->twitter_link}}" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        </li>
+
+                         <li class="social-icons-instagram">
+                            <a href="#" target="_blank" title="Twitter"><i class="fab fa-instagram"></i></a>
                         </li>
 
                     </ul>
