@@ -17,27 +17,47 @@
 <section class="section">
     <div class="container">
         <div class="row">
+
             @foreach($news as $n)
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 pb-2">
                 <a href="{{url('/news-and-articles',$n->slug)}}">
+                    <?php $c=false; ?>
                     @foreach($n->image as $image)
-                    <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{$image->file_data}}'}">
-                        <div class="card-body p-4">
-                            <h3 class="font-weight-bold text-4 mb-1">{{$n->title}}</h3>
-                            <p>
-                                <i class="far fa-clock mt-1 text-color-primary"></i>
-                                <time class="font-tertiary text-1" datetime="2018-01-16">{{$n->created_at->format('j F Y')}}</time>
-                            </p>
-                            <p>{!! html_entity_decode(str_limit($n->content,20)) !!}</p>
-                            <p class="text-color-dark font-weight-semibold mb-0">
+                        <?php $c=true; ?>
+                            <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': '{{$image->file_data}}'}">
+                                <div class="card-body p-4">
+                                    <h3 class="font-weight-bold text-4 mb-1">{{$n->title}}</h3>
+                                    <p>
+                                        <i class="far fa-clock mt-1 text-color-primary"></i>
+                                        <time class="font-tertiary text-1" datetime="2018-01-16">{{$n->created_at->format('j F Y')}}</time>
+                                    </p>
+                                    <p>{!! html_entity_decode(str_limit($n->content,2)) !!}</p>
+                                    <p class="text-color-dark font-weight-semibold mb-0">
 
-<!--                                <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />-->
-                                {{$n->excerpt}}
-                            </p>
-                        </div>
-                    </div>
+                                        {{--                            <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />--}}
+                                        {{$n->excerpt}}
+                                    </p>
+                                </div>
+                            </div>
 
                 @endforeach
+                    @if($c==false)
+                            <div class="card card-style-5 bg-light-5 rounded border-0 p-3" data-plugin-image-background data-plugin-options="{'imageUrl': ''}">
+                                <div class="card-body p-4">
+                                    <h3 class="font-weight-bold text-4 mb-1">{{$n->title}}</h3>
+                                    <p>
+                                        <i class="far fa-clock mt-1 text-color-primary"></i>
+                                        <time class="font-tertiary text-1" datetime="2018-01-16">{{$n->created_at->format('j F Y')}}</time>
+                                    </p>
+                                    <p>{!! html_entity_decode(str_limit($n->content,2)) !!}</p>
+                                    <p class="text-color-dark font-weight-semibold mb-0">
+
+                                        {{--                            <img src="{{url('img/avatars/3.jpg')}}" class="img-thumbnail-small rounded-circle d-inline-block mr-2" width="25" height="25" alt="" />--}}
+                                        {{$n->excerpt}}
+                                    </p>
+                                </div>
+                            </div>
+                        @endif
                 </a>
             </div>
             @endforeach
@@ -48,7 +68,6 @@
             <div class="col-auto">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination mb-0">
-
                         {{ $news->links() }}
 
                     </ul>

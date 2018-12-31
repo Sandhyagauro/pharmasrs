@@ -18,7 +18,7 @@
                     <th>S.No.</th>
                     <th>Title</th>
                     <th >Content</th>
-                    <th>Excerpt</th>
+                    <th>Created By</th>
                     <th>Image</th>
                     <th>Slug</th>
                     <th>Actions</th>

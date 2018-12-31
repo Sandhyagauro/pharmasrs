@@ -39,7 +39,7 @@
                                                     <textarea rows="5" name="content" class="form-control">{{$post->content}}</textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    Excerpt
+                                                    Registration no.
                                                     <input type="text" value="{{$post->excerpt}}" name="excerpt"
                                                            class="form-control">
                                                 </div>
