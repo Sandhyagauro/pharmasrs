@@ -531,9 +531,16 @@ p.banner-para{
     width:100%
 }
 
+.patient-dash input{
+    border: 1px solid #efefef;
+    border-radius: 7px;
+}
 
-
-
+.patient-dash input:focus{
+    border: 1px solid #efefef;
+    border-radius: 7px;
+    transition: .5s all
+}
 
 
 
