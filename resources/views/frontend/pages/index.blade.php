@@ -89,7 +89,9 @@
             <?php $i++; ?>
             @endforeach
         </ul>
+    <div class="img-fade"></div>
     </div>
+
 </div>
 <section class="section section-content-pull-top py-0">
     <div class="container custom-max-width-1">
@@ -109,7 +111,7 @@
                                     <span class="icon-box-sub-title text-color-light">HAVE AN</span>
 
                                     <h2 class="text-color-light font-weight-semibold text-4 line-height-1 mb-0">
-                                        EMERGENCY?</h2>
+                                        QUERIES?</h2>
                                 </div>
                             </div>
                         </div>
@@ -229,7 +231,7 @@
     </div>
 </section>
 <!-- clinic department section-->
-<section class="section">
+<section class="section clinic-box">
     <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-md-8 col-lg-7">

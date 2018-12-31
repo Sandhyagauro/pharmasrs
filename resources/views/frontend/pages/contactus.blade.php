@@ -3,7 +3,7 @@
 @foreach($contactSection->image as $image)
 
 <section class="map">
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.1125704567926!2d85.33111671539771!3d27.682915433171324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a6a1185d73%3A0x62e78f577014992c!2sView9!5e0!3m2!1sen!2snp!4v1545634413617" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4066.4601378876323!2d85.33424381538913!3d27.690957982798675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190e046ba90b%3A0xa21d7bc5db5c25e0!2sSamaj+Dental+Hospital!5e1!3m2!1sen!2snp!4v1546253986692" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 </section>
 <!-- <div class="parallax py-5 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax
      data-plugin-options="{'speed': 1.5, 'parallaxHeight': '115%'}" data-image-src="{{$image->file_data}}">

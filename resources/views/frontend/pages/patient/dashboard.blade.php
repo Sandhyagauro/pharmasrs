@@ -8,7 +8,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-10 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
+                    <div class="col-lg-12 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">
