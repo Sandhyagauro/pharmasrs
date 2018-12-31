@@ -46,11 +46,11 @@
 
                     <h2 class="word-rotator letters type font-weight-bold text-5 mb-3">
                         <span>{{$aboutSection->title}}</span>
-										<span class="word-rotator-words waiting">
+										<!-- <span class="word-rotator-words waiting">
 											<b class="is-visible">think.</b>
 											<b>believe.</b>
 											<b>dreamed.</b>
-										</span>
+										</span> -->
                     </h2>
                 </div>
                 <p class="lead mb-3 appear-animation" data-appear-animation="fadeInUpShorter"
@@ -61,9 +61,9 @@
 
 
             </div>
-            <div class="col-10 col-md-6 col-lg-5 mx-auto ml-md-auto" data-appear-animation="fadeInUpShorter"
+            <div class="col-10 col-md-6 col-lg-5 mx-auto ml-md-auto about-img" data-appear-animation="fadeInUpShorter"
                  data-appear-animation-delay="500">
-                <div class="particles d-flex align-items-center pr-0 pr-lg-3 pr-xl-5">
+               <!--  <div class="particles d-flex align-items-center pr-0 pr-lg-3 pr-xl-5">
                     <svg class="svg-particles d-none d-sm-block" xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 493.72 405.79">
                         <g class="g-particles g-particles-group-1 appear-animation"
@@ -224,7 +224,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <img src="/img/bn.png">
             </div>
         </div>
     </div>

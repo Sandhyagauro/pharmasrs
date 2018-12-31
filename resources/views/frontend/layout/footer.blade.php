@@ -14,7 +14,7 @@
                                         <div class="icon-box-info">
                                             <div class="icon-box-info-title">
                                                 <span class="icon-box-sub-title text-color-light">HAVE AN</span>
-                                                <h2 class="text-color-light font-weight-semibold text-4 line-height-1 mb-0">EMERGENCY?</h2>
+                                                <h2 class="text-color-light font-weight-semibold text-4 line-height-1 mb-0">QUERIES?</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -71,9 +71,9 @@
             <div class="col-lg-4 ml-auto mb-4 mb-lg-0">
                 <h2 class="font-weight-semibold text-1 mb-3">OUR LOCATION</h2>
                 <ul class="list list-unstyled">
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Address:</strong>{{$site->address}}</li>
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Phone:</strong> <a href="tel:+{{$site->phone}}">{{$site->phone}}</a></li>
-                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Email:</strong> <a href="mailto:{{$site->email}}" class="link-underline-light">{{$site->email}}</a></li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Address: </strong> {{$site->address}}</li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Phone: <a href="tel:+{{$site->phone}}">{{$site->phone}}</a></strong></li>
+                    <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <strong class="text-color-light">Email: </strong> <a href="mailto:{{$site->email}}" class="link-underline-light">{{$site->email}}</a></li>
                 </ul>
             </div>
             <div class="col-lg-3">
