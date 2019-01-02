@@ -542,8 +542,11 @@ p.banner-para{
     transition: .5s all
 }
 
-
-
+@media (min-width:1200px) and (max-width:1800px){
+    .blog-post{
+        width:810px
+    }
+}
 
 
 
