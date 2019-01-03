@@ -174,8 +174,12 @@
                                                        {{--name="blood_group">--}}
                                             </div>
                                             <div class="col-md-3">
+                                                @if($user->image )
                                                 <label>Profile image</label><br>
+
                                                 <img src="{{asset($user->image)}}" style="width: 100px; height: 100px">
+                                                @endif
+
                                                 <input type="file" name="image">
                                             </div>
                                         </div>

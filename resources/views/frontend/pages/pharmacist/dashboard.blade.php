@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             {{--<div class="dash-box">--}}
-                                                {{--<h4>Total attendence</h4>--}}
+                                            {{--<h4>Total attendence</h4>--}}
                                             {{--</div>--}}
                                         </div>
                                     </div>
@@ -109,61 +109,93 @@
                                         {!! csrf_field() !!}
 
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Your Name</label>
-                                                <input type="text" class="form-control" value="{{$user->name}}"
-                                                       name="name">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Your Name</label>
+                                                    <input type="text" class="form-control" value="{{$user->name}}"
+                                                           name="name">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Contact Email</label>
+                                                    <input type="email" class="form-control" value="{{$user->email}}"
+                                                           name="email" readonly>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>Contact Email</label>
-                                                <input type="email" class="form-control" value="{{$user->email}}"
-                                                       name="email" readonly>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Contact Number</label>
+                                                    <input type="text" class="form-control" value="{{$user->phone}}"
+                                                           name="phone">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>NPC number</label>
+                                                    <input type="number" class="form-control" value="{{$user->nmc_number}}"
+                                                           name="nmc_number" required>
+                                                    <!--                                        <select id="country2" name ="country" class="form-control"></select>-->
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>Contact Number</label>
-                                                <input type="text" class="form-control" value="{{$user->phone}}"
-                                                       name="phone">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Qualification</label>
+                                                    <input type="text" class="form-control" value="{{$user->qualification}}"
+                                                           name="qualification">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>University / Board</label>
+                                                    <input type="text" class="form-control" value="{{$user->education}}"
+                                                           name="education">
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>NPC number</label>
-                                                <input type="number" class="form-control" value="{{$user->nmc_number}}"
-                                                       name="nmc_number" required>
-                                                <!--                                        <select id="country2" name ="country" class="form-control"></select>-->
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Qualification</label>
-                                                <input type="text" class="form-control" value="{{$user->qualification}}"
-                                                       name="qualification">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>University / Board</label>
-                                                <input type="text" class="form-control" value="{{$user->education}}"
-                                                       name="education">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Shop name</label>
-                                                <input type="text" class="form-control" value="{{$user->shop_name}}"
-                                                       name="shop_name">
-                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Shop name</label>
+                                                    <input type="text" class="form-control" value="{{$user->shop_name}}"
+                                                           name="shop_name">
+                                                </div>
 
-                                            <div class="col-md-6">
-                                                <label>Shop address</label>
-                                                <input type="text" class="form-control" value="{{$user->shop_address}}"
-                                                       name="shop_address">
+                                                <div class="col-md-6">
+                                                    <label>Shop address</label>
+                                                    <input type="text" class="form-control" value="{{$user->shop_address}}"
+                                                           name="shop_address">
+                                                </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <label>Profile image</label><br>
-                                                <img src="{{asset($user->image)}}" style="width: 100px; height: 100px">
-                                                Change profile image <br>
-                                                <input type="file" name="image">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    @if($user->image )
+                                                        <label>Profile image</label><br>
+                                                        <img src="{{asset($user->image)}}" style="width: 100px; height: 100px">
+                                                    @endif
+                                                    Change profile image <br>
+                                                    <input type="file" name="image">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @if($user->license_front )
+                                                        <label>License image</label><br>
+                                                        <img src="{{asset($user->license_front)}}" style="width: 100px; height: 100px">
+                                                    @endif
+                                                    Change License image <br>
+                                                    <input type="file" name="license_front">
+                                                </div>
                                             </div>
-
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    @if($user->citizenship_front )
+                                                        <label>Citizenship image</label><br>
+                                                        <img src="{{asset($user->citizenship_front)}}" style="width: 100px; height: 100px">
+                                                    @endif
+                                                    <br>
+                                                    Change Citizenship image <br>
+                                                    <input type="file" name="citizenship_front">
+                                                </div>
+                                            </div>
                                         </div>
+
                                         <div class="col-md-3 nopadding">
                                             <button type="submit" class="btn btn-danger update-profile-btn">Update
                                                 Profile
                                             </button>
                                         </div>
+
                                     </form>
                                 </div>
 
@@ -183,18 +215,6 @@
 
                                             @endif
                                         @endforeach
-
-                                        {{--@foreach($prescriptions as $prescription)--}}
-                                            {{--@if($prescription->image->count() > 0)--}}
-                                                {{--@foreach($prescription->image as $img)--}}
-                                                    {{--<td>--}}
-                                                        {{--<img src="{{asset($img->file_data)}}"--}}
-                                                             {{--style="width: 100px;height: 100px">--}}
-                                                    {{--</td>--}}
-                                                {{--@endforeach--}}
-                                            {{--@endif--}}
-                                        {{--@endforeach--}}
-
 
                                     </center>
                                 </div>
