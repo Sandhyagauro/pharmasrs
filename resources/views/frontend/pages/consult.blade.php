@@ -144,7 +144,7 @@
                     <div class="form-row mt-2">
                         <div class="col">
                     <div class="image_save"></div></div></div>
-
+<div id="dropzone_error"></div>
                     <div class="dropzone">
                         <div class="dz-clickable" id="myDrop">
                             <div class="dz-default dz-message" data-dz-message="">
@@ -194,9 +194,10 @@
 
 
     $(document).ready(function () {
-
+      var myDropzone=$("div#myDrop");
 //dropzone prescription
-        $("div#myDrop").dropzone({
+        myDropzone.dropzone({
+
             url: "{{route('counsel.prescription.store')}}",
             paramName: "file",
             maxFilesize: 2, //MB
@@ -209,9 +210,11 @@
                 console.log(response);
 
             },
+
             error: function (file, response) {
 //                file.previewElement.classList.add("dz-error");
             }
+
         });
 
 
@@ -222,6 +225,15 @@
             } else {
                 $('.patient_section').show();
             }
+        });
+
+        $('.contact-form').submit(function(e) {
+            if(myDropzone[0].dropzone.files.length==0) {
+                e.preventDefault();
+                $("#dropzone_error").html("Please upload prescripition image").addClass("alert alert-danger");
+            }
+
+
         });
 
 

@@ -92,7 +92,7 @@ class CounselingController extends BaseController
 
     public function store(Request $request)
     {
-        return $this->validate($request,[
+         $this->validate($request,[
          'patient_query' => 'required'
         ]);
 

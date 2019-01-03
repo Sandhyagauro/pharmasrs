@@ -25,14 +25,15 @@ Route::get('/pharmacist/logout', ['as' => 'pharmacist.logout', 'uses' => 'Fronte
 
 Route::resource('/pharmacist', 'Frontend\PharmacistUserController');
 
+Route::resource('/counsel', 'Frontend\CounselingController');
 Route::get('/counsel/pharmacist_list', ['as' => 'counsel.pharmacist_list', 'uses' => 'Frontend\CounselingController@getPharmacistList']);
 Route::post('/counsel/prescription', ['as' => 'counsel.prescription.store', 'uses' => 'Frontend\CounselingController@storeCounselPrescription']);
-
 Route::post('/counsel/prescription-list', ['as' => 'counsel.prescription.store', 'uses' => 'Frontend\CounselingController@storeCounselPrescription']);
+
+
 Route::get('/prescription-list/{type}', ['uses' => 'Frontend\CounselingController@categoryPrescriptionList']);
 Route::post('/prescription-list/{category_id}/search', ['as' => 'prescription-list.search', 'uses' => 'Frontend\CounselingController@searchPrescription']);
 Route::get('/prescription-list/{counseling_info_id}/detail', ['as' => 'prescription-list.detail', 'uses' => 'Frontend\CounselingController@prescriptionDetail']);
-Route::resource('/counsel', 'Frontend\CounselingController');
 
 Route::get('/news-and-articles/{slug}', 'Frontend\NewsController@detailPage');
 
