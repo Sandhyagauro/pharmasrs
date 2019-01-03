@@ -172,7 +172,27 @@
                 });
             });
         </script>
-</div>
 
+<!--patient dashboard change password-->
+<script>
+    $("#divCheckPasswordMatch").hide();
+    $(document).ready(function () {
+        function checkPasswordMatch() {
+            $("#divCheckPasswordMatch").show();
+            var password = $("#newPassword").val();
+            console.log($("#newPassword").val());
+            var confirmPassword = $("#txtConfirmPassword").val();
+
+            if (password != confirmPassword)
+                $("#divCheckPasswordMatch").html("Passwords do not match!");
+            else
+                $("#divCheckPasswordMatch").html("Passwords match.");
+        }
+
+        $("#newPassword, #txtConfirmPassword").keyup(checkPasswordMatch);
+
+    });
+</script>
+</div>
 </body>
 </html>

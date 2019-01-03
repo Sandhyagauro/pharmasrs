@@ -53,11 +53,12 @@
                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
 
                                 <!-- dashboard section -->
-                                <div class="bhoechie-tab-content active">
+                                <div class="bhoechie-tab-content {{Session::has('error-message')?'':'active'}}">
                                     @if(Session::has('message'))
                                         <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{
                                     Session::get('message') }}</p>
                                     @endif
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="dash-box">
@@ -137,17 +138,17 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Weight</label>
-                                                <input type="text" class="form-control" value="{{$user->weight}}"
+                                                <input type="number" class="form-control" value="{{$user->weight}}"
                                                        name="weight">
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Feet</label>
-                                                <input type="text" class="form-control" value="{{$user->feet}}"
+                                                <input type="number" class="form-control" value="{{$user->feet}}"
                                                        name="feet">
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Inches</label>
-                                                <input type="text" class="form-control" value="{{$user->inches}}"
+                                                <input type="number" class="form-control" value="{{$user->inches}}"
                                                        name="inches">
                                             </div>
                                             <div class="col-md-3">
@@ -212,30 +213,41 @@
                                         @endforeach
                                     </center>
                                 </div>
-                                <div class="bhoechie-tab-content user-profile">
-
+                                <div class="bhoechie-tab-content user-profile {{Session::has('error-message')?'active':''}}">
+                                    @if(Session::has('error-message'))
+                                        <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{
+                                    Session::get('error-message') }}</p>
+                                    @endif
                                     <h3>Change Password</h3>
 
                                     <form action="{{route('user.changePassword',$user->user_id)}}" method="POST">
                                         {!! csrf_field() !!}
                                         <div class="row">
+                                            <div class="alert alert-primary" id="divCheckPasswordMatch"></div>
+                                        </div>
+                                        <div class="row">
+
                                             <div class="col-md-6">
                                                 <label>Email</label>
                                                 <input type="email" class="form-control" value="{{$user->email}}"
                                                        name="email" readonly>
                                             </div>
+
                                             <div class="col-md-6">
                                                 <label>Current Password</label>
                                                 <input type="text" class="form-control" value=""
-                                                       name="currentPassword">
+                                                       name="currentPassword" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>New Password</label>
                                                 <input type="text" class="form-control" value=""
-                                                       name="newPassword">
+                                                       name="newPassword" id="newPassword" required>
                                             </div>
+                                            <div class="col-md-6">
+                                                <label>Confirm Password</label>
+                                                <input type="password"  class="form-control" required id="txtConfirmPassword" onChange="checkPasswordMatch();" />
 
-
+                                            </div>
                                         </div>
                                         <div class="col-md-3 nopadding">
                                             <button type="submit" class="btn btn-danger update-profile-btn">Update
@@ -243,6 +255,7 @@
                                             </button>
                                         </div>
                                     </form>
+
                                 </div>
 
                             </div>
@@ -254,4 +267,5 @@
     </div>
     <br>
     <br>
+
 @endsection

@@ -95,7 +95,7 @@ class AuthController extends Controller
         }
         else
         {
-            Session::flash('message','Password not changed');
+            Session::flash('error-message','Current Password not matched');
             return Redirect::back();
 
         }
