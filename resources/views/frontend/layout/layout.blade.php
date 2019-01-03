@@ -162,7 +162,16 @@
       'wrapAround': true
     })
 </script>
+        <script>
+            $(function () {
 
+                $("#date").datepicker({
+                    minDate : 0,
+                    dateFormat: 'yy-mm-dd'
+
+                });
+            });
+        </script>
 </div>
 
 </body>

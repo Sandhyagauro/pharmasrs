@@ -130,8 +130,10 @@
 
                                             <div class="col-md-6">
                                                 <label>Date of birth</label>
-                                                <input type="text" class="form-control" value="{{$user->dob}}"
-                                                       name="dob">
+                                                <input type="text" value="{{$user->dob}}"  maxlength="100"
+                                                       class="form-control" name="dob" id="date" placeholder="Date">
+                                                {{--<input type="text" class="form-control" value="{{$user->dob}}"--}}
+                                                       {{--name="dob">--}}
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Weight</label>
