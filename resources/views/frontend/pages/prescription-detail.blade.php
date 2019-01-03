@@ -5,7 +5,7 @@
     <div class="animated fadeIn pre-detail">
         <div class="card">
             <div class="card-body">
-                <div class="pre-title"><h4>Prespription Details</h4></div>
+                <div class="pre-title"><h4>Prescription Details</h4></div>
                 <div class="row bd-example2">
                     <div class="col-12">
                         <div id="spy-example2" data-spy="scroll" data-target="#list-example" data-offset="0" style="overflow: auto">

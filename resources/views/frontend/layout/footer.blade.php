@@ -13,14 +13,14 @@
                                         </div>
                                         <div class="icon-box-info">
                                             <div class="icon-box-info-title">
-                                                <span class="icon-box-sub-title text-color-light">HAVE AN</span>
+                                                <span class="icon-box-sub-title text-color-light">HAVE ANY</span>
                                                 <h2 class="text-color-light font-weight-semibold text-4 line-height-1 mb-0">QUERIES?</h2>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="tel:+{{$site->phone}}" class="text-color-light font-primary text-6 line-height-1">{{$site->phone}}</a>
+                                    <a href="tel:+977-{{$site->phone}}" class="text-color-light font-primary text-6 line-height-1">{{$site->phone}}</a>
                                 </div>
                             </div>
                         </div>

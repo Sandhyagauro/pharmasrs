@@ -102,7 +102,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Your Name</label>
-                                            <input type="text" class="form-control" value="{{$user->name}}" name="name">
+                                            <input required type="text" class="form-control" value="{{$user->name}}" name="name">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Contact Email</label>

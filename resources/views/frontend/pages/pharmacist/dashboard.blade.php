@@ -127,7 +127,7 @@
                                             <div class="col-md-6">
                                                 <label>NPC number</label>
                                                 <input type="number" class="form-control" value="{{$user->nmc_number}}"
-                                                       name="nmc_number">
+                                                       name="nmc_number" required>
                                                 <!--                                        <select id="country2" name ="country" class="form-control"></select>-->
                                             </div>
                                             <div class="col-md-6">
@@ -170,20 +170,30 @@
                                 <!-- hotel search -->
                                 <div class="bhoechie-tab-content">
                                     <center>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been th
-                                        </p>
-
+                                        <h3> Your Prescriptions</h3>
                                         @foreach($prescriptions as $prescription)
                                             @if($prescription->image->count() > 0)
                                                 @foreach($prescription->image as $img)
                                                     <td>
-                                                        <img src="{{asset($img->file_data)}}"
-                                                             style="width: 100px;height: 100px">
+                                                        <img src="{{asset($img->file_data)}}" style="width: 100px;height: 100px">
                                                     </td>
                                                 @endforeach
+
+                                            @else
+
                                             @endif
                                         @endforeach
+
+                                        {{--@foreach($prescriptions as $prescription)--}}
+                                            {{--@if($prescription->image->count() > 0)--}}
+                                                {{--@foreach($prescription->image as $img)--}}
+                                                    {{--<td>--}}
+                                                        {{--<img src="{{asset($img->file_data)}}"--}}
+                                                             {{--style="width: 100px;height: 100px">--}}
+                                                    {{--</td>--}}
+                                                {{--@endforeach--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
 
 
                                     </center>

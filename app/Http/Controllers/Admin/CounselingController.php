@@ -7,6 +7,7 @@ use App\Models\CategoryDepartment;
 use App\Models\CounselingInfo;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\SiteSetting;
 use App\Modules\backend\Counseling\Repositories\CounselingInterface;
 use App\Modules\backend\User\Repositories\UserInterface;
 use App\PostHasImage;
