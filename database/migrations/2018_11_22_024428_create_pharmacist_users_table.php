@@ -27,7 +27,7 @@ class CreatePharmacistUsersTable extends Migration
                 ->on('category_departments')
                 ->onDelete('cascade');
             $table->string('name');
-            $table->integer('nmc_number')->unique();
+            $table->string('nmc_number')->unique();
             $table->string('qualification')->nullable()->default('');
             $table->string('speciality')->nullable()->default('');
             $table->string('website')->nullable()->default('');
@@ -43,7 +43,6 @@ class CreatePharmacistUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('license_front')->nullable();
             $table->string('citizenship_front')->nullable();
-
             $table->timestamps();
         });
     }

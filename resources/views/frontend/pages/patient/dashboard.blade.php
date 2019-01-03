@@ -8,7 +8,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-10 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
+                    <div class="col-lg-12 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -171,8 +171,7 @@
                             <!-- hotel search -->
                             <div class="bhoechie-tab-content">
                                 <center>
-                                    <p >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been th
-                                    </p>
+                                    <h3> Your Prescriptions</h3>
                                     @foreach($prescriptions as $prescription)
                                     @if($prescription->image->count() > 0)
                                     @foreach($prescription->image as $img)

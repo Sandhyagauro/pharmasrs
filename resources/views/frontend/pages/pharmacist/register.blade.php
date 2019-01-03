@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group col">
                                 <label class="text-color-light-2">NPC NUMBER</label>
-                                <input type="number" placeholder="Enter your NPC Number" value="{{ old('nmc_number') }}"
+                                <input type="text" placeholder="Enter your NPC Number" value="{{ old('nmc_number') }}"
                                        class="form-control bg-light rounded border-0 text-1" name="nmc_number"
                                        required>
                             </div>
@@ -110,20 +110,17 @@
                         <div class="form-group col">
                             <label class="text-color-light-2">PROFILE IMAGE</label>
                             <input type="file" value=""
-                                   class="form-control bg-light rounded border-0 text-1" name="image"
-                                >
+                                   class="form-control bg-light rounded border-0 text-1" name="image" required>
                         </div>
                         <div class="form-group col">
                             <label class="text-color-light-2">LICENSE IMAGE</label>
                             <input type="file" value=""
-                                   class="form-control bg-light rounded border-0 text-1" name="license_front"
-                            >
+                                   class="form-control bg-light rounded border-0 text-1" name="license_front" required>
                         </div>
                         <div class="form-group col">
                             <label class="text-color-light-2">CITIZENSHIP IMAGE</label>
                             <input type="file" value=""
-                                   class="form-control bg-light rounded border-0 text-1" name="citizenship_front"
-                            >
+                                   class="form-control bg-light rounded border-0 text-1" name="citizenship_front" required>
                         </div>
 
                         <!--                            <div class="form-row">-->

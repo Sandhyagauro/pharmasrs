@@ -88,7 +88,7 @@ class NewsController extends Controller
         $this->validate($request, [
             'title' => 'required',
         ]);
-        $page = post::find($id);
+        $page = Post::find($id);
         $page->title = $request->input('title');
         $page->content = $request->input('content');
         $page->excerpt = $request->excerpt;
@@ -96,9 +96,39 @@ class NewsController extends Controller
 
         if (isset($request->image)) {
             $post_image_id = PostHasImage::where('post_id', '=', $page->id)->first();
+<<<<<<< HEAD
 
             if (!empty($post_image_id)) {
 
+=======
+            if(!$post_image_id){
+                 $file = new Image();
+            $banner_pic = $request->file('image');
+            $type = $banner_pic->getClientOriginalExtension();
+            $destination = 'uploads';
+
+            if (empty($banner_pic)) {
+                return redirect()->back()->withInput();
+            } else if (!$banner_pic->isValid()) {
+                return redirect()->back()->withInput();
+            } else if (!$type == 'jpeg' && $type == 'png' && $type == 'svg' && $type == 'bmp' && $type == 'jpg' && $type == 'ico' && $type == 'gif') {
+                return redirect()->back()->withInput();
+            } else {
+                $fileName = rand(1, 999999) . '.' . $type;
+                $file->file_data = $destination . "/" . $fileName;
+                $banner_pic->move($destination, $fileName);
+            }
+
+            $file->save();
+
+            $post_file = new PostHasImage();
+            $post_file->post_id = $page->id;
+            $post_file->file_id = $file->id;
+            $post_file->save();
+                            
+            }
+            else{
+>>>>>>> 5a21e84884058c369cb6d3bd3b6b67395b409888
             $file = Image::find($post_image_id->file_id);
             $post_pic = $request->file('image');
 
@@ -116,6 +146,7 @@ class NewsController extends Controller
                 $post_pic->move($destination, $fileName);
             }
             $file->save();
+<<<<<<< HEAD
             } else {
                 $file = new Image();
                 $post_pic = $request->file('image');
@@ -141,6 +172,10 @@ class NewsController extends Controller
                 $post_file->file_id = $file->id;
                 $post_file->save();
             }
+=======
+}
+
+>>>>>>> 5a21e84884058c369cb6d3bd3b6b67395b409888
 
         }
 

@@ -4,11 +4,11 @@
 
 <section class="page-header parallax page-header-text-light overlay overlay-color-primary overlay-show overlay-op-9 mb-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5}" data-image-src="{{url('img/medical/carousel/banner2.jpg')}}">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center ">
             <div class="col-md-8 text-left">
-                <span class="tob-sub-title text-color-primary d-block">OUR BLOG</span>
-                <h1 class="font-weight-bold">Post title</h1>
-                <p class="lead">Post content</p>
+               <!--  <span class="tob-sub-title text-color-primary d-block">OUR BLOG</span> -->
+                <h1 class="font-weight-bold">News Description</h1>
+<!--                 <p class="lead">Post content</p> -->
             </div>
 
         </div>

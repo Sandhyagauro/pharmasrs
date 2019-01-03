@@ -60,10 +60,12 @@ class PharmacistUserController extends BaseController
      */
     public function store(Request $request)
     {
+       
         $this->validate($request, [
             'email' => 'unique:users,email,',
             'phone' => 'unique:users,phone,',
             'nmc_number' => 'unique:pharmacist_users,nmc_number,',
+            
         ]);
 
         $register = $this->pharmacist->registerPharmacist($request->all());
