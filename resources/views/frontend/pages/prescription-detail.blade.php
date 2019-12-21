@@ -35,6 +35,27 @@
                                 - {{$post->patient}}
                             </p>
                             </div>
+                            @if($post->patient == "others")
+                            <div class="col-md-4">
+                                <h4 id="list-item-5">Patient Name</h4>
+                                <p>
+                                    - {{$post->patient_name}}
+                                </p>
+                            </div>
+                                <div class="col-md-4">
+                                    <h4 id="list-item-5">Patient Gender</h4>
+                                    <p>
+                                        - {{$post->patient_gender}}
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 id="list-item-5">Patient Relation</h4>
+                                    <p>
+                                        - {{$post->patient_relation}}
+                                    </p>
+                                </div>
+                            @endif
+
                             <div class="col-md-4">
                             <h4 id="list-item-5">Patient Query</h4>
                             <p>

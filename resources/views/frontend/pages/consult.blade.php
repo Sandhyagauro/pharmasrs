@@ -32,7 +32,7 @@
                 <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
                 @endif
 
-                <form class="contact-form form-style-2" action="{{route('counsel.store')}}" method="POST" enctype="multipart/form-data">
+                <form id="prescriptionForm" class="contact-form form-style-2" action="{{route('counsel.store')}}" method="POST" enctype="multipart/form-data">
                     {!! csrf_field(); !!}
                     <!--                    <div class="contact-form-success alert alert-success d-none">-->
                     <!--                        <strong>Success!</strong> Your message has been sent to us.-->
@@ -155,7 +155,7 @@
                     <div class="form-row mt-2">
                         <div class="col">
                             <input type="submit" value="REQUEST ONLINE COUNSELING"
-                                   class="btn btn-primary btn-rounded btn-4 font-weight-semibold text-0"
+                                   class="upload-prescription-check btn btn-primary btn-rounded btn-4 font-weight-semibold text-0"
                                    data-loading-text="Loading..." name="file_data" required>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
 
             url: "{{route('counsel.prescription.store')}}",
             paramName: "file",
-            maxFilesize: 2, //MB
+            maxFilesize: 10, //MB
             addRemoveLinks: true,
             sending: function(file, xhr, formData) {
                 formData.append("_token", $('[name=_token').val());

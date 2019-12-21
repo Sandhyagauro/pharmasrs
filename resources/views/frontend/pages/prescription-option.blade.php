@@ -8,7 +8,14 @@
                 <div class="card-body p-5">
                     <h3 class="font-weight-bold text-color-light mb-3">Upload Prescription</h3>
                     <p class="text-color-light opacity-7 mb-0">Confusion?? Get the best advice here uploading your prescription.</p>
-                    <a href="{{url('/consult')}}" class="btn btn-rounded btn-dark btn-h-4 btn-v-3 mt-4">Upload Prescription</a>
+
+                    @if(Auth::check() && Auth::user()->hasRole(['patient','pharmacist']))
+                        <a href="{{url('/consult')}}" class="btn btn-rounded btn-dark btn-h-4 btn-v-3 mt-4">Upload Prescription</a>
+
+                    @else
+                            <a href="{{url('/login-page')}}" class="btn btn-rounded btn-dark btn-h-4 btn-v-3 mt-4">Upload Prescription</a>
+
+                    @endif
                 </div>
             </div>
 

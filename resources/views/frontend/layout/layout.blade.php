@@ -25,8 +25,8 @@
 
     <!-- Web Fonts  -->
     <link
-        href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800"
-        rel="stylesheet" type="text/css">
+            href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800"
+            rel="stylesheet" type="text/css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
     <!--compiled css-->
@@ -35,20 +35,21 @@
     <link rel="stylesheet" href="{{ url('assets/css/dash-tab.css')}}">
     <link rel="stylesheet" href="{{ url('assets/css/dash-tab.css')}}">
     <link rel="stylesheet" href="{{ url('assets/css/dropzone.css')}}">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 
 
 </head>
 <body>
 
 <div class="body">
-    @include('frontend/layout/header')
+@include('frontend/layout/header')
 
-    @yield('content')
+@yield('content')
 
-    @include('frontend/layout/footer')
+@include('frontend/layout/footer')
 
-    <!--messenger integration-->
+<!--messenger integration-->
     <div class="fb-customerchat"
          page_id="574785959645712"
          theme_color="#459645"
@@ -152,47 +153,72 @@
     </script>
 
     <script type="text/javascript">
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    });
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
 
-    lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true
-    })
-</script>
-        <script>
-            $(function () {
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        })
+    </script>
+    <script>
+        $(function () {
 
-                $("#date").datepicker({
-                    minDate : 0,
-                    dateFormat: 'yy-mm-dd'
+            $("#date").datepicker({
+                minDate: 0,
+                dateFormat: 'yy-mm-dd'
 
-                });
             });
-        </script>
+        });
+    </script>
 
-<!--patient dashboard change password-->
-<script>
-    $("#divCheckPasswordMatch").hide();
-    $(document).ready(function () {
-        function checkPasswordMatch() {
-            $("#divCheckPasswordMatch").show();
-            var password = $("#newPassword").val();
-            console.log($("#newPassword").val());
-            var confirmPassword = $("#txtConfirmPassword").val();
+    <!--patient dashboard change password-->
+    <script>
+        $("#divCheckPasswordMatch").hide();
+        $(document).ready(function () {
+            function checkPasswordMatch() {
+                $("#divCheckPasswordMatch").show();
+                var password = $("#newPassword").val();
+                console.log($("#newPassword").val());
+                var confirmPassword = $("#txtConfirmPassword").val();
 
-            if (password != confirmPassword)
-                $("#divCheckPasswordMatch").html("Passwords do not match!");
-            else
-                $("#divCheckPasswordMatch").html("Passwords match.");
-        }
+                if (password != confirmPassword)
+                    $("#divCheckPasswordMatch").html("Passwords do not match!");
+                else
+                    $("#divCheckPasswordMatch").html("Passwords match.");
+            }
 
-        $("#newPassword, #txtConfirmPassword").keyup(checkPasswordMatch);
+            $("#newPassword, #txtConfirmPassword").keyup(checkPasswordMatch);
 
-    });
-</script>
+        });
+    </script>
+    <!--patient/pharmacist login submit once-->
+    <script>
+        $('.submit-check').click(function () {
+            $(this).attr("disabled", 'disabled');
+            $('#patientLogin').submit();
+        })
+    </script>
+    <script>
+        $('.submit-pharmacist-check').click(function () {
+            $(this).attr("disabled", 'disabled');
+            $('#pharmacistLogin').submit();
+        })
+    </script>
+    {{--<script>--}}
+        {{--$('.contact-form-check').click(function () {--}}
+            {{--$(this).attr("disabled", 'disabled');--}}
+            {{--$('#contactForm').submit();--}}
+        {{--})--}}
+    {{--</script>--}}
+    {{--<script>--}}
+        {{--$('.upload-prescription-check').click(function () {--}}
+            {{--$(this).attr("disabled", 'disabled');--}}
+            {{--$('#prescriptionForm').submit();--}}
+        {{--})--}}
+    {{--</script>--}}
 </div>
 </body>
 </html>

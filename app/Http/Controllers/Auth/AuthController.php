@@ -39,7 +39,7 @@ class AuthController extends Controller
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
 
-        return redirect()->route('patient.dashboard');
+        return redirect()->route('frontend.pages.signin');
 //        return redirect($this->redirectTo);
     }
 

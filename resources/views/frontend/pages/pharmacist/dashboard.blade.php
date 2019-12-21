@@ -129,7 +129,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>NPC number</label>
-                                                    <input type="number" class="form-control" value="{{$user->nmc_number}}"
+                                                    <input type="text" class="form-control" value="{{$user->nmc_number}}"
                                                            name="nmc_number" required>
                                                     <!--                                        <select id="country2" name ="country" class="form-control"></select>-->
                                                 </div>

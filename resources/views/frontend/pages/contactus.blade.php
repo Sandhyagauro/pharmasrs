@@ -115,7 +115,7 @@
             <div class="col">
                 <div class="collapse pr-4" id="collapseForm">
 
-                        <form class="contact-form pt-5 mt-5" action="{{route('contactinfo.store')}}" method="POST">
+                        <form id="contactForm" class="contact-form pt-5 mt-5" action="{{route('contactinfo.store')}}" method="POST">
                             {!! csrf_field(); !!}
 
                         <strong id="succesMsg" ></strong>
@@ -131,7 +131,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-lg-3">
-                                <input type="text" value="" data-msg-required="Please enter your name." maxlength="100"
+                                <input type="text" value=""maxlength="100"
                                        class="form-control" name="name" id="name" placeholder="Name" required>
                             </div>
 
@@ -170,7 +170,7 @@
                         <div class="form-row">
                             <div class="form-group col">
                                 <input type="submit" value="SEND MESSAGE"
-                                       class="btn btn-primary btn-rounded btn-4 font-weight-semibold text-0"
+                                       class="contact-form-check btn btn-primary btn-rounded btn-4 font-weight-semibold text-0"
                                        data-loading-text="Loading...">
                             </div>
                         </div>

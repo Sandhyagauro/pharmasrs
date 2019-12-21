@@ -31,7 +31,7 @@
                     <div class="bg-primary rounded p-5">
                         <h2 class="text-color-light font-weight-bold text-4 mb-4">Patient Login / Registration</h2>
 
-                        <form  action="{{route('patient.login')}}"  method="post">
+                        <form  action="{{route('patient.login')}}" id="patientLogin"  method="post">
                             {!! csrf_field(); !!}
                             <div class="form-row">
                                 <div class="form-group col mb-2">
@@ -69,7 +69,7 @@
 
                             <div class="row align-items-center">
                                 <div class="col text-left">
-                                    <button type="submit" class="btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">LOGIN</button>
+                                    <button type="submit" class="submit-check btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">LOGIN</button>
                                     <a href="{{route('patient.index')}}" class="btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">  REGISTER</a>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                     <div class="border rounded h-100 p-5">
                         <h2 class="font-weight-bold text-4 mb-4">Pharmacist Login/Register</h2>
 
-                        <form action="{{route('pharmacist.login')}}"  method="post">
+                        <form action="{{route('pharmacist.login')}}"  id="pharmacistLogin" method="post">
                             {!! csrf_field(); !!}
                             <div class="form-row">
                                 <div class="form-group col mb-2">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="row align-items-center">
                                 <div class="col text-left">
-                                    <button type="submit" class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">LOGIN</button>
+                                    <button type="submit" class=" submit-pharmacist-check btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">LOGIN</button>
 
                                     <a href="{{route('pharmacist.index')}}" class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">REGISTER NOW</a>
                                 </div>
